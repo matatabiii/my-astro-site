@@ -1,23 +1,32 @@
 ---
-import '../styles/global.scss'
-
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 export interface Props {
-	title: string;
-  titletag?: string
+  title: string
 }
 
-const { title, titletag } = Astro.props as Props;
+const { title } = Astro.props
+
+// console.log(Astro)
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{titletag ? titletag : title}</title>
-</head>
-<body>
-	<slot />
-</body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
+  </head>
+  <body>
+    {Astro.site}
+    <br />
+    {Astro.url.pathname}
+    <br />
+    {Astro.url.origin}
+    <br />
+    {import.meta.env.BASE_URL}
+
+    <slot />
+  </body>
 </html>

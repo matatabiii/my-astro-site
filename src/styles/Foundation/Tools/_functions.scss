@@ -1,0 +1,182 @@
+@use 'sass:map'; // sassの機能
+@use 'sass:math';
+@use '../Settings/variable' as *;
+
+/// スクリーン取得
+/// @param  {string, number} $screen スクリーン名か数値
+/// @return {number}         $match-screen-width
+@function screen-match($screen) {
+  $match-screen-width: 0;
+  @if (number == type-of($screen)) {
+    $match-screen-width: $screen;
+  } @else {
+    @if list == type-of($screen-list) and index($screen-list, $screen) {
+      $match-screen-width: width($screen);
+    }
+  }
+  @return $match-screen-width;
+}
+
+/// 数値から単位を除外
+/// @param {number} $number 数値
+@function strip-unit($number) {
+  $strip-unit: math.div($number, ($number * 0 + 1));
+  @return $strip-unit;
+}
+
+/// `rem` に変換
+/// @param {number} $calc 計算するサイズ
+@function rem($calc) {
+  // $rem: (strip-unit($calc / 10) * 0.625) * 1rem;
+  $rem: strip-unit(math.div($calc, 10)) * 1rem;
+  @return $rem;
+}
+
+/// `em` に変換
+/// @param {number} $calc   計算するサイズ
+/// @param {number} $parent 親のサイズ
+@function em($calc, $parent: $font-size) {
+  $result: strip-unit(math.div($calc, $parent)) * 1em;
+  @return $result;
+}
+
+/// 行間計算 (line-height)
+/// @param  {number} $line 行サイズ (単位必須)
+/// @param  {number} $font フォントサイズ (単位必須)
+/// @return {number}       行間
+@function lh($line, $font: $font-size) {
+  @return strip-unit(math.div($line, $font));
+}
+
+/// 文字間計算 (letter-spacing)
+/// @param  {number} $trakking 文字感デザインカンプ値 (単位不要)
+/// @return {number}           文字間計算
+@function ls($trakking) {
+  @return math.div($trakking, 1000) + em;
+}
+
+/// テキストの境界線 (16分割して滑らか感をだす)
+/// https://www.chatwork.com/#!rid29164628-1972186661
+/// @param  {number} $width        大きさ
+/// @param  {string} $color        カラーコード
+/// @param  {string} $chain-before 連鎖させる値(前)
+/// @param  {string} $chain-after  連鎖させる値(後)
+/// @return {string}               値
+@function text-outline($width: 1px, $color: color('font'), $chain-before: null, $chain-after: null) {
+  @return $chain-before, 0 * $width -1 * $width 0 $color, 0.33 * $width -0.99 * $width 0 $color, 0.66 * $width -0.66 * $width 0 $color,
+    0.99 * $width -0.33 * $width 0 $color, 1 * $width 0 * $width 0 $color, 0.99 * $width 0.33 * $width 0 $color,
+    0.66 * $width 0.66 * $width 0 $color, 0.33 * $width 0.99 * $width 0 $color, 0 * $width 1 * $width 0 $color,
+    -0.33 * $width 0.99 * $width 0 $color, -0.66 * $width 0.66 * $width 0 $color, -0.99 * $width 0.33 * $width 0 $color,
+    -1 * $width 0 * $width 0 $color, -0.99 * $width -0.33 * $width 0 $color, -0.66 * $width -0.66 * $width 0 $color,
+    -0.33 * $width -0.99 * $width 0 $color, $chain-after;
+}
+
+/// 横幅取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      横幅値
+@function width($key: null) {
+  @if map == type-of($width-map) and map.get($width-map, $key) {
+    @return map.get($width-map, $key);
+  }
+  @return 0;
+}
+
+/// 縦幅取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      縦幅値
+@function height($key: null) {
+  @if map == type-of($height-map) and map.get($height-map, $key) {
+    @return map.get($height-map, $key);
+  }
+  @return 0;
+}
+
+/// フォントファミリー取得
+/// 取得できなかったら sans-serif を返す
+/// @param  {string}  $key キー名
+/// @param  {boolean} $var CSSカスタム変数にするか
+/// @return {string}       フォントファミリー名
+@function family($key: null, $var: true) {
+  @if map == type-of($family-map) and map.get($family-map, $key) {
+    $family: map.get($family-map, $key);
+    @if $var {
+      @return var(--family-#{$key});
+      // @return var(--family-#{$key}, $family);
+    } @else {
+      @return $family;
+    }
+  }
+  @return sans-serif;
+}
+
+/// カラー取得
+/// 取得できなかったら currentColor を返す
+/// @param  {string}  $key キー名
+/// @param  {boolean} $var CSSカスタム変数にするか
+/// @return {string}       カラーコード
+@function color($key: null, $rgb: false, $var: true) {
+  @if map == type-of($color-map) and map.get($color-map, $key) {
+    $color: map.get($color-map, $key);
+
+    @if $var and $rgb == false {
+      @return var(--#{$key});
+    } @else {
+      @return $color;
+    }
+  }
+  @return currentColor;
+}
+
+/// 余白取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      余白
+@function margin($key: null) {
+  @if map == type-of($margin-map) and map.get($margin-map, $key) {
+    @return map.get($margin-map, $key);
+  }
+  @return 0;
+}
+
+/// 余白取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      余白
+@function space($key: null) {
+  @if map == type-of($space-map) and map.get($space-map, $key) {
+    @return map.get($space-map, $key);
+  }
+  @return 0;
+}
+
+/// 角丸取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      角丸
+// @function radius($key: null) {
+//   @if map == type-of($radius-map) and map.get($radius-map, $key) {
+//     @return rem(map.get($radius-map, $key));
+//   }
+//   @return 0;
+// }
+
+/// 重なり順取得
+/// 取得できなかったら 0 を返す
+/// @param  {string} $key キー名
+/// @return {number}      順番
+@function z-index($key: null) {
+  @if list == type-of($index-list) and index($index-list, $key) {
+    @return 100 + index($index-list, $key);
+  }
+  @return 0;
+}
+
+/// パーセント計算
+/// @param  string $av 求める値 ( 単位必須 )
+/// @param  string $rv 参照値 ( 単位必須 )
+/// @return string     割合 ( % )
+@function percent($av, $rv) {
+  @return calc($av / $rv * 100%);
+}

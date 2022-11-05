@@ -1,0 +1,319 @@
+@use 'sass:map'; // sassの機能
+@use '../Settings/variable' as *;
+@use './functions' as *;
+
+// メディアクエリー 解像度
+@mixin retina() {
+  @media (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+/// Media Queries 指定された幅以下
+/// @param {string, number} $screen    スクリーン名か数値
+/// @param {string}         $direction 横か縦か両方か
+@mixin break($screen, $direction: width) {
+  $screen: screen-match($screen);
+  $value: $screen - 0.02;
+  @if (width == $direction or height == $direction) {
+    @media (max-#{$direction}: $value) {
+      @content;
+    }
+  } @else if (both == $direction) {
+    @media (max-width: $value), (max-height: $value) {
+      @content;
+    }
+  }
+}
+
+/// Media Queries 指定された幅以上
+/// @param {string, number} $screen    スクリーン名か数値
+/// @param {string}         $direction 横か縦か両方か
+@mixin over($screen, $direction: width) {
+  $screen: screen-match($screen);
+  $value: $screen;
+  @if (width == $direction or height == $direction) {
+    @media (min-#{$direction}: $value) {
+      @content;
+    }
+  } @else if (both == $direction) {
+    @media (min-width: $value), (min-height: $value) {
+      @content;
+    }
+  }
+}
+
+///メディアクエリー Orientation
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin is16-9 {
+  @media (max-aspect-ratio: 16/9) {
+    @content;
+  }
+}
+
+@mixin is4-3 {
+  @media (max-aspect-ratio: 4/3) {
+    @content;
+  }
+}
+
+/// 背景画像 (Retina 対応)
+/// @param {string} $src       普通サイズの画像の URL (必須)
+/// @param {string} $size      普通サイズの画像の横幅 (無い場合は auto)
+/// @param {string} $repeat    繰り返し指定 (無い場合は no-repeat)
+/// @param {number} $x         X軸 (無い場合は 0)
+/// @param {number} $y         Y軸 (無い場合は 0)
+/// @param {string} $retina    Retina 対応するか
+/// @param {string} $screen    ┣ スクリーンに依存するか
+/// @param {string} $direction ┗ スクリーンの方向性
+/// @param {string} $query     キャッシュ回避を目的としたクエリーを付けるか
+@mixin bg($src, $size: null, $repeat: null, $x: null, $y: null, $retina: true, $screen: null, $direction: null, $query: '') {
+  $_src: $src;
+  $_src-x2: str-insert($_src, '@2x', -5);
+  $_size: null;
+  $_repeat: null;
+  $_x: null;
+  $_y: null;
+
+  @if str-index($src, '/') {
+    $_src: $src;
+    $_src-x2: str-insert($_src, '@2x', -5);
+  } @else {
+    $_src: $images + $src;
+    $_src-x2: $images + str-insert($_src, '@2x', -5);
+  }
+
+  @if $query {
+    $_src: $_src + '?#{$query}';
+    $_src-x2: $_src-x2 + '?#{$query}';
+  }
+
+  @if $size {
+    $_size: #{$size};
+  } @else {
+    $_size: contain;
+  }
+
+  @if $repeat {
+    $_repeat: #{$repeat};
+  } @else {
+    $_repeat: no-repeat;
+  }
+
+  @if $x {
+    $_x: #{$x};
+  } @else {
+    $_x: 0;
+  }
+
+  @if $y {
+    $_y: #{$y};
+  } @else {
+    $_y: 0;
+  }
+
+  background: url($_src) $_repeat $_x $_y/$_size;
+  // background-repeat: $_repeat;
+  // background-position: $_x $_y;
+
+  // @if $size {
+  //   background-size: $_size;
+  // }
+
+  @if $retina {
+    @if $size == null {
+      $_size: contain;
+    }
+    @include retina() {
+      @if $screen and $direction {
+        @if break == $direction {
+          @include _break($screen) {
+            background-image: url($_src-x2);
+            // background-position: $_x $_y;
+            // background-repeat: $_repeat;
+            // background-size: $_size;
+          }
+        } @else if over == $direction {
+          @include _over($screen) {
+            background-image: url($_src-x2);
+            // background-position: $_x $_y;
+            // background-repeat: $_repeat;
+            // background-size: $_size;
+          }
+        }
+      } @else {
+        background-image: url($_src-x2);
+        // background-position: $_x $_y;
+        // background-repeat: $_repeat;
+        // background-size: $_size;
+      }
+    }
+  }
+}
+
+/// ホバー、フォーカス
+/// @param {string}  $action  疑似クラス
+@mixin action($action: 'full', $underline: none) {
+  @at-root {
+    @media (any-hover: hover) {
+      &:hover {
+        @content;
+        text-decoration: $underline;
+      }
+    }
+    @if ($action != 'hover') {
+      &:focus {
+        @content;
+      }
+    }
+  }
+}
+
+/// テキストの境界線
+/// 16分割して滑らか感をだす
+/// function _text-outline のラッパー
+/// https://www.chatwork.com/#!rid29164628-1972186661
+/// @param {number} $width        大きさ
+/// @param {string} $color        カラーコード
+/// @param {string} $chain-before 連鎖させる値(前)
+/// @param {string} $chain-after  連鎖させる値(後)
+@mixin text-outline($width: 1px, $color: color('font'), $chain-before: null, $chain-after: null) {
+  text-shadow: text-outline($width, $color, $chain-before, $chain-after);
+}
+
+/// プレースホルダー
+/// @param {string} $color color
+/// @param {nunmber} $weight font-wegiht
+@mixin placeholder($color, $weight) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &::-ms-input-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+}
+
+/// トリガーステータス
+@mixin isOpenDrawer($className: '.is-open-drawer') {
+  @at-root html#{$className} & {
+    @content;
+  }
+}
+
+/// アクセシビリティ対応
+@mixin isAriaExpanded() {
+  &[aria-expanded='true'] {
+    @content;
+  }
+}
+
+/// アクセシビリティ対応
+@mixin isAriaSelected() {
+  &[aria-selected='true'] {
+    @content;
+  }
+}
+
+/// 1回でもスクロールしたら
+@mixin isOneScroll() {
+  .js-over-once-scroll & {
+    @content;
+  }
+}
+
+/// ヘッダーを超えたら
+@mixin isOverHeader() {
+  .js-over-header & {
+    @content;
+  }
+}
+
+/// フッターが見えたら
+@mixin isViewFooter() {
+  .js-view-footer & {
+    @content;
+  }
+}
+
+/// スクロールの上か下か
+@mixin isScrollDirection($mode: 'up') {
+  $directionClass: '.js-direction-up';
+
+  @if ($mode == 'up') {
+    $directionClass: '.js-direction-up';
+  } @else if ($mode == 'down') {
+    $directionClass: '.js-direction-down';
+  }
+
+  #{$directionClass} & {
+    @content;
+  }
+}
+
+/// Edge判定
+@mixin isEdge() {
+  @at-root _:-ms-lang(x)::backdrop,
+    & {
+    @content;
+  }
+
+  @at-root html.edge & {
+    @content;
+  }
+}
+
+/// 縦書き
+@mixin tategaki() {
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  font-feature-settings: normal; // ずれたりする
+}
+
+/// アンチエイリアス有効
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/// アンチエイリアス無効
+@mixin font-smoothing-n() {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+/// otf対象のカーニング
+@mixin karning() {
+  font-feature-settings: 'palt' 1;
+}
+
+/// スクロールバー非表示
+@mixin scrollbar-less() {
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none; /* Firefox 対応 */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

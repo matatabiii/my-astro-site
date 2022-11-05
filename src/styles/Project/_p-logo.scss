@@ -1,0 +1,21 @@
+/* ロゴ
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+// logo
+.p-logo {
+  display: block;
+
+  // .p-logo__link
+  &__link {
+    display: block;
+  }
+
+  img {
+    display: block;
+  }
+}

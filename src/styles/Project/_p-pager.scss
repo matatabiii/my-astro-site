@@ -1,0 +1,40 @@
+/* pager
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+/*
+pager
+*/
+.p-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  max-width: calc(100vw - 4rem);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+
+  // .p-pager-btn
+  &-btn {
+    line-height: 1.5;
+    font-size: rem(16);
+    font-weight: 700;
+    display: flex;
+    width: rem(270);
+    min-height: rem(50);
+    padding: rem(8);
+    color: color('gray-0');
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: color('theme');
+    border-radius: 8px;
+  }
+}

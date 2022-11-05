@@ -1,0 +1,68 @@
+/* body */
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+.l-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // .l-body--2col
+  &--2col {
+    position: relative;
+
+    .l-body__container {
+      width: rem(1170);
+      max-width: calc(100% - 4rem);
+      margin: 0 auto;
+      padding: rem(45) 0 rem(40) 0;
+
+      @include over('lg') {
+        display: flex;
+        padding: rem(60) 0 rem(80) 0;
+      }
+    }
+
+    .l-body__main {
+      @include over('lg') {
+        width: rem(900);
+        padding-right: rem(30);
+      }
+    }
+
+    .l-body__side {
+      @include over('lg') {
+        flex: 0 0 auto;
+        width: rem(270);
+      }
+    }
+  }
+
+  // .l-body__header
+  &__header {
+    flex: 0 0 auto;
+  }
+
+  // .l-body__container
+  &__container {
+    flex: 1 1 auto;
+  }
+
+  // .l-body__main
+  &__main {
+    overflow-x: hidden;
+  }
+
+  // .l-body__footer
+  &__footer {
+    flex: 0 0 auto;
+  }
+}
+
+@include over('lg') {
+  #body-side-inner {
+    position: sticky;
+    top: 20px;
+  }
+}

@@ -30,16 +30,16 @@
 再利用できるパターンとして、小さな単位のモジュールを定義します。
 出来る限り、最低限の機能を持ったものとして定義されるべきであり、それ自体が固有の幅や色などの特色を持つことは避けるのが望ましいです。
 ----------------------------------------------------------------- */
-@use './Component/c-container' as *;
-@use './Component/c-flex' as *;
-@use './Component/c-object-fit' as *;
-@use './Component/c-select' as *;
-@use './Component/c-icon' as *;
-@use './Component/c-help' as *;
-@use './Component/c-atmark' as *;
-@use './Component/c-frame' as *;
-@use './Component/c-fader' as *;
-@use './Component/c-share' as *;
+// @use './Component/c-container' as *;
+// @use './Component/c-flex' as *;
+// @use './Component/c-object-fit' as *;
+// @use './Component/c-select' as *;
+// @use './Component/c-icon' as *;
+// @use './Component/c-help' as *;
+// @use './Component/c-atmark' as *;
+// @use './Component/c-frame' as *;
+// @use './Component/c-fader' as *;
+// @use './Component/c-share' as *;
 @use './Component/c-details' as *;
 
 /* Project

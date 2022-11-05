@@ -1,0 +1,656 @@
+/* wp_content内のスタイル
+----------------------------------------------------------------- */
+
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+$color-primary: #e70348;
+
+@mixin _editorBaseSpace {
+  margin-bottom: rem(20);
+}
+
+.c-editor {
+  letter-spacing: normal;
+
+  .has-background {
+    // margin-bottom: 120px;
+    padding: rem(30) rem(40);
+
+    & + h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: rem(120);
+    }
+
+    @include break('md') {
+      & + h1,
+      h2,
+      h3,
+      h4 {
+        margin-top: rem(60);
+      }
+    }
+  }
+
+  /**
+   * 2.0 - Typography
+   */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    clear: both;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 0.75em;
+    margin-top: rem(40);
+
+    & + * {
+      margin-top: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1,
+  h2 {
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    font-size: rem(26);
+    border-left: 5px solid $color-primary;
+    padding: 3px 0 3px 10px;
+    color: $color-primary;
+
+    @include break('md') {
+      font-size: rem(24);
+    }
+  }
+
+  h1 {
+    font-size: rem(28);
+
+    @include break('md') {
+      font-size: rem(26);
+    }
+  }
+
+  h3 {
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    font-size: rem(24);
+    border-left: 3px solid $color-primary;
+    padding: 3px 0 3px 10px;
+    color: $color-primary;
+
+    @include break('md') {
+      font-size: rem(22);
+    }
+  }
+
+  h4 {
+    color: $color-primary;
+    font-size: rem(22);
+    font-weight: 700;
+    @include break('md') {
+      font-size: rem(20);
+    }
+  }
+
+  h5 {
+    color: $color-primary;
+    font-size: rem(20);
+    font-weight: 700;
+    @include break('md') {
+      font-size: rem(18);
+    }
+  }
+
+  h6 {
+    color: $color-primary;
+    font-size: rem(18);
+    font-weight: 700;
+    @include break('md') {
+      font-size: rem(16);
+    }
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    @include _editorBaseSpace();
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .wp-block-image {
+    margin-bottom: 30px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  b,
+  strong {
+    font-weight: 700;
+  }
+
+  dfn,
+  cite,
+  em,
+  i {
+    font-style: italic;
+  }
+
+  blockquote {
+    border-left: 4px solid #1a1a1a;
+    color: #686868;
+    font-size: rem(18);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: rem(30);
+    overflow: hidden;
+    padding: 0 0 0 rem(24);
+  }
+  blockquote:not(.alignleft):not(.alignright) {
+    margin-left: rem(-18);
+  }
+  blockquote blockquote:not(.alignleft):not(.alignright) {
+    margin-left: 0;
+  }
+  blockquote:before,
+  blockquote:after {
+    content: '';
+    display: table;
+  }
+  blockquote:after {
+    clear: both;
+  }
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+  blockquote cite,
+  blockquote small {
+    color: #1a1a1a;
+    font-size: em(16px, 18px);
+    line-height: 1.75;
+  }
+
+  blockquote em,
+  blockquote i,
+  blockquote cite {
+    font-style: normal;
+  }
+
+  blockquote strong,
+  blockquote b {
+    font-weight: 400;
+  }
+
+  blockquote.alignleft,
+  blockquote.alignright {
+    border: 0 solid #1a1a1a;
+    border-top-width: 4px;
+    padding: em(18px, 18px) 0 0;
+    width: -webkit-calc(50% - 14px);
+    width: calc(50% - 14px);
+  }
+
+  address {
+    font-style: italic;
+    margin: 0 0 rem(28);
+  }
+
+  code,
+  kbd,
+  tt,
+  var,
+  samp,
+  pre {
+    font-family: Inconsolata, monospace;
+  }
+
+  pre {
+    border: 1px solid #d1d1d1;
+    font-size: rem(16);
+    line-height: 1.3125;
+    margin: 0 0 em(28px, 16px);
+    max-width: 100%;
+    overflow: auto;
+    padding: em(14px, 16px);
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    background: #d1d1d1;
+    padding: 2px 4px;
+  }
+
+  abbr[title] {
+    border-bottom: 1px dotted #d1d1d1;
+    cursor: help;
+  }
+
+  mark,
+  ins {
+    background: #007acc;
+    color: #fff;
+    padding: 2px 4px;
+    text-decoration: none;
+  }
+
+  sup,
+  sub {
+    font-size: 75%;
+    height: 0;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -3px;
+  }
+
+  sup {
+    top: -6px;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  big {
+    font-size: 125%;
+  }
+
+  /**
+   * 3.0 - Elements
+   */
+  hr {
+    background: #d1d1d1;
+    border: 0;
+    height: 1px;
+    margin-bottom: rem(28);
+  }
+
+  ul,
+  ol {
+    @include _editorBaseSpace();
+    padding: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul:not([class]) {
+    list-style-type: disc;
+    padding-left: 1.2em;
+
+    li {
+      list-style-type: inherit;
+    }
+  }
+
+  ol:not([class]) {
+    list-style-type: decimal;
+    padding-left: 1.2em;
+
+    li {
+      list-style-type: inherit;
+    }
+  }
+
+  li > ul,
+  li > ol {
+    margin-bottom: 0;
+  }
+
+  dl {
+    margin: 0 0 rem(28);
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0 0 rem(28);
+  }
+
+  table,
+  th,
+  td,
+  .mce-item-table,
+  .mce-item-table th,
+  .mce-item-table td {
+    border: 1px solid #d1d1d1;
+  }
+
+  table a {
+    color: #007acc;
+  }
+
+  table,
+  .mce-item-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin: 0 0 rem(28);
+    width: 100%;
+  }
+
+  table th,
+  .mce-item-table th,
+  table caption {
+    border-width: 0 1px 1px 0;
+    font-size: rem(16);
+    font-weight: 700;
+    padding: em(7px, 16px);
+    text-align: left;
+    vertical-align: baseline;
+  }
+
+  table td,
+  .mce-item-table td {
+    border-width: 0 1px 1px 0;
+    font-size: rem(16);
+    padding: em(7px, 16px);
+    vertical-align: baseline;
+  }
+
+  img {
+    // border: 0;
+    height: auto;
+    display: inline;
+    max-width: 100%;
+    vertical-align: bottom;
+  }
+
+  // a {
+  //   display: inline-block;
+  // }
+
+  a img {
+    display: block;
+  }
+
+  figure {
+    margin: 25px 0;
+  }
+
+  del {
+    opacity: 0.8;
+  }
+
+  a {
+    // box-shadow: 0 1px 0 0 currentColor;
+    // color: #007acc;
+    // color: color('theme');
+    color: #0085c7;
+    text-decoration: underline;
+
+    @include action() {
+      text-decoration: none;
+    }
+  }
+
+  fieldset {
+    border: 1px solid #d1d1d1;
+    margin: 0 0 rem(28);
+    padding: rem(14);
+  }
+
+  /**
+   * 4.0 - Alignment
+   */
+  .alignleft {
+    float: left;
+    margin: rem(6) rem(28) rem(28) 0;
+  }
+
+  .alignright {
+    float: right;
+    margin: rem(6) 0 rem(28) rem(28);
+  }
+
+  .aligncenter {
+    clear: both;
+    display: block;
+    margin: 0 auto rem(28);
+  }
+
+  /**
+   * 5.0 - Caption
+   */
+
+  .wp-caption {
+    background: transparent;
+    border: none;
+    margin-bottom: rem(28);
+    max-width: 100%;
+    padding: 0;
+    text-align: inherit;
+    text-align: center;
+  }
+
+  .wp-caption-text,
+  .wp-caption-dd {
+    color: #686868;
+    font-size: rem(14);
+    font-style: italic;
+    line-height: 1.6153846154;
+    padding-top: em(7px, 13px);
+  }
+
+  .wp-block-image {
+    figcaption {
+      color: #686868;
+      font-size: rem(14);
+      font-style: italic;
+      line-height: 1.6153846154;
+      padding-top: em(7px, 13px);
+      text-align: center;
+    }
+
+    & + figure.wp-block-image {
+      margin-top: 2em;
+    }
+  }
+
+  .wp-block-embed {
+    margin-bottom: 1em;
+
+    // .wp-block-embed__wrapper
+    &__wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+
+    // .wp-embed-aspect-4-3
+    &.wp-embed-aspect-4-3 {
+      .wp-block-embed__wrapper {
+        padding-top: math.div(3, 4) * 100%; // 75%
+      }
+    }
+  }
+
+  /**
+   * 6.0 - Galleries
+   */
+
+  .mce-content-body .wpview-wrap {
+    margin-bottom: rem(28);
+  }
+
+  .gallery {
+    margin: 0 -1.1666667%;
+    padding: 0;
+  }
+
+  .gallery .gallery-item {
+    display: inline-block;
+    max-width: 33.33%;
+    padding: 0 1.1400652% 2.2801304%;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+  }
+
+  .gallery-columns-1 .gallery-item {
+    max-width: 100%;
+  }
+
+  .gallery-columns-2 .gallery-item {
+    max-width: 50%;
+  }
+
+  .gallery-columns-4 .gallery-item {
+    max-width: 25%;
+  }
+
+  .gallery-columns-5 .gallery-item {
+    max-width: 20%;
+  }
+
+  .gallery-columns-6 .gallery-item {
+    max-width: 16.66%;
+  }
+
+  .gallery-columns-7 .gallery-item {
+    max-width: 14.28%;
+  }
+
+  .gallery-columns-8 .gallery-item {
+    max-width: 12.5%;
+  }
+
+  .gallery-columns-9 .gallery-item {
+    max-width: 11.11%;
+  }
+
+  .gallery .gallery-caption {
+    font-size: rem(13);
+    margin: 0;
+  }
+
+  .gallery-columns-6 .gallery-caption,
+  .gallery-columns-7 .gallery-caption,
+  .gallery-columns-8 .gallery-caption,
+  .gallery-columns-9 .gallery-caption {
+    display: none;
+  }
+
+  /**
+   * 7.0 - Audio / Video
+   */
+
+  .wp-audio-shortcode a,
+  .wp-playlist a {
+    box-shadow: none;
+  }
+
+  .mce-content-body .wp-audio-playlist {
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .mce-content-body .wp-playlist-tracks {
+    margin-top: 0;
+  }
+
+  .mce-content-body .wp-playlist-item {
+    padding: rem(10) 0;
+  }
+
+  .mce-content-body .wp-playlist-item-length {
+    top: rem(10);
+  }
+
+  /**
+   * 8.0 - RTL
+   */
+
+  .rtl blockquote {
+    border: 0 solid #1a1a1a;
+    border-right-width: 4px;
+  }
+
+  .rtl blockquote.alignleft,
+  .rtl blockquote.alignright {
+    border: 0 solid #1a1a1a;
+    border-top-width: 4px;
+  }
+
+  .rtl blockquote:not(.alignleft):not(.alignright) {
+    margin-right: rem(-28);
+    padding: 0 rem(24) 0 0;
+  }
+
+  .rtl blockquote blockquote:not(.alignleft):not(.alignright) {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .rtl li > ul,
+  .rtl blockquote > ul {
+    margin-right: rem(20);
+    margin-left: auto;
+  }
+
+  .rtl li > ol,
+  .rtl blockquote > ol {
+    margin-right: rem(24);
+    margin-left: auto;
+  }
+
+  .rtl table th,
+  .rtl .mce-item-table th,
+  .rtl table caption {
+    text-align: right;
+  }
+}

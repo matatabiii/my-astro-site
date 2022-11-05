@@ -1,0 +1,79 @@
+/* background
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+$colorMap: $color-map; // _variable.scss で設定
+
+@mixin bg($prefix: '') {
+  .#{$prefix}u-bg-center {
+    background-position: center;
+  }
+  .#{$prefix}u-bg-center-left {
+    background-position: center left;
+  }
+  .#{$prefix}u-bg-center-right {
+    background-position: center right;
+  }
+  .#{$prefix}u-bg-left-center {
+    background-position: left center;
+  }
+  .#{$prefix}u-bg-right-center {
+    background-position: right center;
+  }
+}
+
+@mixin bgOther($prefix: '') {
+  @each $key, $color in $colorMap {
+    .#{$prefix}u-bg-#{$key} {
+      background-color: color($key);
+    }
+  }
+
+  .#{$prefix}u-bg-contain {
+    background-size: contain;
+  }
+  .#{$prefix}u-bg-cover {
+    background-size: cover;
+  }
+  .#{$prefix}u-bg-scroll {
+    background-attachment: scroll;
+  }
+  .#{$prefix}u-bg-fixed {
+    background-attachment: fixed;
+  }
+  .#{$prefix}u-bg-local {
+    background-attachment: local;
+  }
+  .#{$prefix}u-bg-borderBox {
+    background-clip: border-box;
+  }
+  .#{$prefix}u-bg-paddingBox {
+    background-clip: padding-box;
+  }
+  .#{$prefix}u-bg-contentBox {
+    background-clip: content-box;
+  }
+  .#{$prefix}u-bg-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@include bg();
+@include bgOther();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include bg($prefix);
+  @include bgOther($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include bg($prefix);
+  @include bgOther($prefix);
+}

@@ -1,0 +1,76 @@
+/* sidebar */
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+.l-sidebar {
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  padding: rem(20);
+  margin-bottom: rem(25);
+  border-radius: 8px;
+
+  // .l-sidebar__header
+  &__header {
+    margin-bottom: rem(10);
+
+    // .l-sidebar__header-heading
+    &-heading {
+      color: color('theme');
+      font-weight: 700;
+      font-size: rem(20);
+    }
+  }
+
+  // .l-sidebar-nav
+  &-nav {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.5;
+    font-size: rem(16);
+
+    > li {
+      &:not(:last-child) {
+        border-bottom: 1px solid #eee;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1em;
+      padding-bottom: rem(5);
+
+      li {
+        &:last-child {
+          a {
+            &::after {
+              content: '└';
+            }
+          }
+        }
+      }
+
+      a {
+        padding-left: 1.2em;
+        position: relative;
+
+        &::after {
+          content: '├';
+          position: absolute;
+          font-size: 0.85em;
+          display: flex;
+          align-items: center;
+          width: 1em;
+          left: 0;
+          top: 50%;
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+    }
+
+    a {
+      display: block;
+      padding: rem(12) rem(5);
+    }
+  }
+}

@@ -1,0 +1,83 @@
+// https://github.com/dmnsgn/sass-easing/blob/master/_easings.scss
+@use './../../../node_modules/sass-easing/easings' as *;
+
+$easing: $easeInOutQuad;
+
+.js {
+  [data-st-effect]:not(.is-observed) {
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+
+  /// default - transition
+  [data-st-effect] {
+    transition-timing-function: ease-in-out;
+  }
+  [data-st-effect^='fade'] {
+    transition-property: opacity, transform;
+  }
+  [data-st-effect^='blur'] {
+    transition-property: opacity, transform, filter;
+  }
+  [data-st-effect^='zoom'] {
+    transition-property: opacity, transform;
+  }
+
+  /// blur
+  [data-st-effect='blur']:not(.is-observed) {
+    opacity: 0;
+    filter: blur(0.5em);
+  }
+
+  /// fade
+  [data-st-effect^='fade']:not(.is-observed) {
+    opacity: 0;
+  }
+  [data-st-effect='fade-up']:not(.is-observed) {
+    transform: translate3d(0, 30px, 0);
+  }
+  [data-st-effect='fade-down']:not(.is-observed) {
+    transform: translate3d(0, -30px, 0);
+  }
+  [data-st-effect='fade-right']:not(.is-observed) {
+    transform: translate3d(30px, 0, 0);
+  }
+  [data-st-effect='fade-left']:not(.is-observed) {
+    transform: translate3d(-30px, 0, 0);
+  }
+
+  // zoom
+  [data-st-effect^='zoom']:not(.is-observed) {
+    opacity: 0;
+  }
+  [data-st-effect='zoom-in']:not(.is-observed) {
+    transform: scale(0.6);
+  }
+  [data-st-effect='zoom-in-up']:not(.is-observed) {
+    transform: translate3d(0, 30px, 0) scale(0.6);
+  }
+  [data-st-effect='zoom-in-down']:not(.is-observed) {
+    transform: translate3d(0, -30px, 0) scale(0.6);
+  }
+  [data-st-effect='zoom-in-right']:not(.is-observed) {
+    transform: translate3d(-30px, 0, 0) scale(0.6);
+  }
+  [data-st-effect='zoom-in-left']:not(.is-observed) {
+    transform: translate3d(30px, 0, 0) scale(0.6);
+  }
+  [data-st-effect='zoom-out']:not(.is-observed) {
+    transform: scale(1.05);
+  }
+  [data-st-effect='zoom-out-up']:not(.is-observed) {
+    transform: translate3d(0, 30px, 0) scale(1.1);
+  }
+  [data-st-effect='zoom-out-down']:not(.is-observed) {
+    transform: translate3d(0, -30px, 0) scale(1.1);
+  }
+  [data-st-effect='zoom-out-right']:not(.is-observed) {
+    transform: translate3d(30px, 0, 0) scale(1.1);
+  }
+  [data-st-effect='zoom-out-left']:not(.is-observed) {
+    transform: translate3d(-30px, 0, 0) scale(1.1);
+  }
+}

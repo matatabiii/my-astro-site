@@ -1,0 +1,201 @@
+$sans-base: 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+$serif-base: 'Noto-Serif-JP', 'Hiragino Mincho ProN', serif;
+
+$families: (
+  'gothic': (
+    $sans-base,
+  ),
+  'yugo': (
+    'Yu-Go',
+    YuGothic,
+    '游ゴシック体',
+    $sans-base,
+  ),
+  'genjyu': (
+    'GenJyuuGothic',
+    $sans-base,
+  ),
+  'genshin': (
+    'GenShinGothic',
+    $sans-base,
+  ),
+  'mincho': (
+    $serif-base,
+  ),
+  'yumin': (
+    'Yu-Min',
+    YuMincho,
+    '游明朝',
+    $serif-base,
+  ),
+  'kozuka': (
+    'YakuHanJP',
+    'kozuka-gothic-pro',
+    $sans-base,
+  ),
+  'noto': (
+    'Noto-Sans-JP',
+    'Noto Sans JP',
+    'source-han-sans-japanese',
+    $sans-base,
+  ),
+  'noto-yakuhan': (
+    'YakuHanJP',
+    'Noto-Sans-JP',
+    'Noto Sans JP',
+    'source-han-sans-japanese',
+    $sans-base,
+  ),
+  'mplus': (
+    'YakuHanJP',
+    'M PLUS 1p',
+    $sans-base,
+  ),
+  'notoserif': (
+    'Noto-Serif-JP',
+    'Noto Serif JP',
+    $serif-base,
+  ),
+  'system': (
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    Noto Sans,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji',
+  ),
+  'opensans': (
+    'Open Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif,
+  ),
+  'muli': (
+    'Muli',
+    sans-serif,
+  ),
+  'lato': (
+    'Lato',
+    sans-serif,
+  ),
+  'roboto': (
+    'Roboto',
+    sans-serif,
+  ),
+  'pt-sans': (
+    'PT Sans Narrow',
+    sans-serif,
+  ),
+  'roboto-c': (
+    'Roboto Condensed',
+    sans-serif,
+  ),
+  'oswald': (
+    'Oswald',
+    sans-serif,
+  ),
+  'open-sans': (
+    'Open Sans',
+    sans-serif,
+  ),
+  'quicksand': (
+    'Quicksand',
+    sans-serif,
+  ),
+  'cinzel': (
+    'Cinzel',
+    serif,
+  ),
+  'cormorant': (
+    'Cormorant',
+    serif,
+  ),
+  'fontawesome': (
+    'FontAwesome',
+  ),
+  'poiret-one': (
+    'Poiret One',
+  ),
+  'josefin': (
+    'Josefin Sans',
+    sans-serif,
+  ),
+  'crimson': (
+    'Crimson Text',
+    serif,
+  ),
+  'montserrat': (
+    'Montserrat',
+    serif,
+  ),
+  'barlow-sc': (
+    'Barlow Semi Condensed',
+    sans-serif,
+  ),
+  'avenir-next': (
+    'Avenir Next',
+    Verdana,
+    sans-serif,
+  ),
+  'arial': (
+    arial,
+    Verdana,
+    Roboto,
+    'Droid Sans',
+    sans-serif,
+  ),
+  'arial-black': (
+    'arial black',
+    'Arial Bold',
+    arial,
+    Verdana,
+    Roboto,
+    'Droid Sans',
+    sans-serif,
+  ),
+  'futura-pt': (
+    'futura-pt',
+    sans-serif,
+  ),
+  'futura-pt-c': (
+    'futura-pt-condensed',
+    sans-serif,
+  ),
+  'udkakugo': (
+    'fot-udkakugo-large-pr6n',
+    sans-serif,
+  ),
+  'futura': (
+    Futura,
+    'Century Gothic',
+    'futura-pt-condensed',
+    sans-serif,
+  ),
+  'tsukuAR': (
+    'FOT-筑紫A丸ゴシック Std',
+    'FOT-TsukuARdGothic Std',
+    'fot-tsukuardgothic-std',
+    $sans-base,
+  ),
+  'din-2014': (
+    'din-2014',
+    sans-serif,
+  ),
+  'shuei-mincho': (
+    'dnp-shuei-mincho-pr6n',
+    $serif-base,
+  ),
+  'midashi-go': (
+    'a-otf-midashi-go-mb31-pr6n',
+    'noto-sans-cjk-jp',
+    'Noto-Sans-JP',
+    'Noto Sans JP',
+    $sans-base,
+  ),
+);

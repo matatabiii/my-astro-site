@@ -1,0 +1,134 @@
+
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans Japanese Regular'), local('NotoSansJapanese-Regular'), local('Noto Sans CJK JP Regular'),
+    local('源ノ角ゴシック Regular');
+}
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Noto Sans Japanese Medium'), local('NotoSansJapanese-Medium'), local('Noto Sans CJK JP Medium'),
+    local('源ノ角ゴシック Medium');
+}
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Noto Sans Japanese SemiBold'), local('NotoSansJapanese-SemiBold'), local('Noto Sans CJK JP SemiBold'),
+    local('源ノ角ゴシック SemiBold');
+}
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Japanese Bold'), local('NotoSansJapanese-Bold'), local('Noto Sans CJK JP Bold'),
+    local('源ノ角ゴシック Bold');
+}
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 900;
+  src: local('Noto Sans Japanese Heavy'), local('NotoSansJapanese-Heavy'), local('Noto Sans CJK JP Heavy'),
+    local('源ノ角ゴシック Heavy');
+}
+
+/* ローカルの源ノ明朝を再定義 */
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 200;
+  src: local('Noto Serif JP ExtraLight'), local('NotoSerifJP-ExtraLight'), local('源ノ明朝 ExtraLight'),
+    local('Noto Serif CJK JP ExtraLight');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Noto Serif JP Light'), local('NotoSerifJP-Light'), local('源ノ明朝 Light'),
+    local('Noto Serif CJK JP Light');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Serif JP Regular'), local('NotoSerifJP-Regular'), local('源ノ明朝 Regular'),
+    local('Noto Serif CJK JP Regular');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Noto Serif JP Medium'), local('NotoSerifJP-Medium'), local('源ノ明朝 Medium'),
+    local('Noto Serif CJK JP Medium');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Noto Serif JP SemiBold'), local('NotoSerifJP-SemiBold'), local('源ノ明朝 SemiBold'),
+    local('Noto Serif CJK JP SemiBold');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Serif JP Bold'), local('NotoSerifJP-Bold'), local('源ノ明朝 Bold'), local('Noto Serif CJK JP Bold');
+}
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  font-display: optional;
+  font-style: normal;
+  font-weight: 900;
+  src: local('Noto Serif JP Heavy'), local('NotoSerifJP-Heavy'), local('源ノ明朝 Heavy'),
+    local('Noto Serif CJK JP Heavy');
+}
+
+/* Yu Gothic, 游ゴシック */
+// Yu Gothic Medium
+@font-face {
+  font-family: 'Yu-Go';
+  font-weight: normal;
+  src: local('YuGothic-Medium'),
+    // Postscript name
+    local('Yu Gothic Medium'),
+    // for Chrome
+    local('YuGothic-Regular'); // Medium がない場合
+}
+@font-face {
+  font-family: 'Yu-Go';
+  font-weight: bold;
+  src: local('YuGothic-Bold'),
+    // Postscript name
+    local('Yu Gothic'); // for Chrome
+}
+
+@font-face {
+  font-family: 'Yu-Min';
+  font-weight: normal;
+  src: local('YuMincho-Medium'),
+    // Postscript name
+    local('Yu Mincho Medium'),
+    // for Chrome
+    local('YuMincho-Regular'); // Medium がない場合
+}
+@font-face {
+  font-family: 'Yu-Min';
+  font-weight: bold;
+  src: local('YuMincho-Bold'),
+    // Postscript name
+    local('Yu Mincho'); // for Chrome
+}

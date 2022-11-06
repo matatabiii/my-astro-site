@@ -1,0 +1,63 @@
+/*////////////////////////////
+
+@変数設定
+
+////////////////////////////*/
+@use 'sass:map'; // sassの機能
+@use './family';
+
+$gutter: 20px !default;
+
+// レスポンシブ変化のスクリーンのリスト (実数は $width-map にマッチする値を使用する)
+$screen-list: ('max', 'container', 'xl', 'lg', 'md', 'sm') !default;
+$screen-list-min: ('lg', 'md') !default;
+
+// @Function color("theme")
+// @Utility  .u-text-font
+//           .u-bg-font
+$color-map: (
+  'transparent': transparent,
+  'gray-100': #000,
+  'gray-0': #fff,
+  'gray': #cccccc,
+  'gray-text': #333,
+  'theme': #48bb78,
+  'sub': #ecc94b,
+  'primary': #ed8936,
+  'secondary': #38b2ac,
+  'tertiary': #ed64a6,
+  'success': #28a745,
+  'danger': #ef4b4b,
+  'warning': #ffc107,
+) !default;
+
+// @Function width("desktop")
+$width-map: (
+  'max': 1500px,
+  'container': 1170px,
+  'large': 970px,
+  'medium': 770px,
+  'small': 570px,
+  'xl': 1280px,
+  'lg': 1024px,
+  'md': 768px,
+  'sm': 640px,
+) !default;
+
+// @Function height("header-desktop")
+$height-map: (
+  'header-desktop': 100px,
+  'header-sp': 70px,
+) !default;
+
+// @Function family("sans")
+// @Utility  .u-family-sans
+$family-map: (
+  'sans': map.get(family.$families, 'noto'),
+  'serif': map.get(family.$families, 'notoserif'),
+  // 'roboto': map.get(family.$families, 'roboto'),
+  'en': map.get(family.$families, 'system'),
+) !default;
+
+// @Function z-index("header")
+$index-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading', 'debug') !default;

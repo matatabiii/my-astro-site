@@ -1,0 +1,33 @@
+/* z-index
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+@mixin zIndex($prefix: '') {
+  .#{$prefix}u-z-0 {
+    z-index: 0;
+  }
+  .#{$prefix}u-z-1 {
+    z-index: 1;
+  }
+  .#{$prefix}u-z-2 {
+    z-index: 2;
+  }
+  .#{$prefix}u-z-3 {
+    z-index: 2;
+  }
+  .#{$prefix}u-z-_1 {
+    z-index: -1;
+  }
+  .#{$prefix}u-z-_2 {
+    z-index: -2;
+  }
+  .#{$prefix}u-z-_3 {
+    z-index: -3;
+  }
+}
+
+@include zIndex();

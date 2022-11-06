@@ -1,0 +1,28 @@
+/* color
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+$colorMap: $color-map; // _variable.scss で設定
+
+@mixin colors($prefix: '') {
+  @each $key, $color in $colorMap {
+    .#{$prefix}u-#{$key} {
+      color: color($key);
+    }
+  }
+}
+
+@include colors();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include colors($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include colors($prefix);
+}

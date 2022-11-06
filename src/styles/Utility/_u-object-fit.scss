@@ -1,0 +1,39 @@
+/* object-fit
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+@mixin objectFit($prefix: '') {
+  .#{$prefix}u-object-fit-cover {
+    object-fit: cover;
+  }
+  .#{$prefix}u-object-position-center {
+    object-position: center center;
+  }
+  .#{$prefix}u-object-position-center-top {
+    object-position: center top;
+  }
+  .#{$prefix}u-object-position-center-bottom {
+    object-position: center bottom;
+  }
+  .#{$prefix}u-object-position-right-center {
+    object-position: right center;
+  }
+  .#{$prefix}u-object-position-left-center {
+    object-position: left center;
+  }
+}
+
+@include objectFit();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include objectFit($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include objectFit($prefix);
+}

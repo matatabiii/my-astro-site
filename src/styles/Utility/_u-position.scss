@@ -1,0 +1,77 @@
+/* position
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+@mixin position($prefix: '') {
+  .#{$prefix}u-relative {
+    position: relative;
+  }
+  .#{$prefix}u-absolute {
+    position: absolute;
+  }
+  .#{$prefix}u-sticky {
+    position: sticky;
+  }
+  .#{$prefix}u-fixed {
+    position: fixed;
+  }
+  .#{$prefix}u-static {
+    position: static;
+  }
+  @for $i from 0 through 20 {
+    .#{$prefix}u-top-#{$i} {
+      top: rem($i);
+    }
+    .#{$prefix}u-bottom-#{$i} {
+      bottom: rem($i);
+    }
+    .#{$prefix}u-right-#{$i} {
+      right: rem($i);
+    }
+    .#{$prefix}u-left-#{$i} {
+      left: rem($i);
+    }
+
+    @if $i != 0 {
+      .#{$prefix}u-top-_#{$i} {
+        top: rem(-$i);
+      }
+      .#{$prefix}u-right-_#{$i} {
+        right: rem(-$i);
+      }
+      .#{$prefix}u-bottom-_#{$i} {
+        bottom: rem(-$i);
+      }
+      .#{$prefix}u-left-_#{$i} {
+        left: rem(-$i);
+      }
+    }
+  }
+  .#{$prefix}u-top-full {
+    top: 100%;
+  }
+  .#{$prefix}u-right-full {
+    right: 100%;
+  }
+  .#{$prefix}u-bottom-full {
+    bottom: 100%;
+  }
+  .#{$prefix}u-left-full {
+    left: 100%;
+  }
+}
+
+@include position();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include position($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include position($prefix);
+}

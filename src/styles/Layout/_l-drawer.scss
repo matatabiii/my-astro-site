@@ -1,0 +1,168 @@
+/* trigger */
+@use 'sass:map'; // sassの機能
+@use 'sass:math'; // sassの機能
+
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+// https://github.com/dmnsgn/sass-easing/blob/master/_easings.scss
+@use './../../../node_modules/sass-easing/easings' as *;
+
+$action-easing: $easeInOutBack;
+
+/*////////////////////////////
+Drawer
+////////////////////////////*/
+$bg-color: rgba(#2d3748, 0.1);
+
+// @include break('lg') {
+.l-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(color('gray-100'), 0.2);
+  z-index: -1;
+  visibility: hidden;
+
+  .is-open-drawer & {
+    // メニュー外クリックで閉じる
+    z-index: 5;
+    visibility: visible;
+  }
+}
+
+[data-logic='drawer'] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: z-index('drawer');
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+
+  // Open/Close判定
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.5s, visibility 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.5s;
+
+  @include isAriaExpanded() {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s, visibility 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s;
+
+    &::before {
+      opacity: 0.8;
+      visibility: visible;
+      width: 100%;
+      transition: opacity 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s, width 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s,
+        visibility 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s;
+    }
+
+    [data-logic='drawer-scroll'] {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    [data-logic='drawer-container'] {
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.3s, opacity 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.3s,
+        visibility 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.3s;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    // left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 0px;
+    // color: rgba(128, 128, 128, 0.8);
+    background: #fff;
+    // border-radius: 0 16px 16px 0;
+    z-index: -1;
+    // box-shadow: 0 5.5px 12.5px 6.5px rgba(color('gray-100', true), 0.2);
+
+    // Open/Close判定
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    transition: opacity 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s, width 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s,
+      visibility 0.3s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0.15s;
+
+    // @include over('lg') {
+    //   border-radius: 16px;
+    // }
+  }
+}
+
+[data-logic='drawer-scroll'] {
+  padding: 20px 15px height('header-sp') + 20 15px;
+  @include over('md') {
+    padding: 20px 20px height('header-sp') + 20 20px;
+  }
+  margin: 10px 0; // 上下のスクロールエリア制御
+  flex: 1 1 auto;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  a,
+  button {
+    outline: none;
+  }
+}
+
+[data-logic='drawer-container'] {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  // margin: 0 0 0 auto;
+  padding: 5px 0;
+
+  // Open/Close判定
+  visibility: hidden;
+  opacity: 0;
+  transform: translate3d(10px, 0, 0);
+  transition: transform 0.1s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s, opacity 0.1s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s,
+    visibility 0.1s cubic-bezier(0.22, 0.82, 0.24, 0.96) 0s;
+}
+
+// 案件ごとに変更する記述
+[data-logic='drawer'] {
+  width: 100%;
+  background-color: rgba(#fff, 0.2);
+
+  // max-width: calc(100% - 10px);
+  @include over('lg') {
+    width: 600px;
+    // max-width: calc(100% - 70px);
+  }
+}
+
+[data-logic='drawer-scroll'] {
+}
+
+[data-logic='drawer-container'] {
+  color: color('gray-text');
+  // padding-bottom: rem(110);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+}
+// }

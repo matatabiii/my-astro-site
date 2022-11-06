@@ -1,0 +1,53 @@
+/* u
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+@mixin utility($prefix: '') {
+  // hidden
+  .#{$prefix}u-hidden {
+    display: none !important;
+  }
+}
+
+@mixin utilityAllMedia($prefix: '') {
+  // media
+  @media screen {
+    .u-screen-hidden {
+      display: none !important;
+    }
+  }
+  @media print {
+    .u-print-hidden {
+      display: none !important;
+    }
+  }
+
+  // 子を持たない要素（空要素）
+  .u-empty:empty {
+    display: none !important;
+  }
+
+  @each $screen in $screen-list-min {
+    $prefix: str-slice($screen, 0, 1);
+    $prefixStr: '#{$prefix}\\:';
+    @include break($screen) {
+      @include utility('#{$prefix}\\:');
+    }
+  }
+}
+
+@include utilityAllMedia();
+@include utility();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include utility($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include utility($prefix);
+}

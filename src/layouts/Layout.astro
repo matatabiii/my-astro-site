@@ -1,32 +1,54 @@
 ---
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-export interface Props {
-  title: string
-}
+import { siteConfig as config } from '../../astro.config.mjs'
+import '../styles/main.scss'
+// Astro.site
+// Astro.url.pathname
 
-const { title } = Astro.props
+const { seo } = Astro.props
+const { BASE_URL: root } = import.meta.env
+const urlOrigin = Astro.url.origin + root
+const canonicalURL = seo?.canonical || new URL(Astro.url.pathname, Astro.site)
+const { siteName, ogImage, msapplicationTileColor, themeColor, charset, locale, favicon, appleTouchIcon } = config
+const title = seo?.titleTag || seo?.title + ' | ' + siteName
 
-// console.log(Astro)
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html class="no-js" lang="ja" prefix="og: http://ogp.me/ns#">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset={charset} />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
+    {seo?.description && <meta name="description" content={seo?.description} />}
+    {seo?.keywords && <meta name="keywords" content={seo?.keywords} />}
     <link rel="canonical" href={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={seo?.ogURL || canonicalURL} />
+    <meta property="og:locale" content={seo?.ogLocale || locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content={seo?.ogType || 'article'} />
+    <meta property="og:image" content={seo?.ogImage || `${urlOrigin}assets/images/${ogImage}`} />
+    <meta property="og:site_name" content={siteName} />
+    <meta name="msapplication-TileColor" content={msapplicationTileColor} />
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" href={`${urlOrigin}${favicon}`} />
+    <link rel="apple-touch-icon" href={`${urlOrigin}${appleTouchIcon}`} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <script>
+      document.documentElement.classList.add('js')
+      document.documentElement.classList.remove('no-js')
+    </script>
+    <script>
+      import '../js/main.js'
+    </script>
   </head>
   <body>
-    {Astro.site}
-    <br />
-    {Astro.url.pathname}
-    <br />
-    {Astro.url.origin}
-    <br />
-    {import.meta.env.BASE_URL}
-
     <slot />
   </body>
 </html>

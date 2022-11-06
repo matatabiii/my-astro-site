@@ -1,0 +1,121 @@
+/* margin-padding
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+$spaceMap: (
+  '0': 0,
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  '6': 6,
+  '7': 7,
+  '8': 8,
+  '9': 9,
+  '10': 10,
+  '15': 15,
+  '20': 20,
+  '25': 25,
+  '30': 30,
+  '35': 35,
+  '40': 40,
+  '45': 45,
+  '50': 50,
+  '55': 55,
+  '60': 60,
+  '65': 65,
+  '70': 70,
+  '75': 75,
+  '80': 80,
+  '85': 85,
+  '90': 90,
+  '95': 95,
+  '100': 100,
+) !default;
+
+@mixin space($prefix: '') {
+  @each $key, $value in $spaceMap {
+    .#{$prefix}u-mt-#{$key} {
+      margin-top: rem($value);
+    }
+    .#{$prefix}u-mr-#{$key} {
+      margin-right: rem($value);
+    }
+    .#{$prefix}u-mb-#{$key} {
+      margin-bottom: rem($value);
+    }
+    .#{$prefix}u-ml-#{$key} {
+      margin-left: rem($value);
+    }
+
+    @if $value != 0 {
+      @if $value <= 30 {
+        .#{$prefix}u-mt-_#{$key} {
+          margin-top: rem(-$value);
+        }
+        .#{$prefix}u-mr-_#{$key} {
+          margin-right: rem(-$value);
+        }
+        .#{$prefix}u-mb-_#{$key} {
+          margin-bottom: rem(-$value);
+        }
+        .#{$prefix}u-ml-_#{$key} {
+          margin-left: rem(-$value);
+        }
+      }
+    }
+
+    .#{$prefix}u-pt-#{$key} {
+      padding-top: rem($value);
+    }
+    .#{$prefix}u-pr-#{$key} {
+      padding-right: rem($value);
+    }
+    .#{$prefix}u-pb-#{$key} {
+      padding-bottom: rem($value);
+    }
+    .#{$prefix}u-pl-#{$key} {
+      padding-left: rem($value);
+    }
+  }
+
+  .#{$prefix}u-gutter {
+    padding-left: rem($gutter);
+    padding-right: rem($gutter);
+  }
+
+  .#{$prefix}u-gutter-all {
+    padding: rem($gutter);
+  }
+
+  .#{$prefix}u-m-auto {
+    margin: auto;
+  }
+  .#{$prefix}u-mt-auto {
+    margin-top: auto;
+  }
+  .#{$prefix}u-mr-auto {
+    margin-right: auto;
+  }
+  .#{$prefix}u-mb-auto {
+    margin-bottom: auto;
+  }
+  .#{$prefix}u-ml-auto {
+    margin-left: auto;
+  }
+}
+
+@include space();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include space($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include space($prefix);
+}

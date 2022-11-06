@@ -1,0 +1,63 @@
+/* height
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+$_heightMax: 500;
+$_heightMax: math.div($_heightMax, 5);
+
+// height
+@mixin height($prefix: '') {
+  .#{$prefix}u-h-1 {
+    height: rem(1);
+  }
+  .#{$prefix}u-h-2 {
+    height: rem(2);
+  }
+  .#{$prefix}u-h-3 {
+    height: rem(3);
+  }
+  .#{$prefix}u-h-4 {
+    height: rem(4);
+  }
+  .#{$prefix}u-h-5 {
+    height: rem(5);
+  }
+  .#{$prefix}u-h-6 {
+    height: rem(6);
+  }
+  .#{$prefix}u-h-7 {
+    height: rem(7);
+  }
+  .#{$prefix}u-h-8 {
+    height: rem(8);
+  }
+  .#{$prefix}u-h-9 {
+    height: rem(9);
+  }
+  @for $var from 2 through $_heightMax {
+    $px: $var * 5;
+    .#{$prefix}u-h-#{$px} {
+      height: rem($px);
+    }
+  }
+  .#{$prefix}u-h-auto {
+    height: auto;
+  }
+  .#{$prefix}u-h-full {
+    height: 100%;
+  }
+}
+
+@include height();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include height($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include height($prefix);
+}

@@ -572,6 +572,16 @@
   dependencies:
     tsm "^2.1.4"
 
+"@splidejs/splide-extension-intersection@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide-extension-intersection/-/splide-extension-intersection-0.2.0.tgz#e5cb891d7e435a1271bb069b0b1d46c13a79b232"
+  integrity sha512-Gwr7/u2WGINTmXf3nuheONf6zCt9JoQ993nfRpOMX6HJSSpPROaF2nPY26ieoEHKyyGRlUG6jVfkUUk5/EWT9Q==
+
+"@splidejs/splide@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-4.1.4.tgz#02d029360569e7d75d28357a9727fc48322015a3"
+  integrity sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==
+
 "@types/acorn@^4.0.0":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/acorn/-/acorn-4.0.6.tgz#d61ca5480300ac41a7d973dd5b84d0a591154a22"
@@ -3723,6 +3733,11 @@ tsm@^2.1.4:
   integrity sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==
   dependencies:
     esbuild "^0.14.0"
+
+tween24@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/tween24/-/tween24-1.4.1.tgz#db2bed08936e6c75a0038896d5d3871b7aa2e383"
+  integrity sha512-P20v4z4BFvTUgJa+6KdDgrjN2H55ygUAHaYRPpAy0RvjMSq7B2HQC/fykAR4GFgCDYW+jb7zV9uxllEFiAMvNA==
 
 type-fest@^0.13.1:
   version "0.13.1"

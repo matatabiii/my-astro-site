@@ -1,16 +1,16 @@
 ---
 import { siteConfig as config } from '../../astro.config.mjs'
-import '../styles/main.scss'
+import Header from "../components/Header.astro"
+// import '../styles/main.scss'
+export const defaultRoot = import.meta.env.BASE_URL
 // Astro.site
 // Astro.url.pathname
 
-const { seo } = Astro.props
-const { BASE_URL: root } = import.meta.env
+const { page, seo, hero, root } = Astro.props
 const urlOrigin = Astro.url.origin + root
 const canonicalURL = seo?.canonical || new URL(Astro.url.pathname, Astro.site)
 const { siteName, ogImage, msapplicationTileColor, themeColor, charset, locale, favicon, appleTouchIcon } = config
 const title = seo?.titleTag || seo?.title + ' | ' + siteName
-
 ---
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta property="og:url" content={seo?.ogURL || canonicalURL} />
     <meta property="og:locale" content={seo?.ogLocale || locale} />
     <meta property="og:title" content={title} />
-    <meta property="og:type" content={seo?.ogType || 'article'} />
+    <meta property="og:type" content={seo?.ogType || page.type === 'home' ? 'website' : 'article'} />
     <meta property="og:image" content={seo?.ogImage || `${urlOrigin}assets/images/${ogImage}`} />
     <meta property="og:site_name" content={siteName} />
     <meta name="msapplication-TileColor" content={msapplicationTileColor} />
@@ -44,11 +44,9 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       document.documentElement.classList.add('js')
       document.documentElement.classList.remove('no-js')
     </script>
-    <script>
-      import '../js/main.js'
-    </script>
   </head>
   <body>
+    <Header isHome={page.type === 'home'} hero={hero} root={root} />
     <slot />
   </body>
 </html>

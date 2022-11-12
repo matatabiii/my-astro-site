@@ -9,8 +9,8 @@ const page = {
 
 // SEO・metaタグ関連
 const seo = {
-  // title: 'ページタイトル', // 必須
-  titleTag: 'Astro静的ページテンプレート', // 必要あれば（タイトルタグ上書き）
+  title: 'サンプルページ', // 必須
+  // titleTag: '', // 必要あれば（タイトルタグ上書き）
   // description: 'ディスクリプション', // 必要あれば
   // keywords: 'キーワード1,キーワード2', // 必要あれば
   // ogURL: '', // 必要あれば（基本自動出力）
@@ -21,27 +21,14 @@ const seo = {
 
 // ヒーローコンポーネントに渡すprops
 const hero = {
-  parentTitle: '親カテゴリー',
-  mainTitle: 'メインタイトル',
-  subTitle: 'サブタイトル',
+  parentTitle: '',
+  mainTitle: 'サンプルページ',
+  subTitle: 'Sample',
 }
 ---
 
 <Layout page={page} seo={seo} hero={hero} root={root}>
   <main>
-    <details class="c-details">
-      <summary class="c-details__summary"> 開閉ボタン（summary）</summary>
-      <div class="c-details__content">
-        <p>
-          あいうえお
-        </p>
-
-        <ul>
-          <li><a href="/">リンク要素</a></li>
-        </ul>
-      </div>
-    </details>
-
-    <a href={root}>ルート{root}</a>
+    内部ページサンプル
   </main>
 </Layout>

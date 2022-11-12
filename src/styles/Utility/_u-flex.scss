@@ -1,0 +1,118 @@
+/* flex
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+@mixin flex($prefix: '') {
+  .#{$prefix}u-flex {
+    display: flex;
+  }
+
+  // flex-direction
+  .#{$prefix}u-row {
+    flex-direction: row;
+  }
+  .#{$prefix}u-row-reverse {
+    flex-direction: row-reverse;
+  }
+  .#{$prefix}u-column {
+    flex-direction: column;
+  }
+  .#{$prefix}u-column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  // flex-wrap
+  .#{$prefix}u-wrap {
+    flex-wrap: wrap;
+  }
+  .#{$prefix}u-wrap-no {
+    flex-wrap: nowrap;
+  }
+  .#{$prefix}u-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  // align-self
+  .#{$prefix}u-self-start {
+    align-self: flex-start;
+  }
+  .#{$prefix}u-self-center {
+    align-self: center;
+  }
+  .#{$prefix}u-self-end {
+    align-self: flex-end;
+  }
+
+  // align-items
+  .#{$prefix}u-items-start {
+    align-items: flex-start;
+  }
+  .#{$prefix}u-items-center {
+    align-items: center;
+  }
+  .#{$prefix}u-items-end {
+    align-items: flex-end;
+  }
+  .#{$prefix}u-items-baseline {
+    align-items: baseline;
+  }
+
+  // justify-content
+  .#{$prefix}u-justify-start {
+    justify-content: flex-start;
+  }
+  .#{$prefix}u-justify-center {
+    justify-content: center;
+  }
+  .#{$prefix}u-justify-end {
+    justify-content: flex-end;
+  }
+  .#{$prefix}u-justify-between {
+    justify-content: space-between;
+  }
+  .#{$prefix}u-justify-around {
+    justify-content: space-around;
+  }
+
+  .#{$prefix}u-flex-01auto {
+    flex: 0 1 auto;
+  }
+  .#{$prefix}u-flex-1 {
+    flex: 1 1 0%;
+  }
+  .#{$prefix}u-flex-11auto {
+    flex: 1 1 auto;
+  }
+  .#{$prefix}u-flex-00auto {
+    flex: 0 0 auto;
+  }
+
+  // order
+  .#{$prefix}u-order-_1 {
+    order: -1;
+  }
+  .#{$prefix}u-order-1 {
+    order: 1;
+  }
+  .#{$prefix}u-order-2 {
+    order: 2;
+  }
+  .#{$prefix}u-order-3 {
+    order: 3;
+  }
+}
+
+@include flex();
+
+@include over('lg') {
+  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
+  @include flex($prefix);
+}
+@include over('md') {
+  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
+  @include flex($prefix);
+}

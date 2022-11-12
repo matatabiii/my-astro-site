@@ -1,0 +1,65 @@
+/* splide slider
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+// @use './../../../../node_modules/@splidejs/splide/dist/css/splide-core.min.css';
+
+/*
+splide:
+*/
+.p-slider {
+  position: relative;
+
+  /* 両サイドのアイテムも可視化する */
+  // .p-slider--visible-track
+  &--visible-track {
+    .splide__track {
+      overflow: visible;
+    }
+  }
+
+  .p-slider-arrow {
+    @include over('md') {
+      position: absolute;
+      top: 50%;
+      transform: translate3d(0, -50%, 0);
+
+      // .splide__arrow--prev
+      &--prev {
+        left: 0;
+      }
+
+      // .splide__arrow--next
+      &--next {
+        right: 0;
+      }
+    }
+  }
+}
+.p-slider-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p-slider-arrow {
+  background: color('gray-text');
+  color: color('gray-0');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(100);
+  height: rem(50);
+
+  @include break('md') {
+    margin-top: rem(20);
+    margin-bottom: rem(20);
+  }
+}
+
+/*
+splide: ページネーション
+*/

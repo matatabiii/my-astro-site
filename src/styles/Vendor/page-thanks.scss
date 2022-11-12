@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/* ==========================================================================
+  サンクスページスタイルテンプレート
+========================================================================== */
+$color-main: #d47a07;
+
+.p-page-thanks {
+  // .p-page-thanks__main
+  &__main {
+    padding: 7rem 0 6rem 0;
+    width: 770px;
+    max-width: calc(100% - 4rem);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.6rem;
+    line-height: 1.75;
+  }
+
+  // .p-page-thanks__textarea
+  &__textarea {
+    // border: 1px solid #ccc;
+    // border-radius: 8px;
+    padding: 3rem 0;
+
+    > *:not(:last-child) {
+      margin-bottom: 1.5em;
+    }
+  }
+
+  // .p-page-thanks__btn
+  &__btn {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.p-page-thanks-heading {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  line-height: 1.5;
+  color: $color-main;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.p-page-thanks-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    padding-left: 1.2em;
+
+    &::before {
+      content: '';
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: $color-main;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -0.3em;
+    }
+  }
+}
+
+.p-page-thanks-btn {
+  $color-sub: #fff;
+
+  width: 330px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background: $color-main;
+  color: $color-sub;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  text-align: center;
+  font-weight: 700;
+  border: 2px solid $color-main;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  @media (any-hover: hover) {
+    &:hover {
+      text-decoration: none;
+      background: $color-sub;
+      color: $color-main;
+    }
+  }
+}

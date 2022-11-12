@@ -1,0 +1,149 @@
+/* the_posts_pagination() で生成されるページネーションをスタイリング
+```
+<nav class="navigation pagination" role="navigation" aria-label="投稿">
+  <h2 class="screen-reader-text">投稿ナビゲーション</h2>
+  <div class="nav-links">
+    <ul class="page-numbers">
+      <li><a class="prev page-numbers" href="http://pu-kumamoto-acjp.check-xserver.jp/news/page/2/">前へ</a></li>
+      <li>
+        <a class="page-numbers is-current-parent js-current" href="http://pu-kumamoto-acjp.check-xserver.jp/news/"
+          >1</a
+        >
+      </li>
+      <li><a class="page-numbers" href="http://pu-kumamoto-acjp.check-xserver.jp/news/page/2/">2</a></li>
+      <li><span aria-current="page" class="page-numbers current">3</span></li>
+      <li><a class="page-numbers" href="http://pu-kumamoto-acjp.check-xserver.jp/news/page/4/">4</a></li>
+      <li><a class="page-numbers" href="http://pu-kumamoto-acjp.check-xserver.jp/news/page/5/">5</a></li>
+      <li><a class="next page-numbers" href="http://pu-kumamoto-acjp.check-xserver.jp/news/page/4/">次へ</a></li>
+    </ul>
+  </div>
+</nav>
+```
+----------------------------------------------------------------- */
+@use 'sass:color';
+@use 'sass:math';
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+$_color-theme: #e70348;
+
+.navigation.pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  max-width: calc(100vw - 4rem);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.nav-links {
+  overflow: hidden;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+ul.page-numbers {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 0;
+  margin: -5px -8px;
+
+  li {
+    flex: 0 1 auto;
+    padding: 5px 8px;
+  }
+}
+.page-numbers {
+  &[href] {
+    transition: background 0.35s ease-in-out, transform 0.35s ease-in-out, color 0.35s ease-in-out;
+  }
+  &[href],
+  &[aria-current='page'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    border: 1px solid #f6f7f9;
+    color: #333333;
+    background: #f6f7f9;
+    font-family: family('roboto');
+    font-size: rem(18);
+    line-height: 1;
+
+    &:not(.prev):not(.next) {
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+
+  &[aria-current='page'] {
+    border: 1px solid $_color-theme;
+    background: $_color-theme;
+    color: #fff;
+  }
+
+  .prev,
+  .next {
+    width: 9rem;
+    border-radius: 5rem;
+    border: 1px solid $_color-theme;
+    background: $_color-theme;
+    color: #fff;
+    border-width: 2px;
+    font-size: rem(16);
+    font-weight: 700;
+    padding-top: 2px;
+  }
+
+  &[href] {
+    @include action() {
+      background: $_color-theme;
+      color: #fff;
+
+      &.prev,
+      &.next {
+        color: $_color-theme;
+        background: #fff;
+      }
+    }
+  }
+}
+
+@include break('md') {
+  ul.page-numbers {
+    padding-bottom: 70px;
+    position: relative;
+  }
+
+  .page-numbers {
+    .prev,
+    .next {
+      position: absolute;
+      bottom: 5px;
+    }
+    .prev {
+      left: 8px;
+    }
+    .next {
+      right: 8px;
+    }
+  }
+}

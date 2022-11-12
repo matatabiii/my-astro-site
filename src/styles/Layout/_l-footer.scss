@@ -1,0 +1,12 @@
+/* footer */
+@use '../Foundation/Settings/variable' as *;
+@use '../Foundation/Tools/functions' as *;
+@use '../Foundation/Tools/mixins' as *;
+
+.l-footer {
+  // ▼ sample code
+  padding: rem(50) rem(20);
+  background: #f5f5f5;
+  text-align: center;
+  // ▲ sample code
+}

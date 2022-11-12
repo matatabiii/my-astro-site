@@ -1,0 +1,35 @@
+---
+const { isHome, hero, root } = Astro.props
+---
+<header>
+  {
+    isHome ? (
+      <h1 class="c-logo">h1</h1>
+    ) : (
+      <div class="c-logo">div</div>
+    )
+  }
+
+  <nav>
+    <ul>
+      <li><a href={`${root}`}>トップ</a></li>
+      <li><a href={`${root}sample/`}>内部ページサンプル</a></li>
+    </ul>
+  </nav>
+
+  {
+    !isHome && hero?.parentTitle && (
+      <div>{hero.parentTitle}</div>
+    )
+  }
+  {
+    !isHome && hero?.mainTitle && (
+      <h1>{hero.mainTitle}</h1>
+    )
+  }
+  {
+    !isHome && hero?.subTitle && (
+      <div>{hero.subTitle}</div>
+    )
+  }
+</header>

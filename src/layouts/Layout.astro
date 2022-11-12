@@ -44,6 +44,10 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       document.documentElement.classList.add('js')
       document.documentElement.classList.remove('no-js')
     </script>
+
+    <script>
+      import '../js/main.js'
+    </script>
   </head>
   <body>
     <Header isHome={page.type === 'home'} hero={hero} root={root} />

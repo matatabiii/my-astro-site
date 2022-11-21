@@ -44,41 +44,9 @@ const hero = {
 
     <a href={root}>ルート{root}</a>
 
-    <div class="js-tab" data-logic="tab-root">
-      <select data-logic="tab-select">
-        <option label="タブ A" value="#a">タブ A</option>
-        <option label="タブ B" value="#b">タブ B</option>
-        <option label="タブ C" value="#c">タブ C</option>
-        <option label="タブ D" value="#d">タブ D</option>
-      </select>
-
-      <ul data-logic="tab-tablist" aria-label="タブ">
-        <li role="none presentation">
-          <button data-logic="tab" data-logic-href="#a" id="tab-a" type="button">タブ A</button>
-        </li>
-        <li role="none presentation">
-          <button data-logic="tab" data-logic-href="#b" id="tab-b" type="button" class="is-active">タブ B</button>
-        </li>
-        <li role="none presentation">
-          <button data-logic="tab" data-logic-href="#c" id="tab-c" type="button">タブ C</button>
-        </li>
-        <li role="none presentation">
-          <button data-logic="tab" data-logic-href="#d" id="tab-d" type="button">タブ D</button>
-        </li>
-      </ul>
-
-      <div data-logic="contents">
-        <div data-logic="tab-panel" id="a">
-          <div>
-            <p>
-              吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を
-            </p>
-          </div>
-        </div>
-        <div data-logic="tab-panel" id="b">タブパネル B</div>
-        <div data-logic="tab-panel" id="c">タブパネル C</div>
-        <div data-logic="tab-panel" id="d">タブパネル D</div>
-      </div>
-    </div>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-facebook-circle`}></use></svg>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-favicon`}></use></svg>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${ root }assets/svg/sprite.svg#i-favicon`}></use></svg>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${ root }assets/svg/sprite.svg#i-share`}></use></svg>
   </main>
 </Layout>

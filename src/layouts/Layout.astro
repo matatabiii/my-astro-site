@@ -40,7 +40,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       media="print"
       onload="this.media='all'"
     />
-    <!-- <script is:raw define:vars={{root}}>
+    <script is:raw define:vars={{root}}>
       document.documentElement.classList.add('js')
       document.documentElement.classList.remove('no-js')
 
@@ -53,7 +53,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
         }
         throw new Error(response.status)
       })()
-    </script> -->
+    </script>
 
 
     <script>

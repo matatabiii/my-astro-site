@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "dev:svgSprite": "chokidar './public/assets/svg/icons/*.svg' -c 'yarn svg-sprite' --initial",
-    "svg-sprite": "svg-sprite -symbol --symbol-dest ./public/assets/svg --shape-id-separator '' --shape-id-generator 'i-%s' --symbol-sprite sprite.svg --svg-xmldecl false --shape-transform-svgo svgo.config.js ./public/assets/svg/icons/*.svg"
+    "svg-sprite": "svg-sprite --config svg-sprite.config.json ./public/assets/svg/icons/*.svg"
   },
   "dependencies": {
     "@astrojs/image": "^0.9.2",

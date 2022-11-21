@@ -1,0 +1,45 @@
+{
+  "shape": {
+    "id": {
+      "separator": "",
+      "generator": "i-%s"
+    },
+    "transform": [
+      {
+        "svgo": {
+          "plugins": [
+            {
+              "name": "removeAttrs",
+              "params": {
+                "attrs": ["data-name", "g:id"]
+              }
+            },
+            {
+              "name": "preset-default"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "svg": {
+    "xmlDeclaration": false,
+    "doctypeDeclaration": false,
+    "namespaceIDs": true,
+    "namespaceIDPrefix": "svg-sprite-",
+    "namespaceClassnames": true,
+    "dimensionAttributes": false,
+    "rootAttributes": {
+      "style": "visibility: hidden; position: absolute; top: 0; left: 0;",
+      "aria-hidden": "true"
+    }
+  },
+  "mode": {
+    "symbol": {
+      "dest": "./public/assets/svg/",
+      "sprite": "sprite.svg",
+      "inline": false,
+      "example": false
+    }
+  }
+}

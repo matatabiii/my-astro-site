@@ -6,6 +6,7 @@ dist/
 node_modules/
 
 # logs
+.cache
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -18,3 +19,34 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# vscode
+/.vscode/**/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/launch.json
+!/.vscode/**.code-snippets
+
+# Intellij idea
+*.iml
+.idea
+
+# WordPress
+!wp-content/
+**/wp/license.txt
+**/wp/readme.html
+**/wp/wp-*.php
+**/wp/wp-admin/
+**/wp/wp-includes/
+**/wp/xmlrpc.php
+**/wp/wp-content/ewww/
+**/wp/wp-content/index.php
+**/wp/wp-content/languages/
+**/wp/wp-content/plugins/
+**/wp/wp-content/ai1wm-backups/
+**/wp/wp-content/uploads/
+**/wp/wp-content/themes/*
+# オリジナルテーマはGitで管理するようにディレクトリ名を任意のテーマに変更する
+!**/wp/wp-content/themes/オリジナルテーマディレクトリ名/

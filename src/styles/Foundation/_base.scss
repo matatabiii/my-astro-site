@@ -1,13 +1,43 @@
 /*////////////////////////////
 @基本設定
 ////////////////////////////*/
+/* init root variables */
+:root {
+  /* text, font */
+  --font-size: 1.6rem;
+  --font-weight: 400;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --font-family-en: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --line-height: 1.8;
+  --karning: 'palt' 1;
 
-@use 'sass:map';
-@use 'sass:math';
+  /* break points */
+  --bp-max: 1400px;
+  --bp-lg: 1024px;
+  --bp-md: 768px;
 
-@use './Settings/variable' as *;
-@use './Tools/functions' as *;
-@use './Tools/mixins' as *;
+  /* container size */
+  --container: 117rem;
+  --container-large: 97rem;
+  --container-medium: 77rem;
+  --container-small: 57rem;
+  --viewport-both-space: 2rem;
+
+  /* colors */
+  --color-transparent: transparent;
+  --color-gray-100: #000000;
+  --color-gray-0: #ffffff;
+  --color-text: #333333;
+  --color-theme: #ed6b65;
+  --color-theme-primary: #2d9be9;
+  --color-theme-secondary: #79c36c;
+  --color-base: #ed6b65;
+  --color-base-primary: #2d9be9;
+  --color-base-secondary: #79c36c;
+  --color-success: #28a745;
+  --color-danger: #ef4b4b;
+  --color-warning: #ffc107;
+}
 
 /* init ua styles */
 *,
@@ -219,7 +249,7 @@ textarea {
 input,
 textarea,
 select {
-  .sp & {
+  @media (any-hover: none) {
     font-size: 16px;
   }
 }
@@ -364,32 +394,6 @@ template {
   }
 }
 
-/* init root variables */
-:root {
-  --size: 1.6rem;
-  --weight: 400;
-  --lh: 1.75;
-  $i: 0;
-  @each $screen in $screen-list {
-    @if 0 == $i {
-      --screen: '#{$screen}';
-    } @else {
-      @include break($screen) {
-        --screen: '#{$screen}';
-      }
-    }
-    $i: $i + 1;
-  }
-
-  @each $key, $family in $family-map {
-    --family-#{$key}: #{$family};
-  }
-
-  @each $key, $color in $color-map {
-    --#{$key}: #{$color};
-  }
-}
-
 /* init base styles */
 html {
   font-size: 62.5%;
@@ -409,13 +413,14 @@ body {
   min-height: 100vh;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: rem(16);
-  line-height: 1.75;
-  color: color('gray-text');
-  font-weight: 400;
-  @include karning();
-  @include font-smoothing();
-  font-family: family('sans');
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  font-weight: var(--font-weight);
+  font-feature-settings: var(--karning);
+  -webkit-font-smoothing: antialiased; /* antialiased | subpixel-antialiased */
+  -moz-osx-font-smoothing: grayscale; /* grayscale | auto */
+  font-family: var(--font-family);
 }
 
 /* サイト基本情報設定 */

@@ -4,7 +4,7 @@ const root = defaultRoot // 任意のパスを設定してrootを上書きでき
 
 // ページ情報
 const page = {
-  type: 'home' // home | page | single
+  type: 'home', // home | page | single
 }
 
 // SEO・metaタグ関連
@@ -32,9 +32,7 @@ const hero = {
     <details class="c-details">
       <summary class="c-details__summary"> 開閉ボタン（summary）</summary>
       <div class="c-details__content">
-        <p>
-          あいうえお
-        </p>
+        <p>あいうえお</p>
 
         <ul>
           <li><a href="/">リンク要素</a></li>
@@ -46,7 +44,7 @@ const hero = {
 
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-facebook-circle`}></use></svg>
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-favicon`}></use></svg>
-    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${ root }assets/svg/sprite.svg#i-favicon`}></use></svg>
-    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${ root }assets/svg/sprite.svg#i-share`}></use></svg>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${root}assets/svg/sprite.svg#i-favicon`}></use></svg>
+    <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${root}assets/svg/sprite.svg#i-share`}></use></svg>
   </main>
 </Layout>

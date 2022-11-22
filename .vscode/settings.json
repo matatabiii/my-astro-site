@@ -1,0 +1,22 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.packageManager": "yarn",
+  "prettier.documentSelectors": ["**/*.astro"],
+  "editor.formatOnSave": true, // ファイル保存時にPrettierでフォーマット（Formatting Toggleでも切り替え可能）
+  "editor.formatOnType": true, // コード整形
+  "editor.formatOnPaste": true, // コード整形
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false,
+    "source.fixAll.eslint": true // ファイル保存時にESLintでフォーマット
+  },
+  "insert-br-tag.enableOnLanguage": ["markdown", "html", "njk", "nunjucks", "vue", "php", "astro"]
+}

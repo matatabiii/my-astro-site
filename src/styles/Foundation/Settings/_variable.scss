@@ -1,62 +1,41 @@
 /*////////////////////////////
-
-@変数設定
-
+@プロジェクトごとに変更する設定
 ////////////////////////////*/
-@use 'sass:map'; // sassの機能
-@use './family';
 
-$gutter: 20px !default;
+/* ブレークポイント、コンテンツ幅、フォントサイズの設定 */
+$lg: 1024; /* ブレークポイント（デスクトップ）（単位不要） */
+$md: 768; /* ブレークポイント（タブレット）（単位不要） */
+$font-size: 16; /* bodyに設定するベースフォントサイズ（単位不要） */
+$container-max: 1400; /* デザインカンプの最大幅（単位不要） */
+$container: 1170; /* メインコンテンツの幅（単位不要） */
+$container-large: 970; /* ラージコンテンツの幅（単位不要） */
+$container-medium: 770; /* ミディアムコンテンツの幅（単位不要） */
+$container-small: 570; /* スモールコンテンツの幅（単位不要） */
+$viewport-both-space: 20; /* ビューポート両端からのスペース（単位不要） */
 
-// レスポンシブ変化のスクリーンのリスト (実数は $width-map にマッチする値を使用する)
-$screen-list: ('max', 'container', 'xl', 'lg', 'md', 'sm') !default;
-$screen-list-min: ('lg', 'md') !default;
+/* 基本のフォントファミリーやテキスト情報 */
+$font-family-body: 'Noto Sans JP'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
+$font-family-sub: 'Arial Black'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
+$font-weight: var(--font-weight-regular); /* --font-weight-[thin|light|regular|medium|bold|black] 詳細は_base.scssの --font-weight- を検索 */
+$line-height: 1.8;
+$karning: 'palt' 1; /* カーニングが不要な場合はbodyの「font-feature-settings」を行ごとコメントアウトする */
+$letter-spacing: normal;
 
-// @Function color("theme")
-// @Utility  .u-text-font
-//           .u-bg-font
+/* colors */
 $color-map: (
-  'transparent': transparent,
-  'gray-100': #000,
-  'gray-0': #fff,
-  'gray': #cccccc,
-  'gray-text': #333,
-  'theme': #48bb78,
-  'sub': #ecc94b,
-  'primary': #ed8936,
-  'secondary': #38b2ac,
-  'tertiary': #ed64a6,
-  'success': #28a745,
-  'danger': #ef4b4b,
-  'warning': #ffc107,
-) !default;
-
-// @Function width("desktop")
-$width-map: (
-  'max': 1500px,
-  'container': 1170px,
-  'large': 970px,
-  'medium': 770px,
-  'small': 570px,
-  'xl': 1280px,
-  'lg': 1024px,
-  'md': 768px,
-  'sm': 640px,
-) !default;
-
-// @Function height("header-desktop")
-$height-map: (
-  'header-desktop': 100px,
-  'header-sp': 70px,
-) !default;
-
-// @Function family("sans")
-// @Utility  .u-family-sans
-$family-map: (
-  'sans': map.get(family.$families, 'noto'),
-  'serif': map.get(family.$families, 'notoserif'),
-  // 'roboto': map.get(family.$families, 'roboto'),
-  'en': map.get(family.$families, 'system'),
+  '--color-transparent': transparent,
+  '--color-gray-100': #000000,
+  '--color-gray-0': #ffffff,
+  '--color-text': #333333,
+  '--color-theme': #ed6b65,
+  '--color-theme-primary': #2d9be9,
+  '--color-theme-secondary': #79c36c,
+  '--color-base': #ed6b65,
+  '--color-base-primary': #2d9be9,
+  '--color-base-secondary': #79c36c,
+  '--color-success': #28a745,
+  '--color-danger': #ef4b4b,
+  '--color-warning': #ffc107,
 ) !default;
 
 // @Function z-index("header")

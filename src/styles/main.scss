@@ -6,22 +6,20 @@
   プロジェクトにおける基本的なスタイルを定義します。 ページの下地としての全体の背景や、基本的なタイポグラフィなどが該当します。
 ========================================================================== */
 @use './Foundation/Settings/variable' as *;
-@use './Foundation/mediaQueriesList' as *;
-@use './Foundation/font-face' as *;
 @use './Foundation/base' as *;
 
 /* ==========================================================================
   Layout
   ページを構成するヘッダーやメインのコンテンツエリア、サイドバーやフッターといったプロジェクト共通のコンテナーブロックのスタイルを定義します。
 ========================================================================== */
-@use './Layout/l-body' as *;
-@use './Layout/l-trigger' as *;
-@use './Layout/l-drawer' as *;
-@use './Layout/l-header-nav' as *;
-@use './Layout/l-hero' as *;
-@use './Layout/l-footer' as *;
-@use './Layout/l-sidebar' as *;
-@use './Layout/l-breadcrumb' as *;
+// @use './Layout/l-body' as *;
+// @use './Layout/l-trigger' as *;
+// @use './Layout/l-drawer' as *;
+// @use './Layout/l-header-nav' as *;
+// @use './Layout/l-hero' as *;
+// @use './Layout/l-footer' as *;
+// @use './Layout/l-sidebar' as *;
+// @use './Layout/l-breadcrumb' as *;
 
 /* ==========================================================================
   Object
@@ -46,43 +44,43 @@
 プロジェクト固有のパターンであり、いくつかのComponentと、それに該当しない要素によって構成されるものを定義します。
 例えば、記事一覧や、ユーザープロフィール、画像ギャラリーなどコンテンツを構成する要素などが該当します
 ----------------------------------------------------------------- */
-@use './Project/p-kv' as *;
-@use './Project/p-logo' as *;
-@use './Project/p-pager' as *;
-@use './Project/p-heading-header' as *;
-@use './Project/p-copyright' as *;
-@use './Project/p-btn' as *;
+// @use './Project/p-kv' as *;
+// @use './Project/p-logo' as *;
+// @use './Project/p-pager' as *;
+// @use './Project/p-heading-header' as *;
+// @use './Project/p-copyright' as *;
+// @use './Project/p-btn' as *;
 
 /* Utility
 ComponentとProjectレイヤーのObjectのモディファイアで解決することが難しい・適切では無い、
 わずかなスタイルの調整のための便利クラスなどを定義します。
 ----------------------------------------------------------------- */
-@use './Utility/u-bg' as *;
-@use './Utility/u-border' as *;
-@use './Utility/u-clearfix' as *;
-@use './Utility/u-color' as *;
-@use './Utility/u-cursor' as *;
-@use './Utility/u-display' as *;
-@use './Utility/u-flex' as *;
-@use './Utility/u-height' as *;
-@use './Utility/u-margin-padding' as *;
-@use './Utility/u-object-fit' as *;
-@use './Utility/u-opacity' as *;
-@use './Utility/u-overFlow' as *;
-@use './Utility/u-position' as *;
-@use './Utility/u-size' as *;
-@use './Utility/u-text' as *;
-@use './Utility/u-transform' as *;
-@use './Utility/u-utility' as *;
-@use './Utility/u-vertical' as *;
-@use './Utility/u-width' as *;
-@use './Utility/u-zIndex' as *;
+// @use './Utility/u-bg' as *;
+// @use './Utility/u-border' as *;
+// @use './Utility/u-clearfix' as *;
+// @use './Utility/u-color' as *;
+// @use './Utility/u-cursor' as *;
+// @use './Utility/u-display' as *;
+// @use './Utility/u-flex' as *;
+// @use './Utility/u-height' as *;
+// @use './Utility/u-margin-padding' as *;
+// @use './Utility/u-object-fit' as *;
+// @use './Utility/u-opacity' as *;
+// @use './Utility/u-overFlow' as *;
+// @use './Utility/u-position' as *;
+// @use './Utility/u-size' as *;
+// @use './Utility/u-text' as *;
+// @use './Utility/u-transform' as *;
+// @use './Utility/u-utility' as *;
+// @use './Utility/u-vertical' as *;
+// @use './Utility/u-width' as *;
+// @use './Utility/u-zIndex' as *;
 
 /* ==========================================================================
   Vender
   愛撫ライブラリやWPのhtmlスタイリング用
 ========================================================================== */
-@use './Vendor/wp-pagination' as *;
-@use './Vendor/scrollTrigger' as *;
-@use './Vendor/slider' as *;
-@use './Vendor/form' as *;
+// @use './Vendor/wp-pagination' as *;
+// @use './Vendor/scrollTrigger' as *;
+// @use './Vendor/slider' as *;
+// @use './Vendor/form' as *;

@@ -1,10 +1,8 @@
 ---
 import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
-import '../styles/main.scss'
+// import '../styles/main.scss'
 export const defaultRoot = import.meta.env.BASE_URL
-// Astro.site
-// Astro.url.pathname
 
 const { page, seo, hero, root } = Astro.props
 const urlOrigin = Astro.url.origin + root
@@ -19,9 +17,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta charset={charset} />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{title}</title>{
-    seo?.description && <meta name="description" content={seo?.description} />}{
-    seo?.keywords && <meta name="keywords" content={seo?.keywords} />}
+    <title>{title}</title>{seo?.description && <meta name="description" content={seo?.description} />}{seo?.keywords && <meta name="keywords" content={seo?.keywords} />}
     <link rel="canonical" href={canonicalURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content={seo?.ogURL || canonicalURL} />
@@ -51,6 +47,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     </script>
 
     <script>
+      import '../styles/main.scss'
       import '../js/main.js'
     </script>
   </head>

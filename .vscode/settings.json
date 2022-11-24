@@ -18,5 +18,6 @@
     "source.organizeImports": false,
     "source.fixAll.eslint": true // ファイル保存時にESLintでフォーマット
   },
-  "insert-br-tag.enableOnLanguage": ["markdown", "html", "njk", "nunjucks", "vue", "php", "astro"]
+  "insert-br-tag.enableOnLanguage": ["markdown", "html", "njk", "nunjucks", "vue", "php", "astro"],
+  "scss.lint.unknownAtRules": "ignore"
 }

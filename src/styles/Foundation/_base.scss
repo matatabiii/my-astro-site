@@ -1,42 +1,57 @@
-/*////////////////////////////
-@基本設定
-////////////////////////////*/
-/* init root variables */
+/* Webサイト全体のスタイル設定・初期化 */
+@use './Settings/variable' as *;
+
+/* 将来的に標準になるメディアクエリーを変数で管理できるルール（PostCSSで対応） */
+@custom-media --min-full (min-width: 1400px);
+@custom-media --min-lg (min-width: 1024px);
+@custom-media --min-md (min-width: 768px);
+@custom-media --max-full (max-width: 1399px);
+@custom-media --max-lg (max-width: 1023px);
+@custom-media --max-md (max-width: 767px);
+
 :root {
-  /* text, font */
+  /* 変更不要 */
+  --family-YuGothic: '游ゴシック体', 'YuGothic', '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic'; /* 游ゴシック体 */
+  --family-YuMincho: '游明朝体', 'YuMincho', '游明朝 Medium', 'Yu Mincho Medium', '游明朝', 'Yu Mincho'; /* 游明朝体 */
+  --family-sans-base: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', 'Meiryo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --family-serif-base: 'Noto Serif JP', 'Hiragino Mincho', 'Hiragino Mincho ProN', serif;
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --font-family: var(--font-family-body), var(--family-sans-base);
+  --viewport-both-space: 2rem; /* ビューポート両端からの最低限のスペース */
+  --root-font-size: 62.5%; /* 10 / 16 * 100% */
+
+  /* Webサイト全体のデフォルト設定（テキスト・フォント関係） */
   --font-size: 1.6rem;
-  --font-weight: 400;
-  --font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-  --font-family-en: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-weight: var(--font-weight-regular);
+  --font-family-body: 'Noto Sans JP'; /* <body>に設定されるサイト全体に適用するフォントファミリー（【注意】Webフォントはインストールしないと使えない）*/
+  --font-family-sub: 'Arial Black'; /* 特定の箇所（英語など）に使用されるサブとなるフォントファミリー（【注意】Webフォントはインストールしないと使えない）*/
   --line-height: 1.8;
+  --letter-spacing: normal;
   --karning: 'palt' 1;
 
-  /* break points */
-  --bp-max: 1400px;
-  --bp-lg: 1024px;
-  --bp-md: 768px;
+  /* ブレークポイント: _variable.scss を参照（メディアクエリの条件に変数として使えないためSassで管理する） */
+  @each $key, $value in $break-point-map {
+    #{$key}: #{$value};
+  }
 
-  /* container size */
+  /* コンテナ幅 */
+  --container-max: var(--full);
   --container: 117rem;
   --container-large: 97rem;
   --container-medium: 77rem;
   --container-small: 57rem;
   --viewport-both-space: 2rem;
 
-  /* colors */
-  --color-transparent: transparent;
-  --color-gray-100: #000000;
-  --color-gray-0: #ffffff;
-  --color-text: #333333;
-  --color-theme: #ed6b65;
-  --color-theme-primary: #2d9be9;
-  --color-theme-secondary: #79c36c;
-  --color-base: #ed6b65;
-  --color-base-primary: #2d9be9;
-  --color-base-secondary: #79c36c;
-  --color-success: #28a745;
-  --color-danger: #ef4b4b;
-  --color-warning: #ffc107;
+  /* カラーリスト: _variable.scss を参照 */
+  @each $key, $value in $color-map {
+    #{$key}: #{$value};
+  }
 }
 
 /* init ua styles */
@@ -152,7 +167,7 @@ a {
     &:hover {
       text-decoration: underline;
     }
-    &.c-hover-underline-less:hover {
+    &.u-hover-underline-less:hover {
       text-decoration: none;
     }
     &[href^='tel'] {
@@ -396,17 +411,17 @@ template {
 
 /* init base styles */
 html {
-  font-size: 62.5%;
+  font-size: var(--root-font-size);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  @include over('lg') {
-    font-size: math.div(16px, width('container')) * 62.5vw;
-  }
+  // @include over('lg') {
+  //   font-size: math.div(16px, width('container')) * 62.5vw;
+  // }
 
-  @include over('container') {
-    font-size: 62.5% !important; // 仕方なし
-  }
+  // @include over('container') {
+  //   font-size: 62.5% !important; // 仕方なし
+  // }
 }
 
 body {
@@ -415,16 +430,12 @@ body {
   overflow-wrap: break-word;
   font-size: var(--font-size);
   line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
   color: var(--color-text);
   font-weight: var(--font-weight);
   font-feature-settings: var(--karning);
   -webkit-font-smoothing: antialiased; /* antialiased | subpixel-antialiased */
   -moz-osx-font-smoothing: grayscale; /* grayscale | auto */
   font-family: var(--font-family);
-}
-
-/* サイト基本情報設定 */
-
-.l-body {
-  min-height: 100vh;
+  grid-template-columns: repeat(2, 1fr);
 }

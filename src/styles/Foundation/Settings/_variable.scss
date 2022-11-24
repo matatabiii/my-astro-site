@@ -3,61 +3,33 @@
 @変数設定
 
 ////////////////////////////*/
-@use 'sass:map'; // sassの機能
-@use './family';
 
-$gutter: 20px !default;
+/* ブレークポイント */
+$break-point-map: (
+  '--full': 1400px,
+  // デザインカンプ最大幅以上
+  '--lg': 1024px,
+  // デスクトップ以上
+  '--md': 768px,
+  // タブレット以上
+) !default;
 
-// レスポンシブ変化のスクリーンのリスト (実数は $width-map にマッチする値を使用する)
-$screen-list: ('max', 'container', 'xl', 'lg', 'md', 'sm') !default;
-$screen-list-min: ('lg', 'md') !default;
-
-// @Function color("theme")
-// @Utility  .u-text-font
-//           .u-bg-font
+/* カラーリスト */
 $color-map: (
-  'transparent': transparent,
-  'gray-100': #000,
-  'gray-0': #fff,
-  'gray': #cccccc,
-  'gray-text': #333,
-  'theme': #48bb78,
-  'sub': #ecc94b,
-  'primary': #ed8936,
-  'secondary': #38b2ac,
-  'tertiary': #ed64a6,
-  'success': #28a745,
-  'danger': #ef4b4b,
-  'warning': #ffc107,
-) !default;
-
-// @Function width("desktop")
-$width-map: (
-  'max': 1500px,
-  'container': 1170px,
-  'large': 970px,
-  'medium': 770px,
-  'small': 570px,
-  'xl': 1280px,
-  'lg': 1024px,
-  'md': 768px,
-  'sm': 640px,
-) !default;
-
-// @Function height("header-desktop")
-$height-map: (
-  'header-desktop': 100px,
-  'header-sp': 70px,
-) !default;
-
-// @Function family("sans")
-// @Utility  .u-family-sans
-$family-map: (
-  'sans': map.get(family.$families, 'noto'),
-  'serif': map.get(family.$families, 'notoserif'),
-  // 'roboto': map.get(family.$families, 'roboto'),
-  'en': map.get(family.$families, 'system'),
+  '--color-transparent': transparent,
+  '--color-gray-100': #000000,
+  '--color-gray-0': #ffffff,
+  '--color-text': #333333,
+  '--color-theme': #ed6b65,
+  '--color-theme-primary': #2d9be9,
+  '--color-theme-secondary': #79c36c,
+  '--color-base': #ed6b65,
+  '--color-base-primary': #2d9be9,
+  '--color-base-secondary': #79c36c,
+  '--color-success': #28a745,
+  '--color-danger': #ef4b4b,
+  '--color-warning': #ffc107,
 ) !default;
 
 // @Function z-index("header")
-$index-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading', 'debug') !default;
+$zindex-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading') !default;

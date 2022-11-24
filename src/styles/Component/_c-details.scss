@@ -1,5 +1,7 @@
 .c-details {
-  background: #f5f5f5;
+  background: var(--color-theme-primary);
+  color: var(--color-gray-0);
+  font-weight: var(--font-weight-bold);
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #ccc;

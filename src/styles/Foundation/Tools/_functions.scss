@@ -63,12 +63,10 @@
 /// @param  {string} $chain-after  連鎖させる値(後)
 /// @return {string}               値
 @function text-outline($width: 1px, $color: color('font'), $chain-before: null, $chain-after: null) {
-  @return $chain-before, 0 * $width -1 * $width 0 $color, 0.33 * $width -0.99 * $width 0 $color, 0.66 * $width -0.66 * $width 0 $color,
-    0.99 * $width -0.33 * $width 0 $color, 1 * $width 0 * $width 0 $color, 0.99 * $width 0.33 * $width 0 $color,
-    0.66 * $width 0.66 * $width 0 $color, 0.33 * $width 0.99 * $width 0 $color, 0 * $width 1 * $width 0 $color,
-    -0.33 * $width 0.99 * $width 0 $color, -0.66 * $width 0.66 * $width 0 $color, -0.99 * $width 0.33 * $width 0 $color,
-    -1 * $width 0 * $width 0 $color, -0.99 * $width -0.33 * $width 0 $color, -0.66 * $width -0.66 * $width 0 $color,
-    -0.33 * $width -0.99 * $width 0 $color, $chain-after;
+  @return $chain-before, 0 * $width -1 * $width 0 $color, 0.33 * $width -0.99 * $width 0 $color, 0.66 * $width -0.66 * $width 0 $color, 0.99 * $width -0.33 * $width 0 $color,
+    1 * $width 0 * $width 0 $color, 0.99 * $width 0.33 * $width 0 $color, 0.66 * $width 0.66 * $width 0 $color, 0.33 * $width 0.99 * $width 0 $color, 0 * $width 1 * $width 0 $color,
+    -0.33 * $width 0.99 * $width 0 $color, -0.66 * $width 0.66 * $width 0 $color, -0.99 * $width 0.33 * $width 0 $color, -1 * $width 0 * $width 0 $color, -0.99 * $width -0.33 * $width 0 $color,
+    -0.66 * $width -0.66 * $width 0 $color, -0.33 * $width -0.99 * $width 0 $color, $chain-after;
 }
 
 /// 横幅取得

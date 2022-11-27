@@ -10,14 +10,18 @@ export default defineConfig({
     open: true,
     host: true,
   }),
+  chunkSizeWarningLimit: 5,
   vite: {
     build: {
+      assetsInlineLimit: 0,
       rollupOptions: {
         output: {
           // entry chunk assets それぞれの書き出し名の指定
           entryFileNames: `assets/js/main.js`,
           chunkFileNames: `assets/js/chunks/[name].js`,
-          assetFileNames: `assets/[ext]/[name][extname]`,
+          assetFileNames: (assetInfo) => {
+            return `assets/[ext]/[name][extname]`
+          },
         },
       },
     },

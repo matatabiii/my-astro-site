@@ -1,13 +1,105 @@
+/* Webサイト全体のスタイル設定・初期化 */
+@use 'sass:string';
+@use './Settings/variable' as *;
+
 /*////////////////////////////
 @基本設定
 ////////////////////////////*/
+/* 将来的にネイティブ対応が予想されるカスタムメディア（PostCSSのプラグインで対応） */
+/* 例：@media (--min-lg) {} */
+@custom-media --min-max (min-width: #{$container-max}px);
+@custom-media --min-container (min-width: #{$container}px);
+@custom-media --min-lg (min-width: #{$lg}px);
+@custom-media --min-md (min-width: #{$md}px);
 
-@use 'sass:map';
-@use 'sass:math';
+@custom-media --max-max (max-width: #{$container-max - 0.02}px);
+@custom-media --max-container (max-width: #{$container - 0.02}px);
+@custom-media --max-lg (max-width: #{$lg - 0.02}px);
+@custom-media --max-md (max-width: #{$md - 0.02}px);
 
-@use './Settings/variable' as *;
-@use './Tools/functions' as *;
-@use './Tools/mixins' as *;
+@custom-media --landscape (orientation: landscape);
+@custom-media --portrait (orientation: portrait);
+@custom-media --asp-16-9 (max-aspect-ratio: 16/9);
+@custom-media --asp-4-3 (max-aspect-ratio: 4/3);
+@custom-media --retina (min-resolution: 2dppx);
+
+/* CSSカスタムプロパティ（CSS変数 var(--)） */
+:root {
+  /* メディアクエリー（CSSで使うことはできないがビルド後の確認のため） */
+  --min-max: '(min-width: #{$container-max}px)';
+  --min-container: '(min-width: #{$container}px)';
+  --min-lg: '(min-width: #{$lg}px)';
+  --min-md: '(min-width: #{$md}px)';
+  --max-max: '(max-width: #{$container-max - 0.02}px)';
+  --max-container: '(max-width: #{$container - 0.02}px)';
+  --max-lg: '(max-width: #{$lg - 0.02}px)';
+  --max-md: '(max-width: #{$md - 0.02}px)';
+  --landscape: '(orientation: landscape)';
+  --portrait: '(orientation: portrait)';
+  --asp-16-9: '(max-aspect-ratio: 16/9)';
+  --asp-4-3: '(max-aspect-ratio: 4/3)';
+  --retina: '(min-resolution: 2dppx)';
+
+  /* Webサイト全体のデフォルト設定（テキスト・フォント関係） */
+  --font-size: #{$font-size * 0.1}rem;
+  --font-size-px: #{$font-size}px;
+  --font-weight-thin: 100;
+  --font-weight-extraLight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400; // regular and normal
+  --font-weight-medium: 500;
+  --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extraBold: 800;
+  --font-weight-black: 900;
+  --font-family-YuGothic: '游ゴシック体', 'YuGothic', '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic';
+  --font-family-YuMincho: '游明朝体', 'YuMincho', '游明朝 Medium', 'Yu Mincho Medium', '游明朝', 'Yu Mincho';
+  --font-family-HiraginoSans: 'Hiragino Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro';
+  --font-family-base: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', 'Meiryo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-body: #{$font-family-body};
+  --font-family-sub: #{$font-family-sub};
+  --font-weight: #{$font-weight};
+  --line-height: #{$line-height};
+  --karning: #{$karning};
+  --letter-spacing: #{$letter-spacing};
+  --font-family: var(--font-family-body), var(--font-family-base);
+
+  /* break points */
+  --bp-max: #{$container-max}px;
+  --bp-container: #{$container}px;
+  --bp-lg: #{$lg}px;
+  --bp-md: #{$md}px;
+
+  /* container size */
+  --container-max: #{$container-max * 0.1}rem;
+  --container: #{$container * 0.1}rem;
+  --container-large: #{$container-large * 0.1}rem;
+  --container-medium: #{$container-medium * 0.1}rem;
+  --container-small: #{$container-small * 0.1}rem;
+  --viewport-both-space: #{$viewport-both-space * 0.1}rem;
+
+  /* value */
+  --alpha: 1;
+  --height: auto;
+  --width: auto;
+  --max-width: none;
+  --margin: 0;
+  --padding: 0;
+  --color: currentColor;
+  --bg: transparent;
+  --gap-x: 0rem;
+  --gap-y: 0rem;
+
+  /* colors */
+  @each $key, $color in $color-map {
+    --rgb-#{$key}: #{$color};
+    @if $key == 'transparent' {
+      --color-#{$key}: rgba(var(--rgb-#{$key}), 0);
+    } @else {
+      --color-#{$key}: rgba(var(--rgb-#{$key}), var(--alpha));
+    }
+  }
+}
 
 /* init ua styles */
 *,
@@ -15,6 +107,11 @@
 *::after {
   min-width: 0;
   box-sizing: border-box;
+  width: var(--width);
+  max-width: var(--max-width);
+  height: var(--height);
+  color: var(--color);
+  background-color: var(--bg);
 }
 
 body,
@@ -106,11 +203,11 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+  vertical-align: sub;
 }
 
 sup {
-  top: -0.5em;
+  vertical-align: super;
 }
 
 a {
@@ -219,7 +316,7 @@ textarea {
 input,
 textarea,
 select {
-  .sp & {
+  @media (any-hover: none) {
     font-size: 16px;
   }
 }
@@ -364,44 +461,18 @@ template {
   }
 }
 
-/* init root variables */
-:root {
-  --size: 1.6rem;
-  --weight: 400;
-  --lh: 1.75;
-  $i: 0;
-  @each $screen in $screen-list {
-    @if 0 == $i {
-      --screen: '#{$screen}';
-    } @else {
-      @include break($screen) {
-        --screen: '#{$screen}';
-      }
-    }
-    $i: $i + 1;
-  }
-
-  @each $key, $family in $family-map {
-    --family-#{$key}: #{$family};
-  }
-
-  @each $key, $color in $color-map {
-    --#{$key}: #{$color};
-  }
-}
-
 /* init base styles */
 html {
   font-size: 62.5%;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  @include over('lg') {
-    font-size: math.div(16px, width('container')) * 62.5vw;
+  @media (--max-container) {
+    font-size: calc(#{$font-size} / #{$container} * 62.5vw);
   }
 
-  @include over('container') {
-    font-size: 62.5% !important; // 仕方なし
+  @media (--max-lg) {
+    font-size: 62.5%; // 仕方なし
   }
 }
 
@@ -409,13 +480,15 @@ body {
   min-height: 100vh;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: rem(16);
-  line-height: 1.75;
-  color: color('gray-text');
-  font-weight: 400;
-  @include karning();
-  @include font-smoothing();
-  font-family: family('sans');
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  color: var(--color-text);
+  font-weight: var(--font-weight);
+  font-feature-settings: var(--karning);
+  -webkit-font-smoothing: antialiased; /* antialiased | subpixel-antialiased */
+  -moz-osx-font-smoothing: grayscale; /* grayscale | auto */
 }
 
 /* サイト基本情報設定 */

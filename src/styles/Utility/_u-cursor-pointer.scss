@@ -1,0 +1,14 @@
+/* cursor */
+@mixin cursor($prefix: '') {
+  .#{$prefix}u-cursor-pointer {
+    cursor: pointer;
+  }
+  .#{$prefix}u-cursor-not-allowed {
+    cursor: not-allowed;
+  }
+  .#{$prefix}u-pointer-events-none {
+    pointer-events: none;
+  }
+}
+
+@include cursor();

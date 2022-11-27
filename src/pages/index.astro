@@ -29,7 +29,7 @@ const hero = {
 
 <Layout page={page} seo={seo} hero={hero} root={root}>
   <main>
-    <details class="c-details">
+    <details class="c-details c-container c-container--large">
       <summary class="c-details__summary"> 開閉ボタン（summary）</summary>
       <div class="c-details__content">
         <p>あいうえお</p>
@@ -42,9 +42,25 @@ const hero = {
 
     <a href={root}>ルート{root}</a>
 
+    <div class="u-bg-theme u-h-200 M:u-h-400 u-color-theme-primary">ああ<sup>あ</sup></div>
+
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-facebook-circle`}></use></svg>
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`#i-favicon`}></use></svg>
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${root}assets/svg/sprite.svg#i-favicon`}></use></svg>
     <svg width="16" height="16" class="c-icon" aria-hidden="true"><use xlink:href={`${root}assets/svg/sprite.svg#i-share`}></use></svg>
+
+    <div class="c-flex-wrap">
+      <div class="c-flex c-flex--y25_ L:c-flex--y0 M:c-flex--x15 L:c-flex--x50">
+        <div class="u-w-full M:u-w-4/12">
+          <div class="u-bg-theme u-h-50 u-w-full"></div>
+        </div>
+        <div class="u-w-full M:u-w-4/12">
+          <div class="u-bg-theme-primary u-h-50 u-w-full"></div>
+        </div>
+        <div class="u-w-full M:u-w-4/12">
+          <div class="u-bg-theme-secondary u-h-50 u-w-full"></div>
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>

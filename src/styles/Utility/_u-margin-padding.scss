@@ -1,10 +1,5 @@
 /* margin-padding
 ----------------------------------------------------------------- */
-@use 'sass:color';
-@use 'sass:math';
-@use '../Foundation/Settings/variable' as *;
-@use '../Foundation/Tools/functions' as *;
-@use '../Foundation/Tools/mixins' as *;
 $spaceMap: (
   '0': 0,
   '1': 1,
@@ -40,56 +35,56 @@ $spaceMap: (
 @mixin space($prefix: '') {
   @each $key, $value in $spaceMap {
     .#{$prefix}u-mt-#{$key} {
-      margin-top: rem($value);
+      margin-top: #{$value * 0.1}rem;
     }
     .#{$prefix}u-mr-#{$key} {
-      margin-right: rem($value);
+      margin-right: #{$value * 0.1}rem;
     }
     .#{$prefix}u-mb-#{$key} {
-      margin-bottom: rem($value);
+      margin-bottom: #{$value * 0.1}rem;
     }
     .#{$prefix}u-ml-#{$key} {
-      margin-left: rem($value);
+      margin-left: #{$value * 0.1}rem;
     }
 
     @if $value != 0 {
       @if $value <= 30 {
         .#{$prefix}u-mt-_#{$key} {
-          margin-top: rem(-$value);
+          margin-top: #{$value * -0.1}rem;
         }
         .#{$prefix}u-mr-_#{$key} {
-          margin-right: rem(-$value);
+          margin-right: #{$value * -0.1}rem;
         }
         .#{$prefix}u-mb-_#{$key} {
-          margin-bottom: rem(-$value);
+          margin-bottom: #{$value * -0.1}rem;
         }
         .#{$prefix}u-ml-_#{$key} {
-          margin-left: rem(-$value);
+          margin-left: #{$value * -0.1}rem;
         }
       }
     }
 
     .#{$prefix}u-pt-#{$key} {
-      padding-top: rem($value);
+      padding-top: #{$value * 0.1}rem;
     }
     .#{$prefix}u-pr-#{$key} {
-      padding-right: rem($value);
+      padding-right: #{$value * 0.1}rem;
     }
     .#{$prefix}u-pb-#{$key} {
-      padding-bottom: rem($value);
+      padding-bottom: #{$value * 0.1}rem;
     }
     .#{$prefix}u-pl-#{$key} {
-      padding-left: rem($value);
+      padding-left: #{$value * 0.1}rem;
     }
   }
 
   .#{$prefix}u-gutter {
-    padding-left: rem($gutter);
-    padding-right: rem($gutter);
+    padding-left: var(--viewport-both-space);
+    padding-right: var(--viewport-both-space);
   }
 
   .#{$prefix}u-gutter-all {
-    padding: rem($gutter);
+    padding: var(--viewport-both-space);
   }
 
   .#{$prefix}u-m-auto {
@@ -111,11 +106,9 @@ $spaceMap: (
 
 @include space();
 
-@include over('lg') {
-  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
-  @include space($prefix);
+@media (--min-lg) {
+  @include space('L\\:');
 }
-@include over('md') {
-  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
-  @include space($prefix);
+@media (--min-md) {
+  @include space('M\\:');
 }

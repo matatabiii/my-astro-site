@@ -6,7 +6,7 @@ export const base = {
 export const siteConfig = {
   siteName: 'サイト名',
   siteUrl: `https://example.com`,
-  base: base,
+  base,
   ogImage: 'og-image.jpg',
   msapplicationTileColor: '#ffffff',
   themeColor: '#ffffff',

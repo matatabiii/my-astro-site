@@ -1,11 +1,11 @@
 ---
+import '../styles/main.scss'
 import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
-import '../styles/main.scss'
+import Footer from '../components/Footer.astro'
 export const defaultRoot = import.meta.env.BASE_URL
 // Astro.site
 // Astro.url.pathname
-
 const { page, seo, hero, root } = Astro.props
 const urlOrigin = Astro.url.origin + root
 const canonicalURL = seo?.canonical || new URL(Astro.url.pathname, Astro.site)
@@ -19,9 +19,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta charset={charset} />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{title}</title>{
-    seo?.description && <meta name="description" content={seo?.description} />}{
-    seo?.keywords && <meta name="keywords" content={seo?.keywords} />}
+    <title>{title}</title>{seo?.description && <meta name="description" content={seo?.description} />}{seo?.keywords && <meta name="keywords" content={seo?.keywords} />}
     <link rel="canonical" href={canonicalURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content={seo?.ogURL || canonicalURL} />
@@ -34,7 +32,9 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta name="theme-color" content={themeColor} />
     <link rel="icon" href={`${urlOrigin}${favicon}`} />
     <link rel="apple-touch-icon" href={`${urlOrigin}${appleTouchIcon}`} />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <script is:inline define:vars={{ root }}>
       document.documentElement.classList.add('js')
       document.documentElement.classList.remove('no-js')
@@ -57,5 +57,6 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
   <body>
     <Header isHome={page.type === 'home'} hero={hero} root={root} />
     <slot />
+    <Footer isHome={page.type === 'home'} root={root} />
   </body>
 </html>

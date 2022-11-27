@@ -1,62 +1,49 @@
 /*////////////////////////////
-
-@変数設定
-
+@プロジェクトごとに変更する設定
 ////////////////////////////*/
-@use 'sass:map'; // sassの機能
-@use './family';
+@use 'sass:color';
 
-$gutter: 20px !default;
+@function color16toRGB($color) {
+  @return #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
+}
 
-// レスポンシブ変化のスクリーンのリスト (実数は $width-map にマッチする値を使用する)
-$screen-list: ('max', 'container', 'xl', 'lg', 'md', 'sm') !default;
-$screen-list-min: ('lg', 'md') !default;
+/* ブレークポイント・コンテナ */
+$lg: 1024; /* ブレークポイント（デスクトップ）（単位不要） */
+$md: 768; /* ブレークポイント（タブレット）（単位不要） */
+$container-max: 1400; /* デザインカンプの最大幅（単位不要） */
+$container: 1170; /* メインコンテンツの幅（単位不要） */
+$container-large: 970; /* ラージコンテンツの幅（単位不要） */
+$container-medium: 770; /* ミディアムコンテンツの幅（単位不要） */
+$container-small: 570; /* スモールコンテンツの幅（単位不要） */
 
-// @Function color("theme")
-// @Utility  .u-text-font
-//           .u-bg-font
+/* 基本のフォントファミリーやテキスト情報 */
+$font-size: 16; /* bodyに設定するベースフォントサイズ（単位不要） */
+$font-family-body: 'Noto Sans JP'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
+$font-family-sub: 'Arial Black'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
+$font-weight: var(--font-weight-regular); /* --font-weight-[thin|light|regular|medium|bold|black] 詳細は_base.scssの --font-weight- を検索 */
+$line-height: 1.8;
+$karning: 'palt' 1; /* カーニングが不要な場合はbodyの「font-feature-settings」を行ごとコメントアウトする */
+$letter-spacing: normal;
+
+/* その他 */
+$viewport-both-space: 20; /* ビューポート両端からのスペース（単位不要） */
+
+/* カラーリスト */
 $color-map: (
-  'transparent': transparent,
-  'gray-100': #000,
-  'gray-0': #fff,
-  'gray': #cccccc,
-  'gray-text': #333,
-  'theme': #48bb78,
-  'sub': #ecc94b,
-  'primary': #ed8936,
-  'secondary': #38b2ac,
-  'tertiary': #ed64a6,
-  'success': #28a745,
-  'danger': #ef4b4b,
-  'warning': #ffc107,
-) !default;
-
-// @Function width("desktop")
-$width-map: (
-  'max': 1500px,
-  'container': 1170px,
-  'large': 970px,
-  'medium': 770px,
-  'small': 570px,
-  'xl': 1280px,
-  'lg': 1024px,
-  'md': 768px,
-  'sm': 640px,
-) !default;
-
-// @Function height("header-desktop")
-$height-map: (
-  'header-desktop': 100px,
-  'header-sp': 70px,
-) !default;
-
-// @Function family("sans")
-// @Utility  .u-family-sans
-$family-map: (
-  'sans': map.get(family.$families, 'noto'),
-  'serif': map.get(family.$families, 'notoserif'),
-  // 'roboto': map.get(family.$families, 'roboto'),
-  'en': map.get(family.$families, 'system'),
+  'transparent': color16toRGB(transparent),
+  'gray-100': color16toRGB(#000000),
+  'gray-0': color16toRGB(#ffffff),
+  'gray': color16toRGB(#cccccc),
+  'text': color16toRGB(#333333),
+  'theme': color16toRGB(#ed6b65),
+  'theme-primary': color16toRGB(#2d9be9),
+  'theme-secondary': color16toRGB(#79c36c),
+  'base': color16toRGB(#ed6b65),
+  'base-primary': color16toRGB(#2d9be9),
+  'base-secondary': color16toRGB(#79c36c),
+  'success': color16toRGB(#28a745),
+  'danger': color16toRGB(#ef4b4b),
+  'warning': color16toRGB(#ffc107),
 ) !default;
 
 // @Function z-index("header")

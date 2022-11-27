@@ -108,11 +108,9 @@
 
 @include flex();
 
-@include over('lg') {
-  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
-  @include flex($prefix);
+@media (--min-lg) {
+  @include flex('L\\:');
 }
-@include over('md') {
-  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
-  @include flex($prefix);
+@media (--min-md) {
+  @include flex('M\\:');
 }

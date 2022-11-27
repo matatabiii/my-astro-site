@@ -1,7 +1,9 @@
 const config = {
   plugins: [
-    require('autoprefixer'),
-    require('postcss-preset-env'),
+    require('autoprefixer')({
+      grid: true,
+    }),
+    require('postcss-custom-media'),
     require('postcss-sort-media-queries')({
       sort: 'mobile-first',
     }),

@@ -1,0 +1,224 @@
+/* レイアウト管理 */
+.c-flex-wrap {
+  overflow: hidden;
+}
+
+.c-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--gap-y) * -1);
+  margin-bottom: calc(var(--gap-y) * -1);
+  margin-left: calc(var(--gap-x) * -1);
+  margin-right: calc(var(--gap-x) * -1);
+
+  > * {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 1px;
+    max-width: 100%;
+    padding-top: var(--gap-y);
+    padding-bottom: var(--gap-y);
+    padding-left: var(--gap-x);
+    padding-right: var(--gap-x);
+  }
+
+  // .c-flex--fit
+  &--fit {
+    > * {
+      flex-direction: row;
+    }
+  }
+}
+
+@mixin gap($prefix: '') {
+  .#{$prefix}c-flex--x1_ {
+    --gap-x: 0.05rem;
+  }
+  .#{$prefix}c-flex--x1 {
+    --gap-x: 0.1rem;
+  }
+  .#{$prefix}c-flex--x2 {
+    --gap-x: 0.2rem;
+  }
+  .#{$prefix}c-flex--x3 {
+    --gap-x: 0.3rem;
+  }
+  .#{$prefix}c-flex--x4 {
+    --gap-x: 0.4rem;
+  }
+  .#{$prefix}c-flex--x5_ {
+    --gap-x: 0.25rem;
+  }
+  .#{$prefix}c-flex--x5 {
+    --gap-x: 0.5rem;
+  }
+  .#{$prefix}c-flex--x6 {
+    --gap-x: 0.6rem;
+  }
+  .#{$prefix}c-flex--x7 {
+    --gap-x: 0.7rem;
+  }
+  .#{$prefix}c-flex--x8 {
+    --gap-x: 0.8rem;
+  }
+  .#{$prefix}c-flex--x9 {
+    --gap-x: 0.9rem;
+  }
+  .#{$prefix}c-flex--x10 {
+    --gap-x: 1rem;
+  }
+  .#{$prefix}c-flex--x15_ {
+    --gap-x: #{1.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x15 {
+    --gap-x: 1.5rem;
+  }
+  .#{$prefix}c-flex--x20 {
+    --gap-x: 2rem;
+  }
+  .#{$prefix}c-flex--x25_ {
+    --gap-x: #{2.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x25 {
+    --gap-x: 2.5rem;
+  }
+  .#{$prefix}c-flex--x30 {
+    --gap-x: 3rem;
+  }
+  .#{$prefix}c-flex--x35_ {
+    --gap-x: #{3.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x35 {
+    --gap-x: 3.5rem;
+  }
+  .#{$prefix}c-flex--x40 {
+    --gap-x: 4rem;
+  }
+  .#{$prefix}c-flex--x45_ {
+    --gap-x: #{4.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x45 {
+    --gap-x: 4.5rem;
+  }
+  .#{$prefix}c-flex--x50 {
+    --gap-x: 5rem;
+  }
+  .#{$prefix}c-flex--x55_ {
+    --gap-x: #{5.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x55 {
+    --gap-x: 5.5rem;
+  }
+  .#{$prefix}c-flex--x60 {
+    --gap-x: 6rem;
+  }
+  .#{$prefix}c-flex--x65_ {
+    --gap-x: #{6.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--x65 {
+    --gap-x: 6.5rem;
+  }
+  .#{$prefix}c-flex--x70 {
+    --gap-x: 7rem;
+  }
+
+  .#{$prefix}c-flex--y1_ {
+    --gap-y: 0.05rem;
+  }
+  .#{$prefix}c-flex--y1 {
+    --gap-y: 0.1rem;
+  }
+  .#{$prefix}c-flex--y2 {
+    --gap-y: 0.2rem;
+  }
+  .#{$prefix}c-flex--y3 {
+    --gap-y: 0.3rem;
+  }
+  .#{$prefix}c-flex--y4 {
+    --gap-y: 0.4rem;
+  }
+  .#{$prefix}c-flex--y5_ {
+    --gap-y: 0.25rem;
+  }
+  .#{$prefix}c-flex--y5 {
+    --gap-y: 0.5rem;
+  }
+  .#{$prefix}c-flex--y6 {
+    --gap-y: 0.6rem;
+  }
+  .#{$prefix}c-flex--y7 {
+    --gap-y: 0.7rem;
+  }
+  .#{$prefix}c-flex--y8 {
+    --gap-y: 0.8rem;
+  }
+  .#{$prefix}c-flex--y9 {
+    --gap-y: 0.9rem;
+  }
+  .#{$prefix}c-flex--y10 {
+    --gap-y: 1rem;
+  }
+  .#{$prefix}c-flex--y15_ {
+    --gap-y: #{1.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y15 {
+    --gap-y: 1.5rem;
+  }
+  .#{$prefix}c-flex--y20 {
+    --gap-y: 2rem;
+  }
+  .#{$prefix}c-flex--y25_ {
+    --gap-y: #{2.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y25 {
+    --gap-y: 2.5rem;
+  }
+  .#{$prefix}c-flex--y30 {
+    --gap-y: 3rem;
+  }
+  .#{$prefix}c-flex--y35_ {
+    --gap-y: #{3.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y35 {
+    --gap-y: 3.5rem;
+  }
+  .#{$prefix}c-flex--y40 {
+    --gap-y: 4rem;
+  }
+  .#{$prefix}c-flex--y45_ {
+    --gap-y: #{4.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y45 {
+    --gap-y: 4.5rem;
+  }
+  .#{$prefix}c-flex--y50 {
+    --gap-y: 5rem;
+  }
+  .#{$prefix}c-flex--y55_ {
+    --gap-y: #{5.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y55 {
+    --gap-y: 5.5rem;
+  }
+  .#{$prefix}c-flex--y60 {
+    --gap-y: 6rem;
+  }
+  .#{$prefix}c-flex--y65_ {
+    --gap-y: #{6.5rem * 0.5};
+  }
+  .#{$prefix}c-flex--y65 {
+    --gap-y: 6.5rem;
+  }
+  .#{$prefix}c-flex--y70 {
+    --gap-y: 7rem;
+  }
+}
+
+@include gap();
+@media (--min-lg) {
+  @include gap('L\\:');
+}
+@media (--min-md) {
+  @include gap('M\\:');
+}

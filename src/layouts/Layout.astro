@@ -1,10 +1,11 @@
 ---
+import '../styles/main.scss'
 import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 export const defaultRoot = import.meta.env.BASE_URL
 // Astro.site
 // Astro.url.pathname
-
 const { page, seo, hero, root } = Astro.props
 const urlOrigin = Astro.url.origin + root
 const canonicalURL = seo?.canonical || new URL(Astro.url.pathname, Astro.site)
@@ -31,6 +32,8 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta name="theme-color" content={themeColor} />
     <link rel="icon" href={`${urlOrigin}${favicon}`} />
     <link rel="apple-touch-icon" href={`${urlOrigin}${appleTouchIcon}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <script is:inline define:vars={{ root }}>
       document.documentElement.classList.add('js')
@@ -48,12 +51,12 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     </script>
 
     <script>
-      import '../styles/main.scss'
       import '../js/main.js'
     </script>
   </head>
   <body>
     <Header isHome={page.type === 'home'} hero={hero} root={root} />
     <slot />
+    <Footer isHome={page.type === 'home'} root={root} />
   </body>
 </html>

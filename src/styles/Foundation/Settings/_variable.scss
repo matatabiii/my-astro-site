@@ -33,6 +33,7 @@ $color-map: (
   'transparent': color16toRGB(transparent),
   'gray-100': color16toRGB(#000000),
   'gray-0': color16toRGB(#ffffff),
+  'gray': color16toRGB(#cccccc),
   'text': color16toRGB(#333333),
   'theme': color16toRGB(#ed6b65),
   'theme-primary': color16toRGB(#2d9be9),

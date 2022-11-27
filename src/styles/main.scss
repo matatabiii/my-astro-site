@@ -28,8 +28,8 @@
 再利用できるパターンとして、小さな単位のモジュールを定義します。
 出来る限り、最低限の機能を持ったものとして定義されるべきであり、それ自体が固有の幅や色などの特色を持つことは避けるのが望ましいです。
 ----------------------------------------------------------------- */
-// @use './Component/c-container' as *;
-// @use './Component/c-flex' as *;
+@use './Component/c-container' as *;
+@use './Component/c-flex' as *;
 // @use './Component/c-object-fit' as *;
 // @use './Component/c-select' as *;
 // @use './Component/c-icon' as *;
@@ -51,31 +51,6 @@
 // @use './Project/p-copyright' as *;
 // @use './Project/p-btn' as *;
 
-/* Utility
-ComponentとProjectレイヤーのObjectのモディファイアで解決することが難しい・適切では無い、
-わずかなスタイルの調整のための便利クラスなどを定義します。
------------------------------------------------------------------ */
-// @use './Utility/u-bg' as *;
-// @use './Utility/u-border' as *;
-// @use './Utility/u-clearfix' as *;
-@use './Utility/u-color' as *;
-// @use './Utility/u-cursor' as *;
-// @use './Utility/u-display' as *;
-// @use './Utility/u-flex' as *;
-// @use './Utility/u-height' as *;
-// @use './Utility/u-margin-padding' as *;
-// @use './Utility/u-object-fit' as *;
-// @use './Utility/u-opacity' as *;
-// @use './Utility/u-overFlow' as *;
-// @use './Utility/u-position' as *;
-// @use './Utility/u-size' as *;
-// @use './Utility/u-text' as *;
-// @use './Utility/u-transform' as *;
-// @use './Utility/u-utility' as *;
-// @use './Utility/u-vertical' as *;
-// @use './Utility/u-width' as *;
-// @use './Utility/u-zIndex' as *;
-
 /* ==========================================================================
   Vender
   愛撫ライブラリやWPのhtmlスタイリング用
@@ -84,3 +59,22 @@ ComponentとProjectレイヤーのObjectのモディファイアで解決する�
 // @use './Vendor/scrollTrigger' as *;
 // @use './Vendor/slider' as *;
 // @use './Vendor/form' as *;
+
+/* Utility
+ComponentとProjectレイヤーのObjectのモディファイアで解決することが難しい・適切では無い、
+わずかなスタイルの調整のための便利クラスなどを定義します。
+----------------------------------------------------------------- */
+@use './Utility/u-bg' as *;
+@use './Utility/u-color' as *;
+@use './Utility/u-cursor-pointer' as *;
+@use './Utility/u-flex' as *;
+@use './Utility/u-height' as *;
+@use './Utility/u-margin-padding' as *;
+@use './Utility/u-overFlow' as *;
+@use './Utility/u-position' as *;
+@use './Utility/u-size' as *;
+@use './Utility/u-text' as *;
+@use './Utility/u-transform' as *;
+@use './Utility/u-utility' as *;
+@use './Utility/u-width' as *;
+@use './Utility/u-zIndex' as *;

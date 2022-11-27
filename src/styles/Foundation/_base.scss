@@ -44,10 +44,13 @@
   --font-size: #{$font-size * 0.1}rem;
   --font-size-px: #{$font-size}px;
   --font-weight-thin: 100;
+  --font-weight-extraLight: 200;
   --font-weight-light: 300;
   --font-weight-regular: 400; // regular and normal
   --font-weight-medium: 500;
+  --font-weight-semiBold: 600;
   --font-weight-bold: 700;
+  --font-weight-extraBold: 800;
   --font-weight-black: 900;
   --font-family-YuGothic: '游ゴシック体', 'YuGothic', '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic';
   --font-family-YuMincho: '游明朝体', 'YuMincho', '游明朝 Medium', 'Yu Mincho Medium', '游明朝', 'Yu Mincho';
@@ -75,7 +78,17 @@
   --container-small: #{$container-small * 0.1}rem;
   --viewport-both-space: #{$viewport-both-space * 0.1}rem;
 
+  /* value */
   --alpha: 1;
+  --height: auto;
+  --width: auto;
+  --max-width: none;
+  --margin: 0;
+  --padding: 0;
+  --color: currentColor;
+  --bg: transparent;
+  --gap-x: 0rem;
+  --gap-y: 0rem;
 
   /* colors */
   @each $key, $color in $color-map {
@@ -94,6 +107,11 @@
 *::after {
   min-width: 0;
   box-sizing: border-box;
+  width: var(--width);
+  max-width: var(--max-width);
+  height: var(--height);
+  color: var(--color);
+  background-color: var(--bg);
 }
 
 body,
@@ -185,11 +203,11 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+  vertical-align: sub;
 }
 
 sup {
-  top: -0.5em;
+  vertical-align: super;
 }
 
 a {

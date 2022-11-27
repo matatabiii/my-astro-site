@@ -1,5 +1,4 @@
-/* position
------------------------------------------------------------------ */
+/* position */
 @use 'sass:color';
 @use 'sass:math';
 @use '../Foundation/Settings/variable' as *;
@@ -24,30 +23,30 @@
   }
   @for $i from 0 through 20 {
     .#{$prefix}u-top-#{$i} {
-      top: rem($i);
+      top: #{$i * 0.1}rem;
     }
     .#{$prefix}u-bottom-#{$i} {
-      bottom: rem($i);
+      bottom: #{$i * 0.1}rem;
     }
     .#{$prefix}u-right-#{$i} {
-      right: rem($i);
+      right: #{$i * 0.1}rem;
     }
     .#{$prefix}u-left-#{$i} {
-      left: rem($i);
+      left: #{$i * 0.1}rem;
     }
 
     @if $i != 0 {
       .#{$prefix}u-top-_#{$i} {
-        top: rem(-$i);
+        top: #{$i * -0.1}rem;
       }
       .#{$prefix}u-right-_#{$i} {
-        right: rem(-$i);
+        right: #{$i * -0.1}rem;
       }
       .#{$prefix}u-bottom-_#{$i} {
-        bottom: rem(-$i);
+        bottom: #{$i * -0.1}rem;
       }
       .#{$prefix}u-left-_#{$i} {
-        left: rem(-$i);
+        left: #{$i * -0.1}rem;
       }
     }
   }
@@ -66,12 +65,9 @@
 }
 
 @include position();
-
-@include over('lg') {
-  $prefix: '#{to-upper-case('l')}\\:'; // str-slice('lg', 0, 1);
-  @include position($prefix);
+@media (--min-lg) {
+  @include position('L\\:');
 }
-@include over('md') {
-  $prefix: '#{to-upper-case('m')}\\:'; // str-slice('lg', 0, 1);
-  @include position($prefix);
+@media (--min-md) {
+  @include position('M\\:');
 }

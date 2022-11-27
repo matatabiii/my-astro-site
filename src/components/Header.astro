@@ -1,16 +1,11 @@
 ---
 const { isHome, hero, root } = Astro.props
 ---
+
 <header id="header" data-view-over="header" class="l-header">
   <div class="l-header__main">
     <div class="l-header-base">
-      {
-        isHome ? (
-          <h1 class="c-logo">h1</h1>
-        ) : (
-          <div class="c-logo">div</div>
-        )
-      }
+      {isHome ? <h1 class="c-logo">ロゴ</h1> : <div class="c-logo">ロゴ</div>}
     </div>
 
     <div data-drawer="3,l-nav" class="l-header__nav l-nav l:u-hidden">
@@ -29,36 +24,24 @@ const { isHome, hero, root } = Astro.props
         </li>
       </ul>
     </div>
-
-    <div id="nav" data-component="nav" class="l-header__nav">
-      <nav id="drawer" data-logic="drawer" aria-label="グローバルナビゲーション">
-        <div data-logic="drawer-scroll">
-          <div data-logic="drawer-container">
-
-          </div>
-        </div>
-      </nav>
-    </div>
   </div>
 
-  {
-    !isHome && hero?.parentTitle && (
-      <div>{hero.parentTitle}</div>
-    )
-  }
-  {
-    !isHome && hero?.mainTitle && (
-      <h1>{hero.mainTitle}</h1>
-    )
-  }
-  {
-    !isHome && hero?.subTitle && (
-      <div>{hero.subTitle}</div>
-    )
-  }
-</header>
+  <div>
+    {!isHome && hero?.parentTitle && <div>{hero.parentTitle}</div>}
+    {!isHome && hero?.mainTitle && <h1>{hero.mainTitle}</h1>}
+    {!isHome && hero?.subTitle && <div>{hero.subTitle}</div>}
+  </div>
 
-<button data-logic="drawer-trigger" id="trigger" type="button" class="l-trigger L:u-hidden">
-  <span class="l-trigger__label">メニュー</span>
-  <span class="l-trigger__u"></span>
-</button>
+  <button data-logic="drawer-trigger" id="trigger" type="button" class="l-trigger L:u-hidden">
+    <span class="l-trigger__label">メニュー</span>
+    <span class="l-trigger__u"></span>
+  </button>
+
+  <div id="nav" data-component="nav" class="l-header__nav">
+    <nav id="drawer" data-logic="drawer" aria-label="グローバルナビゲーション">
+      <div data-logic="drawer-scroll">
+        <div data-logic="drawer-container"></div>
+      </div>
+    </nav>
+  </div>
+</header>

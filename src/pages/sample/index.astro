@@ -4,7 +4,7 @@ const root = defaultRoot // 任意のパスを設定してrootを上書きでき
 
 // ページ情報
 const page = {
-  type: 'home' // home | page | single
+  type: 'page', // home | page | single
 }
 
 // SEO・metaタグ関連
@@ -28,7 +28,5 @@ const hero = {
 ---
 
 <Layout page={page} seo={seo} hero={hero} root={root}>
-  <main>
-    内部ページサンプル
-  </main>
+  <main>内部ページサンプル</main>
 </Layout>

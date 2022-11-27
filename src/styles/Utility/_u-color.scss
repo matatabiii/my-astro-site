@@ -1,12 +1,8 @@
-/* color
------------------------------------------------------------------ */
 @use '../Foundation/Settings/variable' as *;
 
-/* colors */
-// @each $key, $color in $color-map {
-//   @if $key == '--color-transparent' {
-//     .u-color-#{$key}: rgba(var(--rgb-#{$key}), 0);
-//   } @else {
-//     .u-color-#{$key}: rgba(var(--rgb-#{$key}), var(--alpha));
-//   }
-// }
+/* color */
+@each $key, $color in $color-map {
+  .u-color-#{$key} {
+    --color: var(--color-#{$key});
+  }
+}

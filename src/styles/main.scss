@@ -58,7 +58,7 @@ ComponentとProjectレイヤーのObjectのモディファイアで解決する�
 // @use './Utility/u-bg' as *;
 // @use './Utility/u-border' as *;
 // @use './Utility/u-clearfix' as *;
-// @use './Utility/u-color' as *;
+@use './Utility/u-color' as *;
 // @use './Utility/u-cursor' as *;
 // @use './Utility/u-display' as *;
 // @use './Utility/u-flex' as *;

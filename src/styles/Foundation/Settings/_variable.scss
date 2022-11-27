@@ -1,19 +1,23 @@
 /*////////////////////////////
 @プロジェクトごとに変更する設定
 ////////////////////////////*/
+@use 'sass:color';
 
-/* ブレークポイント、コンテンツ幅、フォントサイズの設定 */
+@function color16toRGB($color) {
+  @return #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
+}
+
+/* ブレークポイント・コンテナ */
 $lg: 1024; /* ブレークポイント（デスクトップ）（単位不要） */
 $md: 768; /* ブレークポイント（タブレット）（単位不要） */
-$font-size: 16; /* bodyに設定するベースフォントサイズ（単位不要） */
 $container-max: 1400; /* デザインカンプの最大幅（単位不要） */
 $container: 1170; /* メインコンテンツの幅（単位不要） */
 $container-large: 970; /* ラージコンテンツの幅（単位不要） */
 $container-medium: 770; /* ミディアムコンテンツの幅（単位不要） */
 $container-small: 570; /* スモールコンテンツの幅（単位不要） */
-$viewport-both-space: 20; /* ビューポート両端からのスペース（単位不要） */
 
 /* 基本のフォントファミリーやテキスト情報 */
+$font-size: 16; /* bodyに設定するベースフォントサイズ（単位不要） */
 $font-family-body: 'Noto Sans JP'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
 $font-family-sub: 'Arial Black'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
 $font-weight: var(--font-weight-regular); /* --font-weight-[thin|light|regular|medium|bold|black] 詳細は_base.scssの --font-weight- を検索 */
@@ -21,21 +25,24 @@ $line-height: 1.8;
 $karning: 'palt' 1; /* カーニングが不要な場合はbodyの「font-feature-settings」を行ごとコメントアウトする */
 $letter-spacing: normal;
 
-/* colors */
+/* その他 */
+$viewport-both-space: 20; /* ビューポート両端からのスペース（単位不要） */
+
+/* カラーリスト */
 $color-map: (
-  '--color-transparent': transparent,
-  '--color-gray-100': #000000,
-  '--color-gray-0': #ffffff,
-  '--color-text': #333333,
-  '--color-theme': #ed6b65,
-  '--color-theme-primary': #2d9be9,
-  '--color-theme-secondary': #79c36c,
-  '--color-base': #ed6b65,
-  '--color-base-primary': #2d9be9,
-  '--color-base-secondary': #79c36c,
-  '--color-success': #28a745,
-  '--color-danger': #ef4b4b,
-  '--color-warning': #ffc107,
+  'transparent': color16toRGB(transparent),
+  'gray-100': color16toRGB(#000000),
+  'gray-0': color16toRGB(#ffffff),
+  'text': color16toRGB(#333333),
+  'theme': color16toRGB(#ed6b65),
+  'theme-primary': color16toRGB(#2d9be9),
+  'theme-secondary': color16toRGB(#79c36c),
+  'base': color16toRGB(#ed6b65),
+  'base-primary': color16toRGB(#2d9be9),
+  'base-secondary': color16toRGB(#79c36c),
+  'success': color16toRGB(#28a745),
+  'danger': color16toRGB(#ef4b4b),
+  'warning': color16toRGB(#ffc107),
 ) !default;
 
 // @Function z-index("header")

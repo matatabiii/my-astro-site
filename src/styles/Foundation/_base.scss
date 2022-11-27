@@ -1,3 +1,4 @@
+/* Webサイト全体のスタイル設定・初期化 */
 @use 'sass:string';
 @use './Settings/variable' as *;
 
@@ -39,7 +40,7 @@
   --asp-4-3: '(max-aspect-ratio: 4/3)';
   --retina: '(min-resolution: 2dppx)';
 
-  /* text, font */
+  /* Webサイト全体のデフォルト設定（テキスト・フォント関係） */
   --font-size: #{$font-size * 0.1}rem;
   --font-size-px: #{$font-size}px;
   --font-weight-thin: 100;
@@ -74,9 +75,16 @@
   --container-small: #{$container-small * 0.1}rem;
   --viewport-both-space: #{$viewport-both-space * 0.1}rem;
 
+  --alpha: 1;
+
   /* colors */
   @each $key, $color in $color-map {
-    #{$key}: #{$color};
+    --rgb-#{$key}: #{$color};
+    @if $key == 'transparent' {
+      --color-#{$key}: rgba(var(--rgb-#{$key}), 0);
+    } @else {
+      --color-#{$key}: rgba(var(--rgb-#{$key}), var(--alpha));
+    }
   }
 }
 

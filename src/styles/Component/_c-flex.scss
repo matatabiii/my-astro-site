@@ -17,6 +17,7 @@
     flex-direction: column;
     min-height: 1px;
     max-width: 100%;
+    min-width: 0;
     padding-top: var(--gap-y);
     padding-bottom: var(--gap-y);
     padding-left: var(--gap-x);

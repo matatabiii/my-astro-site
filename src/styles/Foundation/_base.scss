@@ -89,6 +89,8 @@
   --bg: transparent;
   --gap-x: 0rem;
   --gap-y: 0rem;
+  --layout-main-width: 100%;
+  --layout-sub-width: 40rem;
 
   /* colors */
   @each $key, $color in $color-map {
@@ -107,11 +109,11 @@
 *::after {
   min-width: 0;
   box-sizing: border-box;
-  width: var(--width);
-  max-width: var(--max-width);
-  height: var(--height);
-  color: var(--color);
-  background-color: var(--bg);
+  // width: var(--width);
+  // max-width: var(--max-width);
+  // height: var(--height);
+  // color: var(--color);
+  // background-color: var(--bg);
 }
 
 body,

@@ -12,7 +12,7 @@
   Layout
   ページを構成するヘッダーやメインのコンテンツエリア、サイドバーやフッターといったプロジェクト共通のコンテナーブロックのスタイルを定義します。
 ========================================================================== */
-// @use './Layout/l-body' as *;
+@use './Layout/l-body' as *;
 // @use './Layout/l-trigger' as *;
 // @use './Layout/l-drawer' as *;
 // @use './Layout/l-header-nav' as *;
@@ -30,9 +30,10 @@
 ----------------------------------------------------------------- */
 @use './Component/c-container' as *;
 @use './Component/c-flex' as *;
+@use './Component/c-btn' as *;
+@use './Component/c-icon' as *;
 // @use './Component/c-object-fit' as *;
 // @use './Component/c-select' as *;
-// @use './Component/c-icon' as *;
 // @use './Component/c-help' as *;
 // @use './Component/c-atmark' as *;
 // @use './Component/c-frame' as *;

@@ -1,24 +1,24 @@
 /* コンテナ管理 */
 .c-container {
-  --width: var(--container);
+  width: var(--container);
   max-width: calc(100% - var(--viewport-both-space) * 2);
   margin-left: auto;
   margin-right: auto;
 
   // .c-container--max
   &--max {
-    --width: var(--container-max);
+    width: var(--container-max);
   }
   // .c-container--large
   &--large {
-    --width: var(--container-large);
+    width: var(--container-large);
   }
   // .c-container--medium
   &--medium {
-    --width: var(--container-medium);
+    width: var(--container-medium);
   }
   // .c-container--small
   &--small {
-    --width: var(--container-small);
+    width: var(--container-small);
   }
 }

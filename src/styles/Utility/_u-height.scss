@@ -1,58 +1,58 @@
 /* height */
 @mixin value($prefix: '') {
   .#{$prefix}u-h-0 {
-    --height: 0;
+    height: 0;
   }
   .#{$prefix}u-h-1 {
-    --height: 0.1rem;
+    height: 0.1rem;
   }
   .#{$prefix}u-h-2 {
-    --height: 0.2rem;
+    height: 0.2rem;
   }
   .#{$prefix}u-h-3 {
-    --height: 0.3rem;
+    height: 0.3rem;
   }
   .#{$prefix}u-h-4 {
-    --height: 0.4rem;
+    height: 0.4rem;
   }
   .#{$prefix}u-h-5 {
-    --height: 0.5rem;
+    height: 0.5rem;
   }
   .#{$prefix}u-h-6 {
-    --height: 0.6rem;
+    height: 0.6rem;
   }
   .#{$prefix}u-h-7 {
-    --height: 0.7rem;
+    height: 0.7rem;
   }
   .#{$prefix}u-h-8 {
-    --height: 0.8rem;
+    height: 0.8rem;
   }
   .#{$prefix}u-h-9 {
-    --height: 0.9rem;
+    height: 0.9rem;
   }
   @for $var from 2 through 100 {
     $px: $var * 5;
     .#{$prefix}u-h-#{$px} {
-      --height: #{$px * 0.1}rem;
+      height: #{$px * 0.1}rem;
     }
   }
   .#{$prefix}u-h-auto {
-    --height: auto;
+    height: auto;
   }
   .#{$prefix}u-h-full {
-    --height: 100%;
+    height: 100%;
   }
   .#{$prefix}u-h-screen {
-    --height: 100vh;
+    height: 100vh;
   }
   .#{$prefix}u-h-min {
-    --height: min-content;
+    height: min-content;
   }
   .#{$prefix}u-h-max {
-    --height: max-content;
+    height: max-content;
   }
   .#{$prefix}u-h-fit {
-    --height: fit-content;
+    height: fit-content;
   }
 }
 

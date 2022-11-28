@@ -2,7 +2,7 @@
 const { isHome, hero, root } = Astro.props
 ---
 
-<header id="header" data-view-over="header" class="l-header">
+<header role="banner" id="header" data-view-over="header" class="l-header l-body__header">
   <div class="l-header__main">
     <div class="l-header-base">
       {isHome ? <h1 class="c-logo">ロゴ</h1> : <div class="c-logo">ロゴ</div>}

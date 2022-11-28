@@ -1,157 +1,163 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>アイコン リスト</title>
 
-    <style>
-      svg {
-        fill: currentColor;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>アイコン リスト</title>
+
+  <style>
+    svg {
+      fill: currentColor;
+    }
+
+    svg:not([class]) {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      background: rgb(246, 229, 255);
+      line-height: 1.75;
+      font-family: 'Bree Serif';
+      font-size: 1.8rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      line-height: 1.3;
+    }
+
+    .items__inner {
+      box-sizing: border-box;
+      width: calc(20% - 16px);
+      margin-top: 20px;
+      margin-left: 20px;
+      padding: 30px 15px 20px 15px;
+      border-radius: 8px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .items__inner:nth-child(5n + 1) {
+      margin-left: 0;
+    }
+
+    .items__id {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 14px;
+      color: rgb(118, 60, 179);
+    }
+
+    pre,
+    textarea {
+      border-radius: 8px;
+      padding: 10px;
+      background: #f4f4f4;
+      font-size: 10px;
+      line-height: 1.5;
+      color: rgb(118, 60, 179);
+      overflow: scroll;
+      white-space: nowrap;
+      border: hidden;
+      width: 100%;
+      height: 3.5em;
+    }
+
+    .title {
+      font-size: 4.6rem;
+      color: rgb(118, 60, 179);
+      font-weight: bold;
+      text-align: center;
+      padding: 0.5em 10px;
+    }
+
+    .c-icon {
+      display: inline;
+      fill: currentColor;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      width: 1em;
+
+      font-size: 5rem;
+      fill: rgb(118, 60, 179);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">SVG ICONS</h1>
+    <div id="app" class="items"></div>
+  </div>
+
+  <script>
+    const fetchSvgSprite = async (url) => {
+      const response = await window.fetch(url)
+
+      if (response.ok) {
+        return await response.text()
       }
-      svg:not([class]) {
-        position: absolute;
-        width: 0;
-        height: 0;
-        overflow: hidden;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      html {
-        font-size: 62.5%;
-      }
+      throw new Error(response.status)
+    }
 
-      body {
-        background: rgb(246, 229, 255);
-        line-height: 1.75;
-        font-family: 'Bree Serif';
-        font-size: 1.8rem;
-      }
+    fetchSvgSprite('./sprite.svg')
+      .then((text) => {
+        document.body.insertAdjacentHTML('afterbegin', text)
+        document.documentElement.classList.add('use-svgSprite')
+        const symbols = document.querySelectorAll('svg symbol')
 
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding-bottom: 80px;
-      }
+        let boxFragment = document.createElement('div')
 
-      .items {
-        display: flex;
-        flex-wrap: wrap;
-        line-height: 1.3;
-      }
+        symbols.forEach((symbol) => {
+          const id = symbol.getAttribute('id')
 
-      .items__inner {
-        box-sizing: border-box;
-        width: calc(20% - 16px);
-        margin-top: 20px;
-        margin-left: 20px;
-        padding: 30px 15px 20px 15px;
-        border-radius: 8px;
-        text-align: center;
-        background: #fff;
-      }
-
-      .items__inner:nth-child(5n + 1) {
-        margin-left: 0;
-      }
-
-      .items__id {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 14px;
-        margin-bottom: 14px;
-        color: rgb(118, 60, 179);
-      }
-
-      pre,
-      textarea {
-        border-radius: 8px;
-        padding: 10px;
-        background: #f4f4f4;
-        font-size: 10px;
-        line-height: 1.5;
-        color: rgb(118, 60, 179);
-        overflow: scroll;
-        white-space: nowrap;
-        border: hidden;
-        width: 100%;
-        height: 3.5em;
-      }
-
-      .title {
-        font-size: 4.6rem;
-        color: rgb(118, 60, 179);
-        font-weight: bold;
-        text-align: center;
-        padding: 0.5em 10px;
-      }
-
-      .c-icon {
-        display: inline;
-        fill: currentColor;
-        height: 1em;
-        stroke-width: 0;
-        stroke: currentColor;
-        width: 1em;
-
-        font-size: 5rem;
-        fill: rgb(118, 60, 179);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="title">SVG ICONS</h1>
-      <div id="app" class="items"></div>
-    </div>
-
-    <script>
-      const fetchSvgSprite = async (url) => {
-        const response = await window.fetch(url)
-
-        if (response.ok) {
-          return await response.text()
-        }
-
-        throw new Error(response.status)
-      }
-
-      fetchSvgSprite('./sprite.svg')
-        .then((text) => {
-          document.body.insertAdjacentHTML('afterbegin', text)
-          document.documentElement.classList.add('use-svgSprite')
-          const symbols = document.querySelectorAll('svg symbol')
-
-          let boxFragment = document.createElement('div')
-
-          symbols.forEach((symbol) => {
-            const id = symbol.getAttribute('id')
-
-            document.querySelector('#app').insertAdjacentHTML(
-              'beforeend',
-              `
+          document.querySelector('#app').insertAdjacentHTML(
+            'beforeend',
+            `
       <div class="items__inner">
         <svg class="c-icon">
           <use xlink:href="#${id}"></use>
         </svg>
         <p class='items__id'>#${id}</p>
-        <textarea onClick="navigator.clipboard.writeText(this.value).then(e => { alert('SVGタグをコピーしました') })">&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;c-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;use xlink:href={\`\${ root }assets/svg/sprite.svg#${id}\`}&gt;&lt;/use&gt;&lt;/svg&gt;</textarea>
+        <textarea onClick="navigator.clipboard.writeText(this.value).then(e => { alert('SVGタグをコピーしました') })">&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;c-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;use xlink:href={\`#${id}\`}&gt;&lt;/use&gt;&lt;/svg&gt;</textarea>
       </div>
       `,
-            )
-          })
+          )
         })
-        .catch((err) => {
-          console.log(err)
-        })
-    </script>
-  </body>
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  </script>
+</body>
+
 </html>

@@ -3,6 +3,7 @@ import '../styles/main.scss'
 import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import Sidebar from '../components/Sidebar.astro'
 export const defaultRoot = import.meta.env.BASE_URL
 // Astro.site
 // Astro.url.pathname
@@ -54,9 +55,21 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       import '../js/main.js'
     </script>
   </head>
-  <body>
+  <body class={`l-body ${page?.sub && 'l-body--in-sub'}`}>
     <Header isHome={page.type === 'home'} hero={hero} root={root} />
-    <slot />
+    <main role="main" class="l-body__main">
+      <div class="l-body__main-content">
+        <slot />
+      </div>
+
+      {
+        page?.sub && (
+          <div class="l-body__main-side">
+            <Sidebar isHome={page.type === 'home'} root={root} />
+          </div>
+        )
+      }
+    </main>
     <Footer isHome={page.type === 'home'} root={root} />
   </body>
 </html>

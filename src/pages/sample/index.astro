@@ -5,6 +5,7 @@ const root = defaultRoot // 任意のパスを設定してrootを上書きでき
 // ページ情報
 const page = {
   type: 'page', // home | page | single
+  // sub: true, // サブエリアの追加
 }
 
 // SEO・metaタグ関連
@@ -28,5 +29,5 @@ const hero = {
 ---
 
 <Layout page={page} seo={seo} hero={hero} root={root}>
-  <main>内部ページサンプル</main>
+  <div>内部ページサンプル</div>
 </Layout>

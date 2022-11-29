@@ -5,12 +5,12 @@ const root = defaultRoot // 任意のパスを設定してrootを上書きでき
 // ページ情報
 const page = {
   type: 'home', // home | page | single
-  sub: true, // サブエリアの追加
+  // sub: true, // サブエリアの追加
 }
 
 // SEO・metaタグ関連
 const seo = {
-  // title: 'ページタイトル', // 必須
+  // title: 'ページタイトル', // 基本必須（titleTagが有線される）
   titleTag: 'Astro静的ページテンプレート', // 必要あれば（タイトルタグ上書き）
   // description: 'ディスクリプション', // 必要あれば
   // keywords: 'キーワード1,キーワード2', // 必要あれば
@@ -26,9 +26,12 @@ const hero = {
   mainTitle: 'メインタイトル',
   subTitle: 'サブタイトル',
 }
+
+// 【仕様未確定】パンくずリスト false || true || [{href: '/', label: 'ホーム'}, ...]
+const breadcrumbs = true
 ---
 
-<Layout page={page} seo={seo} hero={hero} root={root}>
+<Layout page={page} seo={seo} hero={hero} root={root} breadcrumbs={breadcrumbs}>
   <details class="c-details c-container c-container--large">
     <summary class="c-details__summary"> 開閉ボタン（summary）</summary>
     <div class="c-details__content">
@@ -39,6 +42,8 @@ const hero = {
       </ul>
     </div>
   </details>
+
+  <div class="u-bg-theme u-h-500"></div>
 
   <a class="c-btn" href={root}>
     <span class="c-btn__label">ボタン</span>

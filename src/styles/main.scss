@@ -28,11 +28,12 @@
 再利用できるパターンとして、小さな単位のモジュールを定義します。
 出来る限り、最低限の機能を持ったものとして定義されるべきであり、それ自体が固有の幅や色などの特色を持つことは避けるのが望ましいです。
 ----------------------------------------------------------------- */
+@use './Component/c-drawer' as *;
+@use './Component/c-menu-toggle' as *;
 @use './Component/c-container' as *;
 @use './Component/c-flex' as *;
 @use './Component/c-btn' as *;
 @use './Component/c-icon' as *;
-@use './Component/c-drawer' as *;
 // @use './Component/c-object-fit' as *;
 // @use './Component/c-select' as *;
 // @use './Component/c-help' as *;

@@ -47,4 +47,4 @@ $color-map: (
 ) !default;
 
 // @Function z-index("header")
-$index-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading', 'debug') !default;
+$zindex-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading', 'debug') !default;

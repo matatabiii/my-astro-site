@@ -1,0 +1,87 @@
+@use '../Foundation/Tools/functions' as *;
+
+$cb: cubic-bezier(0.78, 0.43, 0.16, 1);
+
+.c-menu-toggle {
+  transition: visibility 0.1s ease-in-out 0s, opacity 0.1s ease-in-out 0s, z-index 0.1s ease-in-out 0s;
+  position: fixed;
+  background: var(--color-theme-primary);
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 0.5rem;
+  color: var(--color-gray-0);
+  z-index: z-index('trigger');
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.4rem;
+
+  // .c-menu-toggle__label
+  &__label {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  // .c-menu-toggle__u
+  &__u {
+    display: block;
+    width: 3rem;
+    height: 0.2rem;
+    background: currentColor;
+    border-radius: 0;
+    margin: 1rem auto;
+    position: relative;
+    transition: color 0.4s $cb, background 0.4s $cb, box-shadow 0.4s $cb, transform 0.4s ease-in-out, top 0.4s $cb, right 0.4s $cb, left 0.4s $cb;
+    // transform: scale(0.9) rotate(45deg);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 3rem;
+      height: 0.2rem;
+      position: absolute;
+      background: currentColor;
+      border-radius: 0;
+      transform-origin: center center;
+    }
+
+    &::before {
+      bottom: 0.8rem;
+      transition: transform 0.4s $cb, bottom 0.4s $cb 0.2s, right 0.4s $cb 0.2s;
+    }
+
+    &::after {
+      top: 0.8rem;
+      transition: transform 0.4s $cb, top 0.4s $cb 0.2s, right 0.4s $cb 0.2s;
+    }
+  }
+
+  /* open */
+  &[aria-expanded='true'] {
+    .c-menu-toggle__u {
+      background: transparent;
+      transform: translate3d(0, 0, 0);
+      &::before {
+        bottom: 0;
+        right: 0;
+        transform: translate3d(0, 0, 0) rotate(45deg);
+        transition: transform 0.4s $cb 0.2s, bottom 0.4s $cb, right 0.4s $cb;
+      }
+
+      &::after {
+        top: 0;
+        left: 0;
+        transform: translate3d(0, 0, 0) rotate(-45deg);
+        transition: transform 0.4s $cb 0.2s, top 0.4s $cb, left 0.4s $cb;
+      }
+    }
+  }
+
+  /* close */
+  &[aria-expanded='false'] {
+  }
+}

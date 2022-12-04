@@ -1,3 +1,5 @@
+@use '../Settings/variable' as *;
+
 /// テキストの境界線 (16分割して滑らか感をだす)
 /// @param  {number} $width        大きさ
 /// @param  {string} $color        カラーコード
@@ -16,8 +18,8 @@
 /// @param  {string} $key キー名
 /// @return {number}      順番
 @function z-index($key: null) {
-  @if list == type-of($index-list) and index($index-list, $key) {
-    @return 1000 + index($index-list, $key);
+  @if list == type-of($zindex-list) and index($zindex-list, $key) {
+    @return 1000 + index($zindex-list, $key);
   }
   @return 0;
 }

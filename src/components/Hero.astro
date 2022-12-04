@@ -1,0 +1,11 @@
+---
+const { hero } = Astro.props
+---
+
+<div class="l-hero">
+  <div class="l-hero__container">
+    {hero?.parentTitle && <div class="l-hero__title-parent">{hero.parentTitle}</div>}
+    {hero?.mainTitle && <h1 class="l-hero__title-main">{hero.mainTitle}</h1>}
+    {hero?.subTitle && <div class="l-hero__title-sub">{hero.subTitle}</div>}
+  </div>
+</div>

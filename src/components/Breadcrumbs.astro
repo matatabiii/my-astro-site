@@ -1,0 +1,26 @@
+---
+const { breadcrumbs, root } = Astro.props
+/*
+breadcrumbs = [
+  {href: '/', label: 'ホーム'},
+  {href: '/children/', label: '子ページA'},
+  {href: '/children/children-b/', label: '子ページB', current: true},
+]
+*/
+---
+
+<nav aria-label="Breadcrumbs" class="c-breadcrumbs">
+  <ol class="c-breadcrumbs__crumbs">
+    <li class="c-breadcrumbs__crumb">
+      <a href={`${root}`} class="c-breadcrumbs__link">ホーム</a>
+    </li>
+
+    <li class="c-breadcrumbs__crumb">
+      <a href={`${root}`} class="c-breadcrumbs__link">子ページA</a>
+    </li>
+
+    <li class="c-breadcrumbs__crumb">
+      <a href={`${root}`} class="c-breadcrumbs__link">子ページB</a>
+    </li>
+  </ol>
+</nav>

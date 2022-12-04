@@ -4,10 +4,11 @@ import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Sidebar from '../components/Sidebar.astro'
+import Breadcrumbs from '../components/Breadcrumbs.astro'
 export const defaultRoot = import.meta.env.BASE_URL
 // Astro.site
 // Astro.url.pathname
-const { page, seo, hero, root } = Astro.props
+const { page, seo, hero, root, breadcrumbs } = Astro.props
 const urlOrigin = Astro.url.origin + root
 const canonicalURL = seo?.canonical || new URL(Astro.url.pathname, Astro.site)
 const { siteName, ogImage, msapplicationTileColor, themeColor, charset, locale, favicon, appleTouchIcon } = config
@@ -15,7 +16,7 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
 ---
 
 <!DOCTYPE html>
-<html class="no-js" lang="ja" prefix="og: http://ogp.me/ns#">
+<html class="no-js" lang="ja" prefix="og: http://ogp.me/ns#" data-root={root}>
   <head>
     <meta charset={charset} />
     <meta name="format-detection" content="telephone=no" />
@@ -55,21 +56,24 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       import '../js/main.js'
     </script>
   </head>
-  <body class={`l-body ${page?.sub && 'l-body--in-sub'}`}>
-    <Header isHome={page.type === 'home'} hero={hero} root={root} />
-    <main role="main" class="l-body__main">
-      <div class="l-body__main-content">
-        <slot />
-      </div>
+  <body id="body" class={`l-body ${page.sub ? 'l-body--in-sub' : ''}`}>
+    <Header isHome={page.type === 'home'} page={page} hero={hero} root={root} />
+    <main id="main" role="main" class="l-body__main">
+      {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} root={root} />}
+      <div class="l-body__content">
+        <div class="l-body__content-main">
+          <slot />
+        </div>
 
-      {
-        page?.sub && (
-          <div class="l-body__main-side">
-            <Sidebar isHome={page.type === 'home'} root={root} />
-          </div>
-        )
-      }
+        {
+          page?.sub && (
+            <div class="l-body__content-sub">
+              <Sidebar isHome={page.type === 'home'} page={page} root={root} />
+            </div>
+          )
+        }
+      </div>
     </main>
-    <Footer isHome={page.type === 'home'} root={root} />
+    <Footer isHome={page.type === 'home'} page={page} root={root} />
   </body>
 </html>

@@ -1,3 +1,5 @@
+@use '../Foundation/Tools/mixins' as *;
+
 /* コンポーネント：ボタン */
 .c-btn {
   display: flex;

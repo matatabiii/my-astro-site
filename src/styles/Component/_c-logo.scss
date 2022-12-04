@@ -1,0 +1,6 @@
+@use '../Foundation/Tools/mixins' as *;
+
+.c-logo {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+}

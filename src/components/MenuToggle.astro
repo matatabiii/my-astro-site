@@ -1,0 +1,8 @@
+---
+const { id, label, controls } = Astro.props
+---
+
+<button id={id} class="c-menu-toggle" type="button" aria-label={label} aria-controls={controls} aria-expanded="false">
+  <span class="c-menu-toggle__u"></span>
+  <span class="c-menu-toggle__label">メニュー</span>
+</button>

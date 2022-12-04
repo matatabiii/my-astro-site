@@ -1,0 +1,78 @@
+@use '../Foundation/Tools/functions' as *;
+
+$cb: cubic-bezier(0.46, 0.38, 0.37, 1.04);
+
+.c-drawer {
+  transition: visibility 0.1s ease-in-out 0s, opacity 0.1s ease-in-out 0s, z-index 0.1s ease-in-out 0s;
+  position: fixed;
+  color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  visibility: hidden;
+  z-index: -1000;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    // width: 100%;
+    height: 100%;
+    background: rgba(var(--rgb-gray), 0.9);
+  }
+
+  // .c-drawer__scrollarea
+  &__scrollarea {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  // .c-drawer__container
+  &__container {
+    transform: translate3d(2rem, 0, 0);
+  }
+
+  /* open */
+  &[aria-hidden='false'] {
+    visibility: visible;
+    transition: visibility 0.1s ease-in-out 0s, z-index 0.1s ease-in-out 0s;
+    z-index: z-index('drawer');
+
+    &::before {
+      width: 100%;
+      opacity: 1;
+      transition: width 0.25s $cb 0.1s, opacity 0.25s ease 0.1s;
+    }
+
+    .c-drawer__container {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition: opacity 0.3s ease-in-out 0.4s, transform 0.3s $cb 0.4s;
+    }
+  }
+
+  /* close */
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out 0.55s, z-index 0.3s ease-in-out 0.55s;
+
+    &::before {
+      width: 0;
+      opacity: 0;
+      transition: width 0.25s $cb 0.2s, opacity 0.25s ease 0.4s;
+    }
+
+    .c-drawer__container {
+      opacity: 0;
+      transform: translate3d(2rem, 0, 0);
+      transition: opacity 0.3s ease-in-out 0s, transform 0.3s $cb 0s;
+    }
+  }
+}

@@ -89,8 +89,9 @@
   --bg: transparent;
   --gap-x: 0rem;
   --gap-y: 0rem;
+  --layout-wrap: wrap;
   --layout-main-width: 100%;
-  --layout-sub-width: 40rem;
+  --layout-sub-width: 100%; // サイドバーの幅（デスクトップ幅は_l-body.scssで設定）
 
   /* colors */
   @each $key, $color in $color-map {

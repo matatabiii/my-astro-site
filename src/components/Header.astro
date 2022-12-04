@@ -10,31 +10,33 @@ const { isHome, page, hero, root } = Astro.props
       {isHome ? <h1 class="c-logo">ロゴ</h1> : <div class="c-logo">ロゴ</div>}
     </div>
 
-    <div class="l-header__nav l-nav l:u-hidden">
-      <ul class="l-nav__items">
-        <li class="l-nav__item">
-          <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
-        </li>
-        <li class="l-nav__item">
-          <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
-        </li>
-        <li class="l-nav__item">
-          <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
-        </li>
-        <li class="l-nav__item">
-          <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
-        </li>
-      </ul>
-    </div>
+    <nav id="global-menu">
+      <div class="l-header__nav l-nav l:u-hidden">
+        <ul class="l-nav__items">
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
 
-  <MenuToggle id="menu-toggle" label="menu" controls="global-menu" />
+  <MenuToggle id="menu-toggle" label="menu" controls="global-menu-drawer" />
 
-  <nav id="global-menu" class="c-drawer" aria-hidden="true">
+  <!-- <div id="global-menu-drawer" class="c-drawer" aria-hidden="true">
     <div class="c-drawer__scrollarea">
-      <div class="c-drawer__container">ああああああ</div>
+      <div id="global-menu-drawer-container" class="c-drawer__container"></div>
     </div>
-  </nav>
+  </div> -->
 
   {!isHome && hero && <Hero page={page} hero={hero} root={root} />}
 </header>

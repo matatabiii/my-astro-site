@@ -23,18 +23,21 @@ export const drawer = (toggleElement) => {
     }
   }
 
+  // 背景スクロールロック解除
   const deactivateScrollLock = () => {
     document.documentElement.style.removeProperty('overflow')
     scrollable.style.removeProperty('padding-right')
     // document.documentElement.classList.remove(this.config.stateClassName)
   }
 
+  // open判定
   const isOpenToggleDrawer = () => {
     const isOpenToggle = toggleElement.getAttribute('aria-expanded') === 'true' // トグルの状態がopenかcloseか
     const isOpenDrawer = drawerElement.getAttribute('aria-hidden') !== 'true' // ドロワーの状態がopenかcloseか
     return isOpenToggle && isOpenDrawer
   }
 
+  // Open
   const setOpen = () => {
     toggleElement.setAttribute('aria-expanded', 'true') // aria-expanded=true => open
     drawerElement.setAttribute('aria-hidden', 'false') // aria-hidden=false => open
@@ -43,6 +46,7 @@ export const drawer = (toggleElement) => {
     drawerElement.style.visibility = 'visible'
   }
 
+  // Close
   const setClose = () => {
     toggleElement.setAttribute('aria-expanded', 'false') // aria-expanded=true => open
     drawerElement.setAttribute('aria-hidden', 'true') // aria-hidden=false => open
@@ -50,11 +54,13 @@ export const drawer = (toggleElement) => {
     drawerElement.style.visibility = 'hidden'
   }
 
+  // open <-> close
   const toggle = () => {
     const isOpen = isOpenToggleDrawer()
     isOpen ? setClose() : setOpen()
   }
 
+  // hundle
   const onToggle = () => {
     toggle()
   }
@@ -80,16 +86,25 @@ export const drawer = (toggleElement) => {
 
   setClose() // 初期化（閉じる）
 
+  // clickイベント付与
   toggleElement.addEventListener('click', (event) => {
     event.preventDefault()
     onToggle()
   })
 
-  window.addEventListener('keydown', (event) => {
-    onKeydownEsc(event)
-  }, false)
+  window.addEventListener(
+    'keydown',
+    (event) => {
+      onKeydownEsc(event)
+    },
+    false,
+  )
 
-  drawerElement.addEventListener('transitionend', (event) => {
-    onTransitionendDrawer(event)
-  }, false)
+  drawerElement.addEventListener(
+    'transitionend',
+    (event) => {
+      onTransitionendDrawer(event)
+    },
+    false,
+  )
 }

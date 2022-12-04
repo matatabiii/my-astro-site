@@ -7,7 +7,7 @@ const { isHome, page, hero, root } = Astro.props
 <header role="banner" id="header" data-view-over="header" class="l-header l-body__header">
   <div class="l-header__main">
     <div class="l-header-base">
-      {isHome ? <h1 class="c-logo">ロゴ</h1> : <div class="c-logo">ロゴ</div>}
+      {isHome ? <h1 class="c-logo"><a href={`${root}`}>ロゴ</a></h1> : <div class="c-logo"><a href={`${root}`}>ロゴ</a></div>}
     </div>
 
     <nav id="global-menu">
@@ -26,52 +26,12 @@ const { isHome, page, hero, root } = Astro.props
             <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
           </li>
         </ul>
-        <ul class="l-nav__items">
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
-          </li>
-        </ul>
-        <ul class="l-nav__items">
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
-          </li>
-        </ul><ul class="l-nav__items">
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
-          </li>
-          <li class="l-nav__item">
-            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
-          </li>
-        </ul>
       </div>
     </nav>
   </div>
 
   <MenuToggle id="menu-toggle" label="menu" controls="global-menu-drawer" />
+  {/* ここにdrawer.jsによってDrawerコンポーネントが生成され#global-menuがclonesされる */}
 
   {!isHome && hero && <Hero page={page} hero={hero} root={root} />}
 </header>

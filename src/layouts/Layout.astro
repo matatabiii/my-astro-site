@@ -56,9 +56,9 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
       import '../js/main.js'
     </script>
   </head>
-  <body class={`l-body ${page?.sub && 'l-body--in-sub'}`}>
+  <body id="body" class={`l-body ${page.sub ? 'l-body--in-sub' : ''}`}>
     <Header isHome={page.type === 'home'} page={page} hero={hero} root={root} />
-    <main role="main" class="l-body__main">
+    <main id="main" role="main" class="l-body__main">
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} root={root} />}
       <div class="l-body__content">
         <div class="l-body__content-main">

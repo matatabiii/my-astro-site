@@ -1,3 +1,5 @@
+@use '../Foundation/Tools/mixins' as *;
+
 .c-details {
   --color: var(--color-text);
   background: #f5f5f5;

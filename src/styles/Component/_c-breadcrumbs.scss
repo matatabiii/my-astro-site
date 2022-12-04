@@ -1,0 +1,71 @@
+@use '../Foundation/Tools/mixins' as *;
+
+
+/* パンくずリスト */
+.c-breadcrumbs {
+  background: var(--color-gray);
+  color: var(--color-text);
+  position: relative;
+  z-index: 1;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none; /* Firefox 対応 */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (--min-lg) {
+    margin-bottom: 3.7rem;
+    font-size: 1.6rem;
+  }
+
+  // .c-breadcrumbs__crumbs
+  &__crumbs {
+    width: max-content;
+    padding: 0 2rem;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  // .c-breadcrumbs__crumb
+  &__crumb {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      &:after {
+        content: '>';
+        flex: 0 0 auto;
+        padding: 0 1rem;
+      }
+    }
+
+    [href] {
+
+      @include action() {
+      }
+    }
+  }
+
+  // .c-breadcrumbs__link
+  &__link {
+    transition: color 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex: 0 1 auto;
+
+    @include action() {
+      &[href] {
+        color: var(--color-theme);
+      }
+    }
+  }
+}

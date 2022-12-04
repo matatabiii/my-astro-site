@@ -9,13 +9,36 @@
 // - /sample/index.php
 // - http://10.0.1.23:3000/sample/
 // - http://10.0.1.23:3000/sample
-export const currentHref = (targetSelector: string = 'a[href]:not(.js-ignore), [data-href]:not([data-href="#body"])') => {
-  const getUrlObject = (path:string) => {
-    const link = document.createElement('a')
-    link.href = path
-    return link
+
+// urlオブジェクトを作成・取得
+export const getUrlObject = (path:string) => {
+  const link = document.createElement('a')
+  link.href = path
+  return link
+}
+
+// リンクが同じページか判断
+export const getSamePageAnchor = (linkTarget:HTMLAnchorElement) => {
+  let link = linkTarget
+  const dataHref = link.dataset.href
+
+  if (dataHref) {
+    link = getUrlObject(dataHref)
   }
 
+  if (
+    link.protocol !== window.location.protocol ||
+    link.host !== window.location.host ||
+    link.pathname !== window.location.pathname ||
+    link.search !== window.location.search
+  ) {
+    return false
+  }
+
+  return true
+}
+
+export const currentHref = (targetSelector: string = 'a[href]:not(.js-ignore), [data-href]:not([data-href="#body"])') => {
   const target:string = targetSelector
   const flagSelector:string = 'js-current'
   const classCurrnet:string = 'is-current'
@@ -24,28 +47,6 @@ export const currentHref = (targetSelector: string = 'a[href]:not(.js-ignore), [
   const root:string = getUrlObject(path).href
   const current:string = window.location.protocol + '//' + window.location.host + window.location.pathname
   const pathname:string = '/' + current.replace(root, '')
-
-  // リンクが同じページか判断
-  const getSamePageAnchor = (linkTarget:HTMLAnchorElement) => {
-    let link = linkTarget
-    const dataHref = link.dataset.href
-
-    if (dataHref) {
-      link = getUrlObject(dataHref)
-    }
-
-    if (
-      link.protocol !== window.location.protocol ||
-      link.host !== window.location.host ||
-      link.pathname !== window.location.pathname ||
-      link.search !== window.location.search
-    ) {
-      return false
-    }
-
-    return true
-  }
-
 
   const set = () => {
     // 一度対象にされた要素のクラスを削除

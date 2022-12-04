@@ -111,59 +111,59 @@ export const drawer = (toggleElement, drawerElementTarget) => {
 export const createDrawer = (cloneTarget, mqlConditions = '(min-width: 1023px)') => {
   cloneTarget.classList.add('js-drawer-root')
 
-  if (!document.getElementById('global-menu-drawer') && cloneTarget && !document.documentElement.classList.contains('js-drawer-init')) {
-    const cloneTargetNode = cloneTarget.cloneNode(true)
-    cloneTargetNode.classList.remove('js-drawer-root')
-    const cloneTtraceElement = document.createElement('div') // 元の場所に戻すための要素
-    cloneTtraceElement.id = 'clone-trace'
-    cloneTtraceElement.style.display = 'none'
+  if (!(!document.getElementById('global-menu-drawer') && cloneTarget && !document.documentElement.classList.contains('js-drawer-init'))) return false
 
-    const drawerElement = document.createElement('div')
-    drawerElement.id = 'global-menu-drawer'
-    drawerElement.classList.add('c-drawer')
-    drawerElement.setAttribute('aria-hidden', 'true')
-    drawerElement.insertAdjacentHTML(
-      'beforeend',
-      `
+  const cloneTargetNode = cloneTarget.cloneNode(true)
+  cloneTargetNode.classList.remove('js-drawer-root')
+  const cloneTtraceElement = document.createElement('div') // 元の場所に戻すための要素
+  cloneTtraceElement.id = 'clone-trace'
+  cloneTtraceElement.style.display = 'none'
+
+  const drawerElement = document.createElement('div')
+  drawerElement.id = 'global-menu-drawer'
+  drawerElement.classList.add('c-drawer')
+  drawerElement.setAttribute('aria-hidden', 'true')
+  drawerElement.insertAdjacentHTML(
+    'beforeend',
+    `
       <div class="c-drawer__scrollarea">
         <div id="global-menu-drawer-container" class="c-drawer__container"></div>
       </div>
     `,
-    )
-    drawerElement.querySelector('#global-menu-drawer-container').insertAdjacentElement('beforeend', cloneTargetNode)
+  )
+  drawerElement.querySelector('#global-menu-drawer-container').insertAdjacentElement('beforeend', cloneTargetNode)
 
-    const toggleElement = document.getElementById('menu-toggle')
+  const toggleElement = document.getElementById('menu-toggle')
 
-    const mql = window.matchMedia(mqlConditions)
-    const drawerMethods = drawer(toggleElement, drawerElement)
+  const mql = window.matchMedia(mqlConditions)
+  const drawerMethods = drawer(toggleElement, drawerElement)
 
-    const handleMql = (mql) => {
-      const isCloneTrase = document.getElementById('clone-trace') !== null
-      if (mql.matches) {
-        drawerMethods.setClose(drawerElement)
-        drawerMethods.removeHandleEvent(drawerElement)
+  const handleMql = (mql) => {
+    const isCloneTrase = document.getElementById('clone-trace') !== null
+    if (mql.matches) {
+      drawerMethods.setClose(drawerElement)
+      drawerMethods.removeHandleEvent(drawerElement)
 
-        /* デスクトップ */
-        /* 初回はHTMLに「cloneTargetNode」が存在するので初回判定のためにクラスで判断 */
-        if (isCloneTrase) {
-          // cloneTargetNode.classList.remove('js-drawer-root')
-          cloneTtraceElement.insertAdjacentElement('afterend', cloneTarget)
-          cloneTtraceElement.remove()
-        }
-        drawerElement.remove() // Drawer要素削除
-      } else if (!isCloneTrase) {
-        /* その他 */
-        cloneTarget.insertAdjacentElement('afterend', cloneTtraceElement) // cloneTarget要素の削除準備
-        cloneTarget.remove() // cloneTarget要素削除
-        toggleElement.insertAdjacentElement('afterend', drawerElement) // Drawer要素設置
-
-        drawerMethods.addHandleEvent(drawerElement)
+      /* デスクトップ */
+      /* 初回はHTMLに「cloneTargetNode」が存在するので初回判定のためにクラスで判断 */
+      if (isCloneTrase) {
+        cloneTtraceElement.insertAdjacentElement('afterend', cloneTarget)
+        cloneTtraceElement.remove()
       }
+      drawerElement.remove() // Drawer要素削除
+    } else if (!isCloneTrase) {
+      /* その他 */
+      cloneTarget.insertAdjacentElement('afterend', cloneTtraceElement) // cloneTarget要素の削除準備
+      cloneTarget.remove() // cloneTarget要素削除
+      toggleElement.insertAdjacentElement('afterend', drawerElement) // Drawer要素設置
+
+      drawerMethods.addHandleEvent(drawerElement)
     }
-
-    handleMql(mql)
-    mql.addEventListener('change', handleMql)
-
-    document.documentElement.classList.add('js-drawer-init')
   }
+
+  handleMql(mql)
+  mql.addEventListener('change', handleMql)
+
+  document.documentElement.classList.add('js-drawer-init')
+  return {...{drawerElement},...drawerMethods}
 }

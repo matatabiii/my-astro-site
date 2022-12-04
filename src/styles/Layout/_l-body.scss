@@ -37,21 +37,18 @@
     display: flex;
     flex-wrap: var(--layout-wrap);
     justify-content: center;
-    background: var(--color-theme-primary);
     flex: 1 1 auto;
 
     // .l-body__content-main
     &-main {
       width: var(--layout-main-width); /* 40remはサイドバーの値 */
       max-width: 100%;
-      background: var(--color-text);
     }
 
     // .l-body__content-sub
     &-sub {
       width: var(--layout-sub-width); /* 40remはサイドバーの値 */
       max-width: 100%;
-      background: var(--color-gray);
     }
   }
 

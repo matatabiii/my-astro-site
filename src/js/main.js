@@ -1,5 +1,5 @@
 import { createDrawer } from './modules/drawer.js'
-import { SmoothScroll } from './modules/SmoothScroll'
+import { SmoothScroll } from './modules/smoothScroll.js'
 
 const cloneTarget = document.getElementById('global-menu')
 /* ドロワーのラッパー作成 */

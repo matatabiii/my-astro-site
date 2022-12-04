@@ -5,7 +5,7 @@ $cb: cubic-bezier(0.78, 0.43, 0.16, 1);
 .c-menu-toggle {
   transition: visibility 0.1s ease-in-out 0s, opacity 0.1s ease-in-out 0s, z-index 0.1s ease-in-out 0s;
   position: fixed;
-  background: var(--color-theme-primary);
+  background: var(--color-theme);
   width: 5.5rem;
   height: 5.5rem;
   border-radius: 0.5rem;

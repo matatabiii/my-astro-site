@@ -11,8 +11,49 @@ const { isHome, page, hero, root } = Astro.props
     </div>
 
     <nav id="global-menu">
-      <div class="l-header__nav l-nav l:u-hidden">
+      <div class="l-header__nav l-nav">
         <ul class="l-nav__items">
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
+          </li>
+        </ul>
+        <ul class="l-nav__items">
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
+          </li>
+        </ul>
+        <ul class="l-nav__items">
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}post/`}><span class="l-nav__item-label">投稿</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}form/`}><span class="l-nav__item-label">フォーム</span></a>
+          </li>
+          <li class="l-nav__item">
+            <a class="l-nav__item-link" href={`${root}sample/`}><span class="l-nav__item-label">サンプル</span></a>
+          </li>
+        </ul><ul class="l-nav__items">
           <li class="l-nav__item">
             <a class="l-nav__item-link" href={`${root}`}><span class="l-nav__item-label">ホーム</span></a>
           </li>
@@ -31,12 +72,6 @@ const { isHome, page, hero, root } = Astro.props
   </div>
 
   <MenuToggle id="menu-toggle" label="menu" controls="global-menu-drawer" />
-
-  <!-- <div id="global-menu-drawer" class="c-drawer" aria-hidden="true">
-    <div class="c-drawer__scrollarea">
-      <div id="global-menu-drawer-container" class="c-drawer__container"></div>
-    </div>
-  </div> -->
 
   {!isHome && hero && <Hero page={page} hero={hero} root={root} />}
 </header>

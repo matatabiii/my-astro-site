@@ -1,10 +1,16 @@
-export const drawer = (toggleElement) => {
+/*
+<nav id="global-menu"></nav>
+<MenuToggle id="menu-toggle" label="menu" controls="global-menu-drawer" />
+*/
+export const drawer = (toggleElement, drawerElementTarget) => {
   const scrollable = typeof document.scrollingElement !== 'undefined' ? document.scrollingElement : document.documentElement
   const controlsId = toggleElement.getAttribute('aria-controls') // トグルの操作対象要素のid
-  const drawerElement = document.getElementById(controlsId) // トグルの操作対象要素（ドロワーメニュー自体）
+  const drawerElement = drawerElementTarget || document.getElementById(controlsId) // トグルの操作対象要素（ドロワーメニュー自体）
+
+  const methods = {}
 
   // 背景スクロールロック
-  const activateScrollLock = () => {
+  methods.activateScrollLock = () => {
     const visibleWidth = scrollable.clientWidth
     document.documentElement.style.overflow = 'hidden'
     const hiddenWidth = scrollable.clientWidth
@@ -24,87 +30,140 @@ export const drawer = (toggleElement) => {
   }
 
   // 背景スクロールロック解除
-  const deactivateScrollLock = () => {
+  methods.deactivateScrollLock = () => {
     document.documentElement.style.removeProperty('overflow')
     scrollable.style.removeProperty('padding-right')
     // document.documentElement.classList.remove(this.config.stateClassName)
   }
 
   // open判定
-  const isOpenToggleDrawer = () => {
+  methods.isOpenToggleDrawer = (selfDrawerElement = drawerElement) => {
     const isOpenToggle = toggleElement.getAttribute('aria-expanded') === 'true' // トグルの状態がopenかcloseか
-    const isOpenDrawer = drawerElement.getAttribute('aria-hidden') !== 'true' // ドロワーの状態がopenかcloseか
+    const isOpenDrawer = selfDrawerElement && selfDrawerElement.getAttribute('aria-hidden') !== 'true' // ドロワーの状態がopenかcloseか
     return isOpenToggle && isOpenDrawer
   }
 
   // Open
-  const setOpen = () => {
+  methods.setOpen = (selfDrawerElement = drawerElement) => {
     toggleElement.setAttribute('aria-expanded', 'true') // aria-expanded=true => open
-    drawerElement.setAttribute('aria-hidden', 'false') // aria-hidden=false => open
+    selfDrawerElement.setAttribute('aria-hidden', 'false') // aria-hidden=false => open
     toggleElement.setAttribute('aria-label', 'close')
-    activateScrollLock()
-    drawerElement.style.visibility = 'visible'
+    methods.activateScrollLock()
+    selfDrawerElement.style.visibility = 'visible'
   }
 
   // Close
-  const setClose = () => {
+  methods.setClose = (selfDrawerElement = drawerElement) => {
     toggleElement.setAttribute('aria-expanded', 'false') // aria-expanded=true => open
-    drawerElement.setAttribute('aria-hidden', 'true') // aria-hidden=false => open
+    selfDrawerElement.setAttribute('aria-hidden', 'true') // aria-hidden=false => open
     toggleElement.setAttribute('aria-label', 'menu')
-    drawerElement.style.visibility = 'hidden'
+    selfDrawerElement.style.visibility = 'hidden'
   }
 
   // open <-> close
-  const toggle = () => {
-    const isOpen = isOpenToggleDrawer()
-    isOpen ? setClose() : setOpen()
+  methods.toggle = () => {
+    const isOpen = methods.isOpenToggleDrawer()
+    isOpen ? methods.setClose() : methods.setOpen()
   }
 
   // hundle
-  const onToggle = () => {
-    toggle()
+  methods.onToggle = (event) => {
+    event.preventDefault()
+    methods.toggle()
   }
 
   // Escapeキーでドロワーを閉じる
-  const onKeydownEsc = (event) => {
-    if (!isOpenToggleDrawer() || event.key !== 'Escape') {
+  methods.onKeydownEsc = (event) => {
+    if (!methods.isOpenToggleDrawer() || event.key !== 'Escape') {
       return
     }
     event.preventDefault()
-    setClose()
+    methods.setClose()
   }
 
   // スクロールロック解除はtransitionEventを監視
-  const onTransitionendDrawer = (event) => {
+  methods.onTransitionendDrawer = (event) => {
     if (event.target !== drawerElement || event.propertyName !== 'visibility') {
       return
     }
-    if (!isOpenToggleDrawer()) {
-      deactivateScrollLock()
+    if (!methods.isOpenToggleDrawer()) {
+      methods.deactivateScrollLock()
     }
   }
 
-  setClose() // 初期化（閉じる）
+  methods.addHandleEvent = (selfDrawerElement = drawerElement) => {
+    toggleElement.addEventListener('click', methods.onToggle, false)
+    window.addEventListener('keydown', methods.onKeydownEsc, false)
+    selfDrawerElement.addEventListener('transitionend', methods.onTransitionendDrawer, false)
+  }
 
-  // clickイベント付与
-  toggleElement.addEventListener('click', (event) => {
-    event.preventDefault()
-    onToggle()
-  })
+  methods.removeHandleEvent = (selfDrawerElement = drawerElement) => {
+    toggleElement.removeEventListener('click', methods.onToggle, false)
+    window.removeEventListener('keydown', methods.onKeydownEsc, false)
+    selfDrawerElement.removeEventListener('transitionend', methods.onTransitionendDrawer, false)
+  }
 
-  window.addEventListener(
-    'keydown',
-    (event) => {
-      onKeydownEsc(event)
-    },
-    false,
-  )
+  methods.setClose() // 初期化（閉じる）
 
-  drawerElement.addEventListener(
-    'transitionend',
-    (event) => {
-      onTransitionendDrawer(event)
-    },
-    false,
-  )
+  return methods
+}
+
+export const createDrawer = (cloneTarget, mqlConditions = '(min-width: 1023px)') => {
+  cloneTarget.classList.add('js-drawer-root')
+
+  if (!document.getElementById('global-menu-drawer') && cloneTarget && !document.documentElement.classList.contains('js-drawer-init')) {
+    const cloneTargetNode = cloneTarget.cloneNode(true)
+    cloneTargetNode.classList.remove('js-drawer-root')
+    const cloneTtraceElement = document.createElement('div') // 元の場所に戻すための要素
+    cloneTtraceElement.id = 'clone-trace'
+    cloneTtraceElement.style.display = 'none'
+
+    const drawerElement = document.createElement('div')
+    drawerElement.id = 'global-menu-drawer'
+    drawerElement.classList.add('c-drawer')
+    drawerElement.setAttribute('aria-hidden', 'true')
+    drawerElement.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="c-drawer__scrollarea">
+        <div id="global-menu-drawer-container" class="c-drawer__container"></div>
+      </div>
+    `,
+    )
+    drawerElement.querySelector('#global-menu-drawer-container').insertAdjacentElement('beforeend', cloneTargetNode)
+
+    const toggleElement = document.getElementById('menu-toggle')
+
+    const mql = window.matchMedia(mqlConditions)
+    const drawerMethods = drawer(toggleElement, drawerElement)
+
+    const handleMql = (mql) => {
+      const isCloneTrase = document.getElementById('clone-trace') !== null
+      if (mql.matches) {
+        drawerMethods.setClose(drawerElement)
+        drawerMethods.removeHandleEvent(drawerElement)
+
+        /* デスクトップ */
+        /* 初回はHTMLに「cloneTargetNode」が存在するので初回判定のためにクラスで判断 */
+        if (isCloneTrase) {
+          // cloneTargetNode.classList.remove('js-drawer-root')
+          cloneTtraceElement.insertAdjacentElement('afterend', cloneTarget)
+          cloneTtraceElement.remove()
+        }
+        drawerElement.remove() // Drawer要素削除
+      } else if (!isCloneTrase) {
+        /* その他 */
+        cloneTarget.insertAdjacentElement('afterend', cloneTtraceElement) // cloneTarget要素の削除準備
+        cloneTarget.remove() // cloneTarget要素削除
+        toggleElement.insertAdjacentElement('afterend', drawerElement) // Drawer要素設置
+
+        drawerMethods.addHandleEvent(drawerElement)
+      }
+    }
+
+    handleMql(mql)
+    mql.addEventListener('change', handleMql)
+
+    document.documentElement.classList.add('js-drawer-init')
+  }
 }

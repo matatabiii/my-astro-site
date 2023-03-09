@@ -1,0 +1,145 @@
+@use '../Foundation/Tools/mixins' as *;
+@use '../Foundation/Tools/functions' as *;
+
+/* グローバルナビ */
+.c-nav {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.5rem;
+  display: flex;
+
+  abbr {
+    text-decoration: none;
+  }
+
+  // .c-nav__item
+  &__item {
+    // .c-nav__item--btn
+    &--btn {
+      padding-left: 2rem;
+    }
+
+    position: relative;
+  }
+
+  // .c-nav__link
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 6rem;
+    padding: 0.5rem 1.5rem;
+
+    // .c-nav__link-label
+    &-label {
+      margin-right: 0.8rem;
+    }
+
+    // .c-nav__link-i
+    &-i {
+      color: var(--color-orange);
+      stroke: var(--color-gray-100);
+      stroke-width: 1;
+      position: relative;
+    }
+
+    @include action() {
+      &[href] {
+      }
+    }
+  }
+}
+
+/* ローカルナビ */
+.c-nav-local {
+  display: flex;
+  flex-direction: column;
+
+  @media (--min-md) {
+    flex-direction: row;
+  }
+
+  // .c-nav-local__header
+  &__header {
+    flex: 0 0 auto;
+    min-width: 0;
+
+    @media (--min-md) {
+      padding-right: 3rem;
+      width: 7rem;
+    }
+  }
+
+  // .c-nav-local__main
+  &__main {
+    flex: 1 1 auto;
+    padding-top: 2rem;
+  }
+}
+
+@media (--max-md) {
+  .js-details {
+    overflow: hidden;
+    transition: height 0.4s ease-in-out;
+
+    /* OPEN */
+    &[open] .c-ui-details-header .c-icon-angle {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .c-nav-local__header {
+    display: block;
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    .c-icon-angle {
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+}
+
+/* ドロップダウン */
+.c-nav-dropdown {
+  // .c-nav-dropdown__main
+  &__main {
+    background: var(--color-gray-0);
+    border: 0.2rem dashed currentColor;
+    border-radius: 1.2rem;
+    padding: 1rem 1.5rem;
+
+    li:first-child .c-link-primary {
+      border-top: hidden;
+    }
+
+    li:last-child .c-link-primary {
+      border-bottom: hidden;
+    }
+  }
+
+  @media (--min-lg) {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    transition: transform 0.4s var(--cb-bounse) 0s, opacity 0.4s, visibility 0.4s;
+    visibility: hidden;
+    opacity: 0;
+
+    // .c-nav-dropdown__main
+    &__main {
+      width: 28rem;
+    }
+
+    &[aria-hidden='true'] {
+      transform: translate3d(-50%, -1rem, 0);
+      transition: transform 0.2s ease 0.1s, opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s;
+    }
+
+    &[aria-hidden='false'] {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

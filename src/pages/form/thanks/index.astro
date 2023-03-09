@@ -1,0 +1,39 @@
+---
+import Layout, { defaultRoot } from '../../../layouts/Layout.astro'
+import ThanksContent from '../../../components/ThanksContent.astro'
+const root = defaultRoot // 任意のパスを設定してrootを上書きできます
+
+// ページ情報
+const page = {
+  type: 'page', // home | page | single
+  sub: false, // サブエリアの追加
+  showEntryBlock: false,
+}
+
+// SEO・metaタグ関連
+const seo = {
+  title: '送信完了 | エントリー', // 基本必須（titleTagが有線される）
+  // titleTag: '', // 必要あれば（タイトルタグ上書き）
+  // description: 'ディスクリプション', // 必要あれば
+  // keywords: 'キーワード1,キーワード2', // 必要あれば
+  // ogURL: '', // 必要あれば（基本自動出力）
+  // ogType: '', // 必要あれば（基本自動出力）
+  // ogImage: '', // 必要あれば（基本自動出力）
+  // ogLocale: '', // 必要あれば（基本自動出力）
+}
+
+// ヒーローコンポーネントに渡すprops
+const hero = {
+  parentTitle: '',
+  mainTitle: 'エントリー',
+  subTitle: '',
+  themeClass: 'u-color-yellow',
+}
+
+// パンくずリスト false || true || {indexText: 'ホームネーム'}
+const breadcrumbs = false
+---
+
+<Layout page={page} seo={seo} hero={hero} root={root} breadcrumbs={breadcrumbs}>
+  <ThanksContent />
+</Layout>

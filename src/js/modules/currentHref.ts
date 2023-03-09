@@ -50,7 +50,7 @@ export const currentHref = (targetSelector: string = 'a[href]:not(.js-ignore), [
 
   const set = () => {
     // 一度対象にされた要素のクラスを削除
-    if (document.querySelector(flagSelector)) {
+    if (document.querySelector(flagSelector) != null) {
       document.querySelectorAll<HTMLElement>(flagSelector).forEach((target) => {
         target.classList.remove(flagSelector)
         target.classList.remove(classCurrnet)

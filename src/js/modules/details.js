@@ -1,4 +1,19 @@
-export const detailsUi = (detailsNodes) => {
+/*
+```
+<details class="c-details">
+  <summary class="c-details__summary"> 開閉ボタン（summary）</summary>
+  <div class="c-details__content">
+    <p>あいうえお</p>
+
+    <ul>
+      <li><a href="/">リンク要素</a></li>
+    </ul>
+  </div>
+</details>
+```
+*/
+
+export const detailsUi = (detailsNodes, contentSelectorName = '.c-details__content') => {
   const calcHeight = (details, summary, detailsContent) => {
     return !details.open ? summary.scrollHeight : summary.scrollHeight + detailsContent.scrollHeight
   }
@@ -6,7 +21,9 @@ export const detailsUi = (detailsNodes) => {
   if (detailsNodes.length) {
     detailsNodes.forEach((details) => {
       const summary = details.querySelector('summary')
-      const detailsContent = details.querySelector('.c-details__content')
+      const detailsContent = details.querySelector(contentSelectorName)
+      details.style.willChange = 'height'
+      details.style.transition = 'height 0.4s ease-in-out'
 
       summary.addEventListener('click', (event) => {
         event.preventDefault()
@@ -22,10 +39,8 @@ export const detailsUi = (detailsNodes) => {
 
         // アニメーション終了時にautoに
         details.ontransitionend = (event) => {
-          if (event.propertyName === 'height') details.style.height = ''
+          if (event.propertyName === 'height') details.style.removeProperty('height')
         }
-
-        details.open ? details.classList.add('is-open') : details.classList.remove('is-open')
       })
     })
   }

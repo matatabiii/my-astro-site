@@ -1,2 +1,12 @@
-/* header-nav */
 @use '../Foundation/Tools/mixins' as *;
+@use '../Foundation/Tools/functions' as *;
+
+/* header */
+.l-header {
+  width: 100%;
+
+  @media (--min-lg) {
+  }
+  @media (--min-md) {
+  }
+}

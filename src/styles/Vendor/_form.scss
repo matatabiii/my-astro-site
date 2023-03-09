@@ -134,11 +134,11 @@ textarea {
 input,
 textarea,
 select {
-  &:focus {
+  &:focus-visible {
     border-color: $focus-color !important;
   }
 }
-Î button:focus {
+Î button:focus-visible {
   outline: none;
 }
 select {
@@ -161,7 +161,7 @@ select {
   width: 100%;
 }
 
-.p-form-wrapper {
+.c-form-wrapper {
   line-height: 1.75;
   max-width: calc(100vw - 4rem);
   margin-left: auto;
@@ -169,7 +169,7 @@ select {
   width: 100%;
 }
 
-.p-form-item {
+.c-form-item {
   padding: rem(15) 0;
   // border-top: 1px solid #f2f1ee;
   // border-bottom: 1px solid #f2f1ee;
@@ -186,18 +186,18 @@ select {
   // }
 }
 
-.p-form-header {
+.c-form-header {
   width: 100%;
   line-height: 1;
 
-  // .p-form-header__label
+  // .c-form-header__label
   &__label {
     display: flex;
     align-items: center;
     line-height: 1.3;
     // justify-content: space-between;
 
-    // .p-form-header__label-main
+    // .c-form-header__label-main
     &-main {
       order: 1;
       font-size: rem(14);
@@ -221,7 +221,7 @@ select {
 }
 
 // 必須 / 任意
-.p-form-status {
+.c-form-status {
   display: flex;
   flex: 0 0 auto;
   width: rem(40);
@@ -239,13 +239,13 @@ select {
   border-radius: 4px;
   font-weight: 700;
 
-  // 必須ver .p-form-status--required
+  // 必須ver .c-form-status--required
   &--required {
     background-color: $required-color;
   }
 }
 
-.p-form-input {
+.c-form-input {
   width: 100%;
   padding: 0;
 
@@ -282,7 +282,7 @@ select {
   }
 }
 
-.p-form-confirming {
+.c-form-confirming {
   .wpcf7-list-item {
     padding: 0 0 0 0;
     width: 100%;
@@ -340,7 +340,7 @@ select {
     }
   }
 
-  // .p-form-confirming__label
+  // .c-form-confirming__label
   &__label {
     > * {
       display: inline-block;
@@ -351,23 +351,23 @@ select {
 }
 
 // 送信ボタン
-.p-form-submit {
+.c-form-submit {
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:not(.is-desabled) {
-    .p-form-button {
+    .c-form-button {
       html:not(.sp) &:hover,
-      html:not(.sp) &:focus {
+      html:not(.sp) &:focus-visible {
         color: $color-theme;
         background-color: #fff;
       }
     }
-    .p-form-submit__btn {
+    .c-form-submit__btn {
       html:not(.sp) &:hover,
-      html:not(.sp) &:focus {
-        .p-form-submit__btn__i {
+      html:not(.sp) &:focus-visible {
+        .c-form-submit__btn__i {
           color: $color-theme;
         }
       }
@@ -375,23 +375,23 @@ select {
   }
 
   &.is-desabled {
-    .p-form-button {
+    .c-form-button {
       cursor: not-allowed;
       background-color: #d9d9d9;
       color: #999999;
       pointer-events: none;
       border-color: #999999;
     }
-    .p-form-submit__btn__i {
+    .c-form-submit__btn__i {
       color: #999999;
     }
   }
 
-  // .p-form-submit__btn
+  // .c-form-submit__btn
   &__btn {
     position: relative;
 
-    // .p-form-submit__btn__i
+    // .c-form-submit__btn__i
     &__i {
       position: absolute;
       color: #fff;
@@ -413,7 +413,7 @@ select {
     }
   }
 }
-.p-form-button {
+.c-form-button {
   display: flex;
   width: rem(570);
   height: rem(80);
@@ -431,12 +431,12 @@ select {
 }
 
 // override cf7 default style
-.wpcf7 .p-form-submit__btn .ajax-loader {
+.wpcf7 .c-form-submit__btn .ajax-loader {
   position: absolute;
 }
 
 // selectbox
-.p-form-selectbox {
+.c-form-selectbox {
   display: inline-block;
   max-width: 100%;
   background: #fff;
@@ -487,7 +487,7 @@ select {
 }
 
 // radio, checkbox
-.p-form-lists {
+.c-form-lists {
   .wpcf7-form-control {
     line-height: 1;
     display: flex;
@@ -516,7 +516,7 @@ select {
     background: #fff;
 
     html:not(.sp) &:hover,
-    html:not(.sp) &:focus {
+    html:not(.sp) &:focus-visible {
       input {
         & + span {
           border-color: $focus-color;
@@ -545,7 +545,7 @@ select {
       }
     }
 
-    &:focus {
+    &:focus-visible {
       & + span {
         &::before {
           border-color: $focus-color;
@@ -588,7 +588,7 @@ select {
 }
 
 // 警告文
-.p-form-wrapper {
+.c-form-wrapper {
   .wpcf7-not-valid-tip {
     background: $required-color;
     color: #fff;
@@ -623,7 +623,7 @@ select {
     }
   }
 
-  .p-form-response-output {
+  .c-form-response-output {
     margin-top: rem(20);
     margin-bottom: rem(40);
 
@@ -646,7 +646,7 @@ select {
 }
 
 // 生年月日
-.p-form-block-day {
+.c-form-block-day {
   display: flex;
   flex-wrap: wrap;
 
@@ -654,7 +654,7 @@ select {
     flex-wrap: nowrap;
   }
 
-  // .p-form-block-day__item
+  // .c-form-block-day__item
   &__item {
     display: flex;
     align-items: center;
@@ -668,7 +668,7 @@ select {
       }
     }
 
-    // .p-form-block-day__item-input
+    // .c-form-block-day__item-input
     &-input {
       flex: 1 1 auto;
       @include over('md') {
@@ -676,7 +676,7 @@ select {
       }
     }
 
-    // .p-form-block-day__item-sub
+    // .c-form-block-day__item-sub
     &-sub {
       flex: 0 0 auto;
       padding: 0 rem(10);
@@ -685,19 +685,19 @@ select {
 }
 
 // 住所
-.p-form-block-address {
-  // .p-form-block-address__postalcode
+.c-form-block-address {
+  // .c-form-block-address__postalcode
   &__postalcode {
     display: flex;
     align-items: center;
 
-    // .p-form-block-address__postalcode-sub
+    // .c-form-block-address__postalcode-sub
     &-sub {
       flex: 0 0 auto;
       padding-right: rem(10);
     }
 
-    // .p-form-block-address__postalcode-label
+    // .c-form-block-address__postalcode-label
     &-label {
       flex: 0 1 auto;
 
@@ -707,7 +707,7 @@ select {
     }
   }
 
-  // .p-form-block-address__item
+  // .c-form-block-address__item
   &__item {
     margin-top: rem(10);
     display: block;
@@ -715,12 +715,12 @@ select {
 }
 
 // メールアドレス入力チェック
-.p-form-block-emailcheck {
+.c-form-block-emailcheck {
   line-height: 1.5;
   font-size: rem(16);
   font-weight: 700;
 
-  // .p-form-block-emailcheck__input
+  // .c-form-block-emailcheck__input
   &__input {
     font-size: rem(20);
     margin-top: rem(10);
@@ -730,17 +730,17 @@ select {
 }
 
 // 個人情報の同意
-.p-form-block-acceptance {
+.c-form-block-acceptance {
   @include over('lg') {
     padding-bottom: rem(20);
   }
 
-  // .p-form-block-acceptance__text
+  // .c-form-block-acceptance__text
   &__text {
     margin-bottom: rem(25);
   }
 
-  // .p-form-block-acceptance__checkui
+  // .c-form-block-acceptance__checkui
   &__checkui {
     .wpcf7-list-item {
       margin: 0 auto;

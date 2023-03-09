@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+ul.c-flex,
+ol.c-flex {
+  padding-left: 0;
+  list-style: none;
+}
+
 .c-flex {
   display: flex;
   flex-wrap: wrap;
@@ -33,6 +39,9 @@
 }
 
 @mixin gap($prefix: '') {
+  .#{$prefix}c-flex--x0 {
+    --gap-x: 0rem;
+  }
   .#{$prefix}c-flex--x1_ {
     --gap-x: 0.05rem;
   }
@@ -123,7 +132,16 @@
   .#{$prefix}c-flex--x70 {
     --gap-x: 7rem;
   }
+  .#{$prefix}c-flex--x75 {
+    --gap-x: 7.5rem;
+  }
+  .#{$prefix}c-flex--x75_ {
+    --gap-x: #{7.5rem * 0.5};
+  }
 
+  .#{$prefix}c-flex--y0 {
+    --gap-y: 0rem;
+  }
   .#{$prefix}c-flex--y1_ {
     --gap-y: 0.05rem;
   }
@@ -213,6 +231,12 @@
   }
   .#{$prefix}c-flex--y70 {
     --gap-y: 7rem;
+  }
+  .#{$prefix}c-flex--y75 {
+    --gap-y: 7.5rem;
+  }
+  .#{$prefix}c-flex--y75_ {
+    --gap-y: #{7.5rem * 0.5};
   }
 }
 

@@ -10,3 +10,31 @@
   text-indent: 0;
   flex: 0 0 auto;
 }
+
+.c-icon-angle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: block;
+  color: currentColor;
+
+  // .c-icon-angle__circle
+  &__circle {
+    width: 1em;
+    height: 1em;
+    display: block;
+  }
+
+  // .c-icon-angle__i
+  &__i {
+    display: block;
+    width: calc(6 / 20 * 1em);
+    height: calc(9 / 20 * 1em);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}

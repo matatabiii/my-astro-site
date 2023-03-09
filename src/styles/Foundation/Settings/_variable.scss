@@ -10,7 +10,7 @@
 /* ブレークポイント・コンテナ */
 $lg: 1024; /* ブレークポイント（デスクトップ）（単位不要） */
 $md: 768; /* ブレークポイント（タブレット）（単位不要） */
-$container-max: 1400; /* デザインカンプの最大幅（単位不要） */
+$container-max: 1370; /* デザインカンプの最大幅（単位不要） */
 $container: 1170; /* メインコンテンツの幅（単位不要） */
 $container-large: 970; /* ラージコンテンツの幅（単位不要） */
 $container-medium: 770; /* ミディアムコンテンツの幅（単位不要） */
@@ -19,8 +19,8 @@ $container-small: 570; /* スモールコンテンツの幅（単位不要） */
 /* 基本のフォントファミリーやテキスト情報 */
 $font-size: 16; /* bodyに設定するベースフォントサイズ（単位不要） */
 $font-family-body: 'Noto Sans JP'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
-$font-family-sub: 'Arial Black'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
-$font-weight: var(--font-weight-regular); /* --font-weight-[thin|light|regular|medium|bold|black] 詳細は_base.scssの --font-weight- を検索 */
+$font-family-sub: '"Senobi Gothic", senobi-gothic'; /* Webフォントを使用する場合は、Layout.astroでフォントを読み込む必要があります */
+$font-weight: var(--font-weight-medium); /* --font-weight-[thin|light|regular|medium|bold|black] 詳細は_base.scssの --font-weight- を検索 */
 $line-height: 1.8;
 $karning: 'palt' 1; /* カーニングが不要な場合はbodyの「font-feature-settings」を行ごとコメントアウトする */
 $letter-spacing: normal;
@@ -34,14 +34,20 @@ $color-map: (
   'gray-100': color16toRGB(#000000),
   'gray-0': color16toRGB(#ffffff),
   'gray': color16toRGB(#cccccc),
-  'text': color16toRGB(#333333),
-  'theme': color16toRGB(#644be0),
-  'theme-base': color16toRGB(#eedfff),
+  'gray-sub': color16toRGB(#d8d8d8),
+  'text': color16toRGB(#000000),
+  'theme': color16toRGB(#a047ff),
+  'theme-base': color16toRGB(#f8f8f8),
   'theme-sub': color16toRGB(#c36cba),
+  'pink': color16toRGB(#ed6b65),
+  'blue': color16toRGB(#2d9be9),
+  'green': color16toRGB(#79c36c),
+  'orange': color16toRGB(#f48f51),
+  'yellow': color16toRGB(#ffd03b),
   'success': color16toRGB(#28a745),
   'danger': color16toRGB(#ef4b4b),
   'warning': color16toRGB(#ffc107),
 ) !default;
 
 // @Function z-index("header")
-$zindex-list: ('footer', 'nav', 'content', 'pagetop', 'header', 'header-base', 'drawer', 'trigger', 'loading', 'debug') !default;
+$zindex-list: ('footer', 'nav', 'content', 'pagetop', 'header-base', 'drawer', 'header', 'trigger', 'loading', 'debug') !default;

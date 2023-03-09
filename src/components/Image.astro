@@ -1,0 +1,38 @@
+---
+const { src, ext = 'jpg', alt, media, className = '', width, height, lazyload = true } = Astro.props
+
+/*
+<Image
+  ext="png" src={`${root}assets/images/filename`}
+  alt="必要書籍購入制度の図"
+  width={150} height={150}
+  className="c-card__i-img" media=""
+/>
+*/
+---
+
+{
+  lazyload ? (
+    <img
+      src={`${src}.${ext}`}
+      srcset={`${src}.${ext} ${width}w, ${src}@2x.${ext} ${width * 2}w`}
+      sizes={`(min-width:${media || width / 2}px) ${width}px ${width / 2}px`}
+      decoding="async"
+      loading="lazy"
+      width={`${width}`}
+      height={`${height}`}
+      class={className}
+      alt={alt}
+    />
+  ) : (
+    <img
+      src={`${src}.${ext}`}
+      srcset={`${src}.${ext} ${width}w, ${src}@2x.${ext} ${width * 2}w`}
+      sizes={`(min-width:${media || width / 2}px) ${width}px ${width / 2}px`}
+      width={`${width}`}
+      height={`${height}`}
+      class={className}
+      alt={alt}
+    />
+  )
+}

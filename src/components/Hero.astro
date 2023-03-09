@@ -1,11 +1,38 @@
 ---
-const { hero } = Astro.props
+import Picture from './Picture.astro'
+
+const { root, hero, page } = Astro.props
 ---
 
 <div class="l-hero">
   <div class="l-hero__container">
-    {hero?.parentTitle && <div class="l-hero__title-parent">{hero.parentTitle}</div>}
-    {hero?.mainTitle && <h1 class="l-hero__title-main">{hero.mainTitle}</h1>}
-    {hero?.subTitle && <div class="l-hero__title-sub">{hero.subTitle}</div>}
+    {
+      /* 親カテゴリーやグループ設定がある場合 */
+      hero?.parentTitle && (
+        <div class="l-hero__label">
+          <span set:html={hero.parentTitle} />
+        </div>
+      )
+    }
+    {
+      /* 記事詳細など、type が single でh1を出し分ける */
+      hero?.mainTitle && page.type !== 'single' ? (
+        <h1 class="l-hero__title">
+          <span set:html={hero.mainTitle} />
+        </h1>
+      ) : (
+        <p class="l-hero__title">
+          <span set:html={hero.mainTitle} />
+        </p>
+      )
+    }
+    {
+      /* サブタイトル */
+      hero?.subTitle && (
+        <p class="l-hero__sub">
+          <span set:html={hero.subTitle} />
+        </p>
+      )
+    }
   </div>
 </div>

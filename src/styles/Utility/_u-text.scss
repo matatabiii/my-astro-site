@@ -1,4 +1,18 @@
 /* text */
+.u-text-screen-reader {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 0.0625rem);
+  width: 0.0625rem;
+  height: 0.0625rem;
+  margin: -0.0625rem;
+  padding: 0;
+  border: 0;
+  word-wrap: normal;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+}
+
 @mixin textAllMedia($prefix: '') {
   // font-family
   .u-family-base {
@@ -18,32 +32,32 @@
   }
 
   // font-weight
-  .u-weight-100 {
-    --font-weight-thin: 100;
+  .u-weight-thin {
+    font-weight: 100;
   }
-  .u-weight-100 {
-    --font-weight-extraLight: 200;
+  .u-weight-extraLight {
+    font-weight: 200;
   }
-  .u-weight-300 {
-    --font-weight-light: 300;
+  .u-weight-light {
+    font-weight: 300;
   }
-  .u-weight-400 {
-    --font-weight-regular: 400; // regular and normal
+  .u-weight-regular {
+    font-weight: 400; // regular and normal
   }
-  .u-weight-500 {
-    --font-weight-medium: 500;
+  .u-weight-medium {
+    font-weight: 500;
   }
-  .u-weight-600 {
-    --font-weight-semiBold: 600;
+  .u-weight-semiBold {
+    font-weight: 600;
   }
-  .u-weight-700 {
-    --font-weight-bold: 700;
+  .u-weight-bold {
+    font-weight: 700;
   }
-  .u-weight-800 {
-    --font-weight-extraBold: 800;
+  .u-weight-extraBold {
+    font-weight: 800;
   }
-  .u-weight-900 {
-    --font-weight-black: 900;
+  .u-weight-black {
+    font-weight: 900;
   }
 
   // font-style

@@ -1,11 +1,14 @@
 ---
 import '../styles/main.scss'
+// import '@splidejs/splide/css/core'
+
 import { siteConfig as config } from '../../site.config.mjs'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Sidebar from '../components/Sidebar.astro'
 import Breadcrumbs from '../components/Breadcrumbs.astro'
 export const defaultRoot = import.meta.env.BASE_URL
+
 // Astro.site
 // Astro.url.pathname
 const { page, seo, hero, root, breadcrumbs } = Astro.props
@@ -30,33 +33,56 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     <meta property="og:type" content={seo?.ogType || page.type === 'home' ? 'website' : 'article'} />
     <meta property="og:image" content={seo?.ogImage || `${urlOrigin}assets/images/${ogImage}`} />
     <meta property="og:site_name" content={siteName} />
+    {seo?.description && <meta name="og:description" content={seo?.description} />}
     <meta name="msapplication-TileColor" content={msapplicationTileColor} />
     <meta name="theme-color" content={themeColor} />
     <link rel="icon" href={`${urlOrigin}${favicon}`} />
     <link rel="apple-touch-icon" href={`${urlOrigin}${appleTouchIcon}`} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <script is:inline define:vars={{ root }}>
-      document.documentElement.classList.add('js')
-      document.documentElement.classList.remove('no-js')
-      ;(async () => {
-        // eslint-disable-next-line n/no-deprecated-api
-        const response = await window.fetch(`${root}assets/svg/sprite.svg`)
-        if (response.ok) {
-          const text = await response.text()
-          document.body.insertAdjacentHTML('afterbegin', text)
-          return
-        }
-        throw new Error(response.status)
-      })()
-    </script>
+    {/* <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
+    {/* <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" /> */}
+
+    {
+      /*
+      <script is:inline define:vars={{ root }}>
+        document.documentElement.classList.add('js')
+        document.documentElement.classList.remove('no-js')
+        ;(async () => {
+          // eslint-disable-next-line n/no-deprecated-api
+          const response = await window.fetch(`${root}assets/svg/sprite.svg`)
+          if (response.ok) {
+            const text = await response.text()
+            document.body.insertAdjacentHTML('afterbegin', text)
+            return
+          }
+          throw new Error(response.status)
+        })()
+      </script>
+    */
+    }
 
     <script>
       import '../js/main.js'
     </script>
+
+    <!-- Google Tag Manager -->
+    {
+      import.meta.env.MODE === 'production' &&
+        {
+          /* 本番デプロイ時 */
+        }
+    }
+    <!-- End Google Tag Manager -->
   </head>
-  <body id="body" class={`l-body ${page.sub ? 'l-body--in-sub' : ''}`}>
+  <body id="body" class={`l-body ${page.group ? `l-body--${page.group}` : ''}${page.sub ? 'l-body--in-sub' : ''}`} data-slug={page.slug ? page.slug : ''}>
+    <!-- Google Tag Manager (noscript) -->
+    {
+      import.meta.env.MODE === 'production' &&
+        {
+          /* 本番デプロイ時 */
+        }
+    }
+
+    <!-- End Google Tag Manager (noscript) -->
     <Header isHome={page.type === 'home'} page={page} hero={hero} root={root} />
     <main id="main" role="main" class="l-body__main">
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} root={root} />}

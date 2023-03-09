@@ -1,0 +1,12 @@
+/* display */
+@mixin display($prefix: '') {
+  .#{$prefix}u-ib {
+    display: inline-block;
+  }
+
+  .#{$prefix}u-b {
+    display: block;
+  }
+}
+
+@include display();

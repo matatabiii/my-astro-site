@@ -13,7 +13,7 @@
       }
     }
     @if ($action != 'hover') {
-      &:focus {
+      &:focus-visible {
         @content;
       }
     }

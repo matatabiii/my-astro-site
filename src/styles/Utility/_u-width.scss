@@ -55,10 +55,10 @@
     width: fit-content;
   }
   .#{$prefix}u-mw-full {
-    --max-width: 100%;
+    max-width: 100%;
   }
   .#{$prefix}u-mw-screen {
-    --max-width: 100vw;
+    max-width: 100vw;
   }
   .#{$prefix}u-w-11\/12 {
     width: calc(11 / 12 * 100%);

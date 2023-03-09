@@ -13,13 +13,9 @@
   ページを構成するヘッダーやメインのコンテンツエリア、サイドバーやフッターといったプロジェクト共通のコンテナーブロックのスタイルを定義します。
 ========================================================================== */
 @use './Layout/l-body' as *;
-// @use './Layout/l-trigger' as *;
-// @use './Layout/l-drawer' as *;
-// @use './Layout/l-header-nav' as *;
-// @use './Layout/l-hero' as *;
-// @use './Layout/l-footer' as *;
-// @use './Layout/l-sidebar' as *;
-// @use './Layout/l-breadcrumb' as *;
+@use './Layout/l-header' as *;
+@use './Layout/l-hero' as *;
+@use './Layout/l-footer' as *;
 
 /* ==========================================================================
   Object
@@ -28,33 +24,24 @@
 再利用できるパターンとして、小さな単位のモジュールを定義します。
 出来る限り、最低限の機能を持ったものとして定義されるべきであり、それ自体が固有の幅や色などの特色を持つことは避けるのが望ましいです。
 ----------------------------------------------------------------- */
-@use './Component/c-drawer' as *;
-@use './Component/c-menu-toggle' as *;
-@use './Component/c-container' as *;
-@use './Component/c-flex' as *;
-@use './Component/c-btn' as *;
-@use './Component/c-icon' as *;
 @use './Component/c-breadcrumbs' as *;
-@use './Component/c-logo' as *;
-// @use './Component/c-object-fit' as *;
-// @use './Component/c-select' as *;
-// @use './Component/c-help' as *;
-// @use './Component/c-atmark' as *;
-// @use './Component/c-frame' as *;
-// @use './Component/c-fader' as *;
-// @use './Component/c-share' as *;
+@use './Component/c-btn' as *;
+@use './Component/c-container' as *;
 @use './Component/c-details' as *;
+@use './Component/c-drawer' as *;
+@use './Component/c-flex' as *;
+@use './Component/c-heading' as *;
+@use './Component/c-icon' as *;
+@use './Component/c-link' as *;
+@use './Component/c-menu-toggle' as *;
+@use './Component/c-nav' as *;
 
 /* Project
 プロジェクト固有のパターンであり、いくつかのComponentと、それに該当しない要素によって構成されるものを定義します。
 例えば、記事一覧や、ユーザープロフィール、画像ギャラリーなどコンテンツを構成する要素などが該当します
 ----------------------------------------------------------------- */
-// @use './Project/p-kv' as *;
-// @use './Project/p-logo' as *;
-// @use './Project/p-pager' as *;
-// @use './Project/p-heading-header' as *;
-// @use './Project/p-copyright' as *;
-// @use './Project/p-btn' as *;
+@use './Project/p-front' as *;
+@use './Project/p-page' as *;
 
 /* ==========================================================================
   Vender
@@ -71,6 +58,7 @@ ComponentとProjectレイヤーのObjectのモディファイアで解決する�
 ----------------------------------------------------------------- */
 @use './Utility/u-bg' as *;
 @use './Utility/u-color' as *;
+@use './Utility/u-display' as *;
 @use './Utility/u-cursor-pointer' as *;
 @use './Utility/u-flex' as *;
 @use './Utility/u-height' as *;

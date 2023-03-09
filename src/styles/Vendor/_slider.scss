@@ -11,18 +11,18 @@
 /*
 splide:
 */
-.p-slider {
+.c-slider {
   position: relative;
 
   /* 両サイドのアイテムも可視化する */
-  // .p-slider--visible-track
+  // .c-slider--visible-track
   &--visible-track {
     .splide__track {
       overflow: visible;
     }
   }
 
-  .p-slider-arrow {
+  .c-slider-arrow {
     @include over('md') {
       position: absolute;
       top: 50%;
@@ -40,12 +40,12 @@ splide:
     }
   }
 }
-.p-slider-arrows {
+.c-slider-arrows {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.p-slider-arrow {
+.c-slider-arrow {
   background: color('gray-text');
   color: color('gray-0');
   display: flex;

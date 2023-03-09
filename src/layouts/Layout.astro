@@ -65,24 +65,14 @@ const title = seo?.titleTag || seo?.title + ' | ' + siteName
     </script>
 
     <!-- Google Tag Manager -->
-    {
-      import.meta.env.MODE === 'production' &&
-        {
-          /* 本番デプロイ時 */
-        }
-    }
+    {import.meta.env.MODE === 'production' && <script is:inline />}
     <!-- End Google Tag Manager -->
   </head>
   <body id="body" class={`l-body ${page.group ? `l-body--${page.group}` : ''}${page.sub ? 'l-body--in-sub' : ''}`} data-slug={page.slug ? page.slug : ''}>
     <!-- Google Tag Manager (noscript) -->
-    {
-      import.meta.env.MODE === 'production' &&
-        {
-          /* 本番デプロイ時 */
-        }
-    }
-
+    {import.meta.env.MODE === 'production' && <script is:inline />}
     <!-- End Google Tag Manager (noscript) -->
+
     <Header isHome={page.type === 'home'} page={page} hero={hero} root={root} />
     <main id="main" role="main" class="l-body__main">
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} root={root} />}

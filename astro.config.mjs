@@ -2,6 +2,9 @@ import { defineConfig } from 'astro/config'
 import { base, siteConfig } from './site.config.mjs'
 
 // https://astro.build/config
+// import relativeLinks from 'astro-relative-links'
+
+// https://astro.build/config
 export default defineConfig({
   site: `${siteConfig.siteUrl}${base.production}`,
   base: process.env.NODE_ENV === 'development' ? base.development : base.production,
@@ -25,4 +28,5 @@ export default defineConfig({
       },
     },
   },
+  // integrations: [relativeLinks()],
 })

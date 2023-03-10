@@ -6,7 +6,7 @@
   grid-template-rows: auto 1fr auto;
   grid-template-areas: 'header' 'main' 'footer';
 
-  // .l-body--in-sub
+  /* .l-body--in-sub */
   &--in-sub {
     @media (--min-lg) {
       --layout-wrap: nowrap;
@@ -15,17 +15,17 @@
     }
   }
 
-  // .l-body__header
+  /* .l-body__header */
   &__header {
     grid-area: header;
   }
 
-  // // .l-body__container
+  /* // // .l-body__container
   // &__container {
   //   flex: 1 1 auto;
-  // }
+  // } */
 
-  // .l-body__main
+  /* // .l-body__main */
   &__main {
     grid-area: main;
     display: flex;
@@ -33,27 +33,27 @@
     background: var(--color-gray-0);
   }
 
-  // .l-body__content
+  /* // .l-body__content */
   &__content {
     display: flex;
     flex-wrap: var(--layout-wrap);
     justify-content: center;
     flex: 1 1 auto;
 
-    // .l-body__content-main
+    /* // .l-body__content-main */
     &-main {
       width: var(--layout-main-width); /* 40remはサイドバーの値 */
       max-width: 100%;
     }
 
-    // .l-body__content-sub
+    /* // .l-body__content-sub */
     &-sub {
       width: var(--layout-sub-width); /* 40remはサイドバーの値 */
       max-width: 100%;
     }
   }
 
-  // .l-body__footer
+  /* // .l-body__footer */
   &__footer {
     grid-area: footer;
   }

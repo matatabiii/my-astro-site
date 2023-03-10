@@ -1,5 +1,12 @@
 const config = {
   plugins: [
+    require('postcss-import-ext-glob')({
+      sort: 'desc',
+    }),
+    require('postcss-import'),
+    require('postcss-simple-vars'),
+    require('postcss-nested'),
+    require('postcss-mixins'),
     require('autoprefixer')({
       grid: true,
     }),

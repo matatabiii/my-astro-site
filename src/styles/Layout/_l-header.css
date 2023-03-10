@@ -1,12 +1,14 @@
-@use '../Foundation/Tools/mixins' as *;
-@use '../Foundation/Tools/functions' as *;
-
 /* header */
 .l-header {
   width: 100%;
+  $color: #000;
+
+  background: $color;
 
   @media (--min-lg) {
+    display: none;
   }
+
   @media (--min-md) {
   }
 }
